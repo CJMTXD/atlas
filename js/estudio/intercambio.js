@@ -1,3 +1,4 @@
+import {validarBanco} from "./bancos.js";
 // CSV con comillas, saltos de línea y comillas escapadas; sin evaluar contenido.
 export function leerCSV(texto,delimitador=','){
  const filas=[];let fila=[],campo='',comillas=false;
@@ -15,6 +16,7 @@ export function validarProgreso(datos){
  for(const v of Object.values(p.autoevaluacion))if(typeof v!=='boolean')throw new Error('Autoevaluación inválida.');
  for(const s of p.sesiones)if(!s||![s.fecha,s.total,s.aciertos].every(v=>Number.isFinite(v)&&v>=0)||s.aciertos>s.total)throw new Error('Sesión inválida.');
  if(datos.extra){if(datos.extra.version!==1||!Array.isArray(datos.extra.bancos)||!Array.isArray(datos.extra.historial)||!datos.extra.notas||typeof datos.extra.notas!=='object')throw new Error('Datos complementarios inválidos.');}
+ if(datos.extra?.bancos?.length)datos.extra.bancos=validarBanco(datos.extra.bancos);
  return datos;
 }
 export function bancoCSV(banco){const keys=['id','pregunta','respuesta','seccion','dificultad','tipo','estructuraRelacionada','pasos'];return escribirCSV([keys,...banco.map(q=>keys.map(k=>Array.isArray(q[k])?JSON.stringify(q[k]):q[k]||''))]);}

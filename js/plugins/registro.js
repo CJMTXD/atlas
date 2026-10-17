@@ -14,3 +14,5 @@ export {default as errores} from "../estudio/errores.js";
 export {default as estadisticas} from "../estudio/estadisticas.js";
 
 export {default as transferencias} from "../estudio/transferencias.js";
+
+export {default as importador} from "../estudio/importador.js";

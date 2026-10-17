@@ -1,0 +1,10 @@
+import {leerBanco,validarBanco} from './bancos.js';
+import {extra,salvar} from './extra-store.js';
+export default {id:'importador',titulo:'Mis bancos',montar(ctx){
+ ctx.titulo('Importar un banco propio');ctx.contenido.append(ctx.mensaje('Contenido adicional, verificar con tu material. Los bancos propios no modifican las preguntas literales del laboratorio. JSON: lista con pregunta, respuesta y seccion. CSV: esas mismas cabeceras. Texto: pregunta | respuesta | sección.'));
+ const texto=ctx.nodo('textarea',null,{rows:'7','aria-label':'Contenido del banco propio',placeholder:'¿Pregunta? | Respuesta | Sección'}),archivo=ctx.nodo('input',null,{type:'file',accept:'.json,.csv,.txt','aria-label':'Archivo de banco propio'}),estado=ctx.mensaje(''),lista=ctx.nodo('ol'),agregar=ctx.boton('Importar preguntas validadas',()=>{});let preguntas=[];agregar.disabled=true;
+ const validar=()=>{lista.replaceChildren();preguntas=[];agregar.disabled=true;try{preguntas=leerBanco(texto.value);estado.textContent=preguntas.length+' preguntas válidas. Revisa la muestra antes de importar.';for(const q of preguntas.slice(0,5))lista.append(ctx.nodo('li',q.pregunta+' → '+q.respuesta));agregar.disabled=false;}catch(e){estado.textContent=e.message;}};
+ archivo.onchange=async()=>{try{const f=archivo.files[0];if(!f)return;if(f.size>3*1024*1024)throw new Error('Máximo 3 MB.');texto.value=await f.text();validar();}catch(e){estado.textContent=e.message;}};
+ agregar.onclick=()=>{const actuales=new Map(extra.bancos.map(q=>[q.id,q]));for(const q of preguntas)actuales.set(q.id,q);extra.bancos=[...actuales.values()];const atlas=ctx.contextoModulo;for(const q of preguntas){if(!atlas.BANCO.some(x=>x.id===q.id))atlas.BANCO.push(q);if(!atlas.SECCIONES.includes(q.seccion))atlas.SECCIONES.push(q.seccion);}estado.textContent=salvar()?'Banco importado. Ya está disponible en quiz, simulacro y flashcards.':'Banco disponible durante esta sesión; no se pudo guardar.';agregar.disabled=true;};
+ ctx.contenido.append(archivo,texto,ctx.boton('Validar banco',validar),estado,lista,agregar,ctx.mensaje('Preguntas propias guardadas: '+extra.bancos.length));
+},desmontar(){}};

@@ -1,3 +1,5 @@
+import {extra} from "../estudio/extra-store.js";
+import {validarBanco} from "../estudio/bancos.js";
 import {mejorarSuperficies} from "../modelo/detalle-urinario.js";
 import {iniciarEstudio as extraido_iniciarEstudio} from '../estudio/panel.js';
 import {avisar as extraido_avisar} from '../ui/avisos.js';
@@ -62,7 +64,8 @@ import {cargarMallas} from "../modelo/loader-mallas.js";
     const BANCO=[...datos["banco-urinario"],...datos["orden-urinario"]];
     const FUENTE_DOCX=datos["fuente"];
     const AUTOEVALUACION=datos["autoevaluacion"];
-    const SECCIONES=datos["secciones"];
+    const SECCIONES=[...datos["secciones"]];
+    try{if(extra.bancos.length){const propios=validarBanco(extra.bancos);BANCO.push(...propios);for(const q of propios)if(!SECCIONES.includes(q.seccion))SECCIONES.push(q.seccion);}}catch(error){console.warn("Banco propio omitido:",error.message);}
     const EPITELIOS=datos["epitelios"];
     const OBSERVACIONES_DOCX=datos["observaciones"];
 
