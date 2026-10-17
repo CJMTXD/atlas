@@ -1,3 +1,14 @@
+import {materiales as extraido_materiales} from './estado.js';
+import {estaVisible as extraido_estaVisible} from './estado.js';
+import {aplicarEstado as extraido_aplicarEstado} from './estado.js';
+import {actualizarContorno as extraido_actualizarContorno} from './estado.js';
+import {solicitarRender as extraido_solicitarRender} from './render.js';
+import {renderizar as extraido_renderizar} from './render.js';
+import {redimensionar as extraido_redimensionar} from './escena.js';
+import {moverCamara as extraido_moverCamara} from './camara.js';
+import {enfocarParte as extraido_enfocarParte} from './camara.js';
+import {vista as extraido_vista} from './camara.js';
+import {liberarRecursos as extraido_liberarRecursos} from './recursos.js';
 import {datos} from "./datos.js";
 import {cargarMallas} from "../modelo/loader-mallas.js";
 
@@ -51,6 +62,8 @@ import {cargarMallas} from "../modelo/loader-mallas.js";
     }
 
     async function iniciar(T, OrbitControls, GLTFLoader, EffectComposer, RenderPass, OutlinePass, OutputPass) {
+const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTEMAS=v;},get urinario(){return urinario;},set urinario(v){urinario=v;},get estado(){return estado;},set estado(v){estado=v;},get actualizarContorno(){return actualizarContorno;},set actualizarContorno(v){actualizarContorno=v;},get solicitarRender(){return solicitarRender;},set solicitarRender(v){solicitarRender=v;},get partes(){return partes;},set partes(v){partes=v;},get estaVisible(){return estaVisible;},set estaVisible(v){estaVisible=v;},get materiales(){return materiales;},set materiales(v){materiales=v;},get planoCorte(){return planoCorte;},set planoCorte(v){planoCorte=v;},get contorno(){return contorno;},set contorno(v){contorno=v;},get frame(){return frame;},set frame(v){frame=v;},get dibujando(){return dibujando;},set dibujando(v){dibujando=v;},get renderizar(){return renderizar;},set renderizar(v){renderizar=v;},get ultimoTiempo(){return ultimoTiempo;},set ultimoTiempo(v){ultimoTiempo=v;},get actualizarOrina(){return actualizarOrina;},set actualizarOrina(v){actualizarOrina=v;},get transicion(){return transicion;},set transicion(v){transicion=v;},get controles(){return controles;},set controles(v){controles=v;},get actualizarEtiquetas(){return actualizarEtiquetas;},set actualizarEtiquetas(v){actualizarEtiquetas=v;},get compositor(){return compositor;},set compositor(v){compositor=v;},get camara(){return camara;},set camara(v){camara=v;},get T(){return T;},set T(v){T=v;},get $(){return $;},set $(v){$=v;},get renderer(){return renderer;},set renderer(v){renderer=v;},get moverCamara(){return moverCamara;},set moverCamara(v){moverCamara=v;},get VISTAS(){return VISTAS;},set VISTAS(v){VISTAS=v;},get estudioUI(){return estudioUI;},set estudioUI(v){estudioUI=v;},get vistaMovil(){return vistaMovil;},set vistaMovil(v){vistaMovil=v;},get adaptarPaneles(){return adaptarPaneles;},set adaptarPaneles(v){adaptarPaneles=v;},get escena(){return escena;},set escena(v){escena=v;}};
+
       const SISTEMAS=structuredClone(datos.sistemas);
       const REGIONES=structuredClone(datos.regiones);
 
@@ -899,137 +912,27 @@ import {cargarMallas} from "../modelo/loader-mallas.js";
         parte.direccion.normalize();
       }
 
-      function materiales(mesh) {
-        return Array.isArray(mesh.material)?mesh.material:[mesh.material];
-      }
-      function estaVisible(parte) {
-        const s=SISTEMAS[parte.meta.sistema];
-        return (!parte.meta.sexo || parte.meta.sexo===urinario.sexo) &&
-          (!parte.meta.contexto || urinario.comparar) &&
-          (!urinario.solo || !!parte.meta.urinaria) &&
-          s.visible && s.opacidad>.025 &&
-          !estado.ocultos.has(parte.id) &&
-          (!estado.aislado || estado.aislado===parte.id) &&
-          (estado.region==="todas" || estado.region===parte.meta.region);
-      }
-      function aplicarEstado() {
-        for(const parte of partes.values()) {
-          parte.grupo.visible=estaVisible(parte);
-          parte.grupo.traverse(obj=>{
-            if(!obj.isMesh) return;
-            for(const mat of materiales(obj)) {
-              const s=SISTEMAS[parte.meta.sistema];
-              const transparente=s.opacidad<.995;
-              if(mat.transparent!==transparente) {
-                mat.transparent=transparente;
-                mat.needsUpdate=true;
-              }
-              mat.opacity=s.opacidad;
-              mat.depthWrite=!transparente;
-              const activo=mat.clippingPlanes?.length>0;
-              if(activo!==estado.corte) {
-                mat.clippingPlanes=estado.corte?[planoCorte]:[];
-                mat.needsUpdate=true;
-              }
-            }
-          });
-        }
-        actualizarContorno();
-        document.querySelectorAll(".tree-part").forEach(b=>{
-          b.classList.toggle("dim",!estaVisible(partes.get(b.dataset.id)));
-        });
-        solicitarRender();
-      }
-      function actualizarContorno() {
-        const ids=new Set([estado.seleccionado,estado.hover].filter(Boolean));
-        contorno.selectedObjects=[...ids].map(id=>partes.get(id)?.grupo)
-          .filter(g=>g?.visible);
-      }
+      function materiales(...args){return extraido_materiales(contextoCompartido,...args);}
+      function estaVisible(...args){return extraido_estaVisible(contextoCompartido,...args);}
+      function aplicarEstado(...args){return extraido_aplicarEstado(contextoCompartido,...args);}
+      function actualizarContorno(...args){return extraido_actualizarContorno(contextoCompartido,...args);}
 
       // Renderizado bajo demanda. Sólo se mantiene el bucle durante animaciones.
-      function solicitarRender() {
-        if(!frame && !dibujando) frame=requestAnimationFrame(renderizar);
-      }
-      function renderizar(tiempo) {
-        frame=0;
-        dibujando=true;
-        const dt=Math.min((tiempo-(ultimoTiempo||tiempo))/1000,.05);
-        ultimoTiempo=tiempo;
-        let animando=actualizarOrina(dt);
-        if(transicion) {
-          const avance=Math.min((tiempo-transicion.inicio)/transicion.duracion,1);
-          const suave=avance<.5?4*avance**3:1-((-2*avance+2)**3)/2;
-          camara.position.lerpVectors(transicion.desde,transicion.hasta,suave);
-          controles.target.lerpVectors(transicion.objetivoDesde,transicion.objetivoHasta,suave);
-          if(avance>=1) transicion=null;
-          else animando=true;
-        }
-        if(Math.abs(estado.explosion-estado.explosionObjetivo)>.0005) {
-          estado.explosion=T.MathUtils.damp(estado.explosion,estado.explosionObjetivo,8,dt||.016);
-          if(Math.abs(estado.explosion-estado.explosionObjetivo)<.001)
-            estado.explosion=estado.explosionObjetivo;
-          for(const p of partes.values()) p.grupo.position.copy(p.base)
-            .addScaledVector(p.direccion,estado.explosion*2.3);
-          animando=true;
-        }
-        if(controles.autoRotate) { controles.update(dt); animando=true; }
-        else controles.update();
-        actualizarEtiquetas();
-        compositor.render();
-        dibujando=false;
-        if(animando || transicion) solicitarRender();
-      }
+      function solicitarRender(...args){return extraido_solicitarRender(contextoCompartido,...args);}
+      function renderizar(...args){return extraido_renderizar(contextoCompartido,...args);}
       controles.addEventListener("change",solicitarRender);
       controles.addEventListener("start",()=>{ transicion=null; });
 
-      function redimensionar() {
-        const rect=$("stage").getBoundingClientRect();
-        const w=Math.max(1,rect.width),h=Math.max(1,rect.height);
-        camara.aspect=w/h;
-        camara.updateProjectionMatrix();
-        renderer.setSize(w,h);
-        compositor.setSize(w,h);
-        solicitarRender();
-      }
+      function redimensionar(...args){return extraido_redimensionar(contextoCompartido,...args);}
       new ResizeObserver(redimensionar).observe($("stage"));
 
-      function moverCamara(posicion,objetivo,duracion=700) {
-        controles.autoRotate=false;
-        $("auto-rotate").setAttribute("aria-pressed","false");
-        transicion={
-          desde:camara.position.clone(),hasta:posicion.clone(),
-          objetivoDesde:controles.target.clone(),objetivoHasta:objetivo.clone(),
-          inicio:performance.now(),
-          duracion:matchMedia("(prefers-reduced-motion: reduce)").matches?1:duracion
-        };
-        solicitarRender();
-      }
-      function enfocarParte(parte) {
-        const caja=new T.Box3().setFromObject(parte.grupo);
-        const centro=caja.getCenter(new T.Vector3());
-        const tam=caja.getSize(new T.Vector3());
-        const radio=Math.max(.15,tam.length()/2);
-        const mitadVertical=T.MathUtils.degToRad(camara.fov/2);
-        const mitadHorizontal=Math.atan(Math.tan(mitadVertical)*camara.aspect);
-        const distancia=radio/Math.sin(Math.min(mitadVertical,mitadHorizontal))*1.22;
-        const direccion=camara.position.clone().sub(controles.target).normalize();
-        moverCamara(centro.clone().addScaledVector(direccion,distancia),centro);
-      }
+      function moverCamara(...args){return extraido_moverCamara(contextoCompartido,...args);}
+      function enfocarParte(...args){return extraido_enfocarParte(contextoCompartido,...args);}
       const VISTAS={
         front:[0,0,1],back:[0,0,-1],left:[1,0,0],
         right:[-1,0,0],top:[0,1,.001],bottom:[0,-1,.001]
       };
-      function vista(tipo) {
-        const caja=new T.Box3();
-        for(const p of partes.values()) caja.expandByObject(p.grupo,true);
-        const size=caja.getSize(new T.Vector3());
-        const center=caja.getCenter(new T.Vector3());
-        const radio=Math.max(1,size.length()/2);
-        const fov=T.MathUtils.degToRad(camara.fov/2);
-        const hfov=Math.atan(Math.tan(fov)*camara.aspect);
-        const distancia=radio/Math.sin(Math.min(fov,hfov))*1.08;
-        moverCamara(center.clone().addScaledVector(new T.Vector3(...VISTAS[tipo]).normalize(),distancia),center);
-      }
+      function vista(...args){return extraido_vista(contextoCompartido,...args);}
 
       function mostrarInformacion(id) {
         const meta=catalogo.get(id);
@@ -1614,29 +1517,7 @@ import {cargarMallas} from "../modelo/loader-mallas.js";
 
       // Los recursos se conservan al ocultar para que Restaurar sea inmediato.
       // Se liberan al abandonar la página; no se destruyen buffers reutilizables.
-      function liberarRecursos() {
-        estudioUI?.detener();
-        vistaMovil.removeEventListener("change",adaptarPaneles);
-        cancelAnimationFrame(frame);
-        controles.dispose();
-        const geometrias=new Set(), mats=new Set(), texturas=new Set();
-        escena.traverse(obj=>{
-          if(obj.geometry) geometrias.add(obj.geometry);
-          if(obj.material) {
-            const lista=Array.isArray(obj.material)?obj.material:[obj.material];
-            lista.forEach(mat=>{
-              mats.add(mat);
-              Object.values(mat).forEach(v=>{ if(v?.isTexture) texturas.add(v); });
-            });
-          }
-        });
-        texturas.forEach(t=>t.dispose());
-        mats.forEach(m=>m.dispose());
-        geometrias.forEach(g=>g.dispose());
-        contorno.dispose();
-        compositor.dispose();
-        renderer.dispose();
-      }
+      function liberarRecursos(...args){return extraido_liberarRecursos(contextoCompartido,...args);}
       window.addEventListener("pagehide",event=>{
         // Una página guardada en bfcache puede volver a mostrarse.
         if(!event.persisted) liberarRecursos();
