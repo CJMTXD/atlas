@@ -1,3 +1,26 @@
+import {avisar as extraido_avisar} from '../ui/avisos.js';
+import {mostrarInformacion as extraido_mostrarInformacion} from '../ui/informacion.js';
+import {seleccionar as extraido_seleccionar} from '../ui/seleccion.js';
+import {deseleccionar as extraido_deseleccionar} from '../ui/seleccion.js';
+import {aislar as extraido_aislar} from '../ui/seleccion.js';
+import {ocultarSeleccionada as extraido_ocultarSeleccionada} from '../ui/seleccion.js';
+import {restaurar as extraido_restaurar} from '../ui/seleccion.js';
+import {intersectar as extraido_intersectar} from '../ui/punteros.js';
+import {sincronizarCapas as extraido_sincronizarCapas} from '../ui/capas.js';
+import {construirArbol as extraido_construirArbol} from '../ui/arbol.js';
+import {limpiarResultados as extraido_limpiarResultados} from '../ui/buscador.js';
+import {buscar as extraido_buscar} from '../ui/buscador.js';
+import {actualizarEtiquetas as extraido_actualizarEtiquetas} from '../ui/etiquetas.js';
+import {mezclar as extraido_mezclar} from '../ui/quiz-anatomico.js';
+import {iniciarQuiz as extraido_iniciarQuiz} from '../ui/quiz-anatomico.js';
+import {siguientePregunta as extraido_siguientePregunta} from '../ui/quiz-anatomico.js';
+import {responderQuiz as extraido_responderQuiz} from '../ui/quiz-anatomico.js';
+import {terminarQuiz as extraido_terminarQuiz} from '../ui/quiz-anatomico.js';
+import {actualizarCorte as extraido_actualizarCorte} from '../ui/controles.js';
+import {establecerTema as extraido_establecerTema} from '../ui/tema.js';
+import {estadoPanel as extraido_estadoPanel} from '../ui/paneles.js';
+import {panel as extraido_panel} from '../ui/paneles.js';
+import {adaptarPaneles as extraido_adaptarPaneles} from '../ui/paneles.js';
 import {texturaSuperficie as extraido_texturaSuperficie} from '../modelo/materiales.js';
 import {material as extraido_material} from '../modelo/materiales.js';
 import {crearParte as extraido_crearParte} from '../modelo/partes.js';
@@ -83,7 +106,9 @@ import {cargarMallas} from "../modelo/loader-mallas.js";
     }
 
     async function iniciar(T, OrbitControls, GLTFLoader, EffectComposer, RenderPass, OutlinePass, OutputPass) {
-const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTEMAS=v;},get urinario(){return urinario;},set urinario(v){urinario=v;},get estado(){return estado;},set estado(v){estado=v;},get actualizarContorno(){return actualizarContorno;},set actualizarContorno(v){actualizarContorno=v;},get solicitarRender(){return solicitarRender;},set solicitarRender(v){solicitarRender=v;},get partes(){return partes;},set partes(v){partes=v;},get estaVisible(){return estaVisible;},set estaVisible(v){estaVisible=v;},get materiales(){return materiales;},set materiales(v){materiales=v;},get planoCorte(){return planoCorte;},set planoCorte(v){planoCorte=v;},get contorno(){return contorno;},set contorno(v){contorno=v;},get frame(){return frame;},set frame(v){frame=v;},get dibujando(){return dibujando;},set dibujando(v){dibujando=v;},get renderizar(){return renderizar;},set renderizar(v){renderizar=v;},get ultimoTiempo(){return ultimoTiempo;},set ultimoTiempo(v){ultimoTiempo=v;},get actualizarOrina(){return actualizarOrina;},set actualizarOrina(v){actualizarOrina=v;},get transicion(){return transicion;},set transicion(v){transicion=v;},get controles(){return controles;},set controles(v){controles=v;},get actualizarEtiquetas(){return actualizarEtiquetas;},set actualizarEtiquetas(v){actualizarEtiquetas=v;},get compositor(){return compositor;},set compositor(v){compositor=v;},get camara(){return camara;},set camara(v){camara=v;},get T(){return T;},set T(v){T=v;},get $(){return $;},set $(v){$=v;},get renderer(){return renderer;},set renderer(v){renderer=v;},get moverCamara(){return moverCamara;},set moverCamara(v){moverCamara=v;},get VISTAS(){return VISTAS;},set VISTAS(v){VISTAS=v;},get estudioUI(){return estudioUI;},set estudioUI(v){estudioUI=v;},get vistaMovil(){return vistaMovil;},set vistaMovil(v){vistaMovil=v;},get adaptarPaneles(){return adaptarPaneles;},set adaptarPaneles(v){adaptarPaneles=v;},get escena(){return escena;},set escena(v){escena=v;},get texturasDetalle(){return texturasDetalle;},set texturasDetalle(v){texturasDetalle=v;},get texturaSuperficie(){return texturaSuperficie;},set texturaSuperficie(v){texturaSuperficie=v;},get catalogo(){return catalogo;},set catalogo(v){catalogo=v;},get cuerpo(){return cuerpo;},set cuerpo(v){cuerpo=v;},get material(){return material;},set material(v){material=v;},get mallas(){return mallas;},set mallas(v){mallas=v;},get agregarMalla(){return agregarMalla;},set agregarMalla(v){agregarMalla=v;},get geometriaEsfera(){return geometriaEsfera;},set geometriaEsfera(v){geometriaEsfera=v;},get geometriaCilindro(){return geometriaCilindro;},set geometriaCilindro(v){geometriaCilindro=v;},get segmento(){return segmento;},set segmento(v){segmento=v;},get cargarMallas(){return cargarMallas;},set cargarMallas(v){cargarMallas=v;},get setProgress(){return setProgress;},set setProgress(v){setProgress=v;},get crearParte(){return crearParte;},set crearParte(v){crearParte=v;},get miembros(){return miembros;},set miembros(v){miembros=v;},get ovalo(){return ovalo;},set ovalo(v){ovalo=v;},get tubo(){return tubo;},set tubo(v){tubo=v;},get nombres(){return nombres;},set nombres(v){nombres=v;},get normalizar(){return normalizar;},set normalizar(v){normalizar=v;},get MODO_MODELO(){return MODO_MODELO;},set MODO_MODELO(v){MODO_MODELO=v;},get MODELO_UNICO(){return MODELO_UNICO;},set MODELO_UNICO(v){MODELO_UNICO=v;},get MODELOS(){return MODELOS;},set MODELOS(v){MODELOS=v;},get GLTFLoader(){return GLTFLoader;},set GLTFLoader(v){GLTFLoader=v;},get avisar(){return avisar;},set avisar(v){avisar=v;},get idDeMalla(){return idDeMalla;},set idDeMalla(v){idDeMalla=v;},get clonarMateriales(){return clonarMateriales;},set clonarMateriales(v){clonarMateriales=v;},get puntoParte(){return puntoParte;},set puntoParte(v){puntoParte=v;},get particulasOrina(){return particulasOrina;},set particulasOrina(v){particulasOrina=v;},get prepararRutaOrina(){return prepararRutaOrina;},set prepararRutaOrina(v){prepararRutaOrina=v;},get tuboUrinario(){return tuboUrinario;},set tuboUrinario(v){tuboUrinario=v;},get fichaUrinaria(){return fichaUrinaria;},set fichaUrinaria(v){fichaUrinaria=v;},get estacionesOrina(){return estacionesOrina;},set estacionesOrina(v){estacionesOrina=v;},get rutaOrina(){return rutaOrina;},set rutaOrina(v){rutaOrina=v;},get terminarQuiz(){return terminarQuiz;},set terminarQuiz(v){terminarQuiz=v;},get sincronizarCapas(){return sincronizarCapas;},set sincronizarCapas(v){sincronizarCapas=v;},get aplicarEstado(){return aplicarEstado;},set aplicarEstado(v){aplicarEstado=v;}};
+const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTEMAS=v;},get urinario(){return urinario;},set urinario(v){urinario=v;},get estado(){return estado;},set estado(v){estado=v;},get actualizarContorno(){return actualizarContorno;},set actualizarContorno(v){actualizarContorno=v;},get solicitarRender(){return solicitarRender;},set solicitarRender(v){solicitarRender=v;},get partes(){return partes;},set partes(v){partes=v;},get estaVisible(){return estaVisible;},set estaVisible(v){estaVisible=v;},get materiales(){return materiales;},set materiales(v){materiales=v;},get planoCorte(){return planoCorte;},set planoCorte(v){planoCorte=v;},get contorno(){return contorno;},set contorno(v){contorno=v;},get frame(){return frame;},set frame(v){frame=v;},get dibujando(){return dibujando;},set dibujando(v){dibujando=v;},get renderizar(){return renderizar;},set renderizar(v){renderizar=v;},get ultimoTiempo(){return ultimoTiempo;},set ultimoTiempo(v){ultimoTiempo=v;},get actualizarOrina(){return actualizarOrina;},set actualizarOrina(v){actualizarOrina=v;},get transicion(){return transicion;},set transicion(v){transicion=v;},get controles(){return controles;},set controles(v){controles=v;},get actualizarEtiquetas(){return actualizarEtiquetas;},set actualizarEtiquetas(v){actualizarEtiquetas=v;},get compositor(){return compositor;},set compositor(v){compositor=v;},get camara(){return camara;},set camara(v){camara=v;},get T(){return T;},set T(v){T=v;},get $(){return $;},set $(v){$=v;},get renderer(){return renderer;},set renderer(v){renderer=v;},get moverCamara(){return moverCamara;},set moverCamara(v){moverCamara=v;},get VISTAS(){return VISTAS;},set VISTAS(v){VISTAS=v;},get estudioUI(){return estudioUI;},set estudioUI(v){estudioUI=v;},get vistaMovil(){return vistaMovil;},set vistaMovil(v){vistaMovil=v;},get adaptarPaneles(){return adaptarPaneles;},set adaptarPaneles(v){adaptarPaneles=v;},get escena(){return escena;},set escena(v){escena=v;},get texturasDetalle(){return texturasDetalle;},set texturasDetalle(v){texturasDetalle=v;},get texturaSuperficie(){return texturaSuperficie;},set texturaSuperficie(v){texturaSuperficie=v;},get catalogo(){return catalogo;},set catalogo(v){catalogo=v;},get cuerpo(){return cuerpo;},set cuerpo(v){cuerpo=v;},get material(){return material;},set material(v){material=v;},get mallas(){return mallas;},set mallas(v){mallas=v;},get agregarMalla(){return agregarMalla;},set agregarMalla(v){agregarMalla=v;},get geometriaEsfera(){return geometriaEsfera;},set geometriaEsfera(v){geometriaEsfera=v;},get geometriaCilindro(){return geometriaCilindro;},set geometriaCilindro(v){geometriaCilindro=v;},get segmento(){return segmento;},set segmento(v){segmento=v;},get cargarMallas(){return cargarMallas;},set cargarMallas(v){cargarMallas=v;},get setProgress(){return setProgress;},set setProgress(v){setProgress=v;},get crearParte(){return crearParte;},set crearParte(v){crearParte=v;},get miembros(){return miembros;},set miembros(v){miembros=v;},get ovalo(){return ovalo;},set ovalo(v){ovalo=v;},get tubo(){return tubo;},set tubo(v){tubo=v;},get nombres(){return nombres;},set nombres(v){nombres=v;},get normalizar(){return normalizar;},set normalizar(v){normalizar=v;},get MODO_MODELO(){return MODO_MODELO;},set MODO_MODELO(v){MODO_MODELO=v;},get MODELO_UNICO(){return MODELO_UNICO;},set MODELO_UNICO(v){MODELO_UNICO=v;},get MODELOS(){return MODELOS;},set MODELOS(v){MODELOS=v;},get GLTFLoader(){return GLTFLoader;},set GLTFLoader(v){GLTFLoader=v;},get avisar(){return avisar;},set avisar(v){avisar=v;},get idDeMalla(){return idDeMalla;},set idDeMalla(v){idDeMalla=v;},get clonarMateriales(){return clonarMateriales;},set clonarMateriales(v){clonarMateriales=v;},get puntoParte(){return puntoParte;},set puntoParte(v){puntoParte=v;},get particulasOrina(){return particulasOrina;},set particulasOrina(v){particulasOrina=v;},get prepararRutaOrina(){return prepararRutaOrina;},set prepararRutaOrina(v){prepararRutaOrina=v;},get tuboUrinario(){return tuboUrinario;},set tuboUrinario(v){tuboUrinario=v;},get fichaUrinaria(){return fichaUrinaria;},set fichaUrinaria(v){fichaUrinaria=v;},get estacionesOrina(){return estacionesOrina;},set estacionesOrina(v){estacionesOrina=v;},get rutaOrina(){return rutaOrina;},set rutaOrina(v){rutaOrina=v;},get terminarQuiz(){return terminarQuiz;},set terminarQuiz(v){terminarQuiz=v;},get sincronizarCapas(){return sincronizarCapas;},set sincronizarCapas(v){sincronizarCapas=v;},get aplicarEstado(){return aplicarEstado;},set aplicarEstado(v){aplicarEstado=v;},get toastTimer(){return toastTimer;},set toastTimer(v){toastTimer=v;},get seleccionar(){return seleccionar;},set seleccionar(v){seleccionar=v;},get cambiarSexoUrinario(){return cambiarSexoUrinario;},set cambiarSexoUrinario(v){cambiarSexoUrinario=v;},get enfocarParte(){return enfocarParte;},set enfocarParte(v){enfocarParte=v;},get mostrarInformacion(){return mostrarInformacion;},set mostrarInformacion(v){mostrarInformacion=v;},get limpiarResultados(){return limpiarResultados;},set limpiarResultados(v){limpiarResultados=v;},get panel(){return panel;},set panel(v){panel=v;},get deseleccionar(){return deseleccionar;},set deseleccionar(v){deseleccionar=v;},get puntero(){return puntero;},set puntero(v){puntero=v;},get rayo(){return rayo;},set rayo(v){rayo=v;},get REGIONES(){return REGIONES;},set REGIONES(v){REGIONES=v;},get resultados(){return resultados;},set resultados(v){resultados=v;},get indiceResultado(){return indiceResultado;},set indiceResultado(v){indiceResultado=v;},get geometriaGuias(){return geometriaGuias;},set geometriaGuias(v){geometriaGuias=v;},get bufferGuias(){return bufferGuias;},set bufferGuias(v){bufferGuias=v;},get siguientePregunta(){return siguientePregunta;},set siguientePregunta(v){siguientePregunta=v;},get mezclar(){return mezclar;},set mezclar(v){mezclar=v;},get responderQuiz(){return responderQuiz;},set responderQuiz(v){responderQuiz=v;},get cajaCuerpo(){return cajaCuerpo;},set cajaCuerpo(v){cajaCuerpo=v;},get rejilla(){return rejilla;},set rejilla(v){rejilla=v;},get estadoPanel(){return estadoPanel;},set estadoPanel(v){estadoPanel=v;}};
+
+
 
 
 
@@ -194,12 +219,7 @@ const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTE
       let transicion = null, frame = 0, ultimoTiempo = 0, toastTimer, dibujando = false;
       let pointerDown = null, ultimoHover = null, tiempoHover = 0;
 
-      function avisar(texto) {
-        clearTimeout(toastTimer);
-        $("toast").textContent = texto;
-        $("toast").hidden = false;
-        toastTimer = setTimeout(() => $("toast").hidden = true,4200);
-      }
+      function avisar(...args){return extraido_avisar(contextoCompartido,...args);}
       const texturasDetalle = new Map();
       function texturaSuperficie(...args){return extraido_texturaSuperficie(contextoCompartido,...args);}
       function material(...args){return extraido_material(contextoCompartido,...args);}
@@ -312,149 +332,15 @@ const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTE
       };
       function vista(...args){return extraido_vista(contextoCompartido,...args);}
 
-      function mostrarInformacion(id) {
-        const meta=catalogo.get(id);
-        $("empty-info").hidden=true;
-        $("part-info").hidden=false;
-        $("info-name").textContent=meta.nombre;
-        $("info-latin").textContent=meta.latin;
-        $("info-system").textContent=SISTEMAS[meta.sistema].nombre;
-        $("info-system").style.borderColor=SISTEMAS[meta.sistema].color;
-        $("info-description").textContent=meta.descripcion + (meta.modelo ? " " + meta.modelo : "");
-        $("info-function").textContent=meta.funcion;
-        $("info-location").textContent=meta.ubicacion;
-        $("info-fact").textContent=meta.datosCuriosos;
-        $("info-related").replaceChildren();
-        const explicitas={
-          corazon:["aorta","vena_cava","pulmon_derecho","pulmon_izquierdo"],
-          cerebro:["cerebelo","tronco","medula","hipofisis"],
-          estomago:["esofago","pancreas","intestino_delgado"],
-          higado:["vesicula","pancreas","intestino_delgado"],
-          vejiga:["ureter_derecho","ureter_izquierdo","rinon_derecho","rinon_izquierdo"],
-          rinon_derecho:["ureter_derecho","suprarrenales","vejiga"],
-          rinon_izquierdo:["ureter_izquierdo","suprarrenales","vejiga"]
-        };
-        const relacionados=(meta.relaciones || explicitas[id] || [...partes.keys()]
-          .filter(otro=>otro!==id && catalogo.get(otro).sistema===meta.sistema))
-          .filter(otro=>partes.has(otro)).slice(0,5);
-        if(!relacionados.length) $("info-related").textContent="Sin asociaciones disponibles.";
-        relacionados.forEach(otro=>{
-          const b=document.createElement("button");
-          b.textContent=catalogo.get(otro).nombre;
-          b.onclick=()=>seleccionar(otro);
-          $("info-related").append(b);
-        });
-      }
-      function seleccionar(id,{revelar=true,estudio=false}={}) {
-        if(!partes.has(id)) return;
-        if(estado.quiz.activo && !estudio) {
-          avisar("Termina el quiz para explorar otras estructuras.");
-          return;
-        }
-        const p=partes.get(id);
-        if(p.meta.sexo && p.meta.sexo!==urinario.sexo)cambiarSexoUrinario(p.meta.sexo);
-        if(p.meta.contexto)urinario.comparar=true;
-        if(urinario.solo&&!p.meta.urinaria)urinario.solo=false;
-        estado.seleccionado=id;
-        if(revelar) {
-          estado.ocultos.delete(id);
-          estado.aislado=null;
-          estado.region="todas";
-          $("region").value="todas";
-          document.querySelectorAll(".tree-region").forEach(r=>r.hidden=false);
-          const s=SISTEMAS[p.meta.sistema];
-          s.visible=true;
-          s.opacidad=Math.max(.55,s.opacidad);
-          sincronizarCapas();
-        }
-        document.querySelectorAll(".tree-part").forEach(b=>{
-          const seleccionada=!estudio && b.dataset.id===id;
-          b.classList.toggle("selected",seleccionada);
-          b.setAttribute("aria-pressed",String(seleccionada));
-          if(seleccionada) {
-            let padre=b.parentElement;
-            while(padre && padre!==$("tree")) {
-              if(padre.tagName==="DETAILS") padre.open=true;
-              padre=padre.parentElement;
-            }
-          }
-        });
-        if(!estudio) {
-          mostrarInformacion(id);
-          $("right-panel").scrollTop=0;
-          if(vistaMovil.matches && $("study-panel")?.hidden!==false) {
-            $("search").blur();
-            panel("right",true,{enfocar:false});
-          }
-          $("search").value="";
-          limpiarResultados();
-        } else {
-          $("part-info").hidden=true;
-          $("empty-info").hidden=false;
-        }
-        aplicarEstado();
-        enfocarParte(p);
-      }
-      function deseleccionar() {
-        if(estado.quiz.activo) terminarQuiz();
-        estado.seleccionado=null;
-        estado.hover=null;
-        $("part-info").hidden=true;
-        $("empty-info").hidden=false;
-        document.querySelectorAll(".tree-part.selected").forEach(b=>{
-          b.classList.remove("selected");
-          b.setAttribute("aria-pressed","false");
-        });
-        actualizarContorno();
-        solicitarRender();
-      }
-      function aislar() {
-        if(!estado.seleccionado || estado.quiz.activo) return;
-        estado.aislado=estado.seleccionado;
-        aplicarEstado();
-      }
-      function ocultarSeleccionada() {
-        if(!estado.seleccionado || estado.quiz.activo) return;
-        const id=estado.seleccionado;
-        estado.ocultos.add(id);
-        estado.aislado=null;
-        deseleccionar();
-        aplicarEstado();
-      }
-      function restaurar() {
-        urinario.solo=false;urinario.comparar=false;urinario.flujo=false;
-        if(particulasOrina)particulasOrina.visible=false;
-        if(estado.quiz.activo) terminarQuiz();
-        estado.ocultos.clear();
-        estado.aislado=null;
-        estado.region="todas";
-        $("region").value="todas";
-        // Se restablece una vista del interior legible; piel y músculos quedan disponibles.
-        for(const [id,s] of Object.entries(SISTEMAS)) {
-          s.visible=!["piel","muscular"].includes(id);
-          s.opacidad=id==="esqueletico"?.72:id==="respiratorio"?.72:id==="piel"?.18:1;
-        }
-        estado.corte=false;
-        $("clip-enabled").checked=false;
-        estado.explosionObjetivo=0;
-        $("explode").value=0;
-        $("explode-value").textContent="0%";
-        sincronizarCapas();
-        aplicarEstado();
-      }
+      function mostrarInformacion(...args){return extraido_mostrarInformacion(contextoCompartido,...args);}
+      function seleccionar(...args){return extraido_seleccionar(contextoCompartido,...args);}
+      function deseleccionar(...args){return extraido_deseleccionar(contextoCompartido,...args);}
+      function aislar(...args){return extraido_aislar(contextoCompartido,...args);}
+      function ocultarSeleccionada(...args){return extraido_ocultarSeleccionada(contextoCompartido,...args);}
+      function restaurar(...args){return extraido_restaurar(contextoCompartido,...args);}
 
       // Raycasting: descarta partes ocultas y fragmentos eliminados por el corte.
-      function intersectar(evento) {
-        const rect=renderer.domElement.getBoundingClientRect();
-        puntero.set(
-          (evento.clientX-rect.left)/rect.width*2-1,
-          -(evento.clientY-rect.top)/rect.height*2+1
-        );
-        rayo.setFromCamera(puntero,camara);
-        const candidatas=mallas.filter(m=>partes.get(m.userData.parte)?.grupo.visible);
-        const hits=rayo.intersectObjects(candidatas,false);
-        return hits.find(h=>!estado.corte || planoCorte.distanceToPoint(h.point)>=0);
-      }
+      function intersectar(...args){return extraido_intersectar(contextoCompartido,...args);}
       // Un pellizco o arrastre nunca debe interpretarse como selección de órgano.
       const punterosActivos=new Set();
       renderer.domElement.addEventListener("pointerdown",event=>{
@@ -535,53 +421,8 @@ const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTE
           aplicarEstado();
         };
       });
-      function sincronizarCapas() {
-        Object.entries(SISTEMAS).forEach(([id,s])=>{
-          $("layer-"+id).checked=s.visible;
-          $("opacity-"+id).value=Math.round(s.opacidad*100);
-          $("output-"+id).textContent=Math.round(s.opacidad*100)+"%";
-        });
-      }
-      function construirArbol() {
-        $("tree").replaceChildren();
-        for(const [sistema,datos] of Object.entries(SISTEMAS)) {
-          const deSistema=[...partes.values()].filter(p=>p.meta.sistema===sistema);
-          if(!deSistema.length) continue;
-          const raiz=document.createElement("details");
-          const sum=document.createElement("summary");
-          sum.textContent=datos.nombre+" · "+deSistema.length;
-          raiz.append(sum);
-          for(const [region,nombre] of Object.entries(REGIONES)) {
-            if(region==="todas") continue;
-            const lista=deSistema.filter(p=>p.meta.region===region);
-            if(!lista.length) continue;
-            const rama=document.createElement("details");
-            rama.className="tree-region";
-            rama.dataset.region=region;
-            const titulo=document.createElement("summary");
-            titulo.textContent=nombre;
-            rama.append(titulo);
-            const contenedores=new Map();
-            lista.forEach(p=>{
-              let destino=rama;
-              if(p.meta.padre){
-                if(!contenedores.has(p.meta.padre)){
-                  const grupo=document.createElement("details"),titulo=document.createElement("summary");
-                  grupo.className="tree-region";
-                  titulo.textContent=catalogo.get(p.meta.padre)?.nombre || p.meta.padre;
-                  grupo.append(titulo);rama.append(grupo);contenedores.set(p.meta.padre,grupo);
-                }
-                destino=contenedores.get(p.meta.padre);
-              }
-              const b=document.createElement("button");
-              b.className="tree-part";b.dataset.id=p.id;b.textContent=p.meta.nombre;
-              b.setAttribute("aria-pressed","false");b.onclick=()=>seleccionar(p.id);destino.append(b);
-            });
-            raiz.append(rama);
-          }
-          $("tree").append(raiz);
-        }
-      }
+      function sincronizarCapas(...args){return extraido_sincronizarCapas(contextoCompartido,...args);}
+      function construirArbol(...args){return extraido_construirArbol(contextoCompartido,...args);}
       construirArbol();
       sincronizarCapas();
       $("region").onchange=e=>{
@@ -595,44 +436,8 @@ const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTE
 
       // Búsqueda con autocompletado y navegación mediante flechas y Enter.
       let resultados=[],indiceResultado=-1;
-      function limpiarResultados() {
-        resultados=[];
-        indiceResultado=-1;
-        $("search-results").replaceChildren();
-        $("search").setAttribute("aria-expanded","false");
-        $("search").removeAttribute("aria-activedescendant");
-      }
-      function buscar() {
-        const q=normalizar($("search").value);
-        limpiarResultados();
-        if(!q) return;
-        resultados=[...partes.values()].filter(p=>
-          normalizar(p.meta.nombre+" "+p.meta.latin+" "+p.id).includes(q)
-        ).slice(0,12);
-        if(!resultados.length) {
-          const vacio=document.createElement("p");
-          vacio.className="muted";
-          vacio.style.cssText="font-size:12px;padding:12px;margin:0";
-          vacio.textContent="No se encontraron estructuras.";
-          $("search-results").append(vacio);
-        }
-        resultados.forEach((p,i)=>{
-          const b=document.createElement("button");
-          b.className="result";
-          b.id="resultado-"+i;
-          b.setAttribute("role","option");
-          b.setAttribute("aria-selected","false");
-          const nombre=document.createElement("span");
-          nombre.textContent=p.meta.nombre;
-          const latin=document.createElement("small");
-          latin.textContent=p.meta.latin;
-          b.append(nombre,latin);
-          b.onpointerdown=e=>e.preventDefault();
-          b.onclick=()=>seleccionar(p.id);
-          $("search-results").append(b);
-        });
-        $("search").setAttribute("aria-expanded","true");
-      }
+      function limpiarResultados(...args){return extraido_limpiarResultados(contextoCompartido,...args);}
+      function buscar(...args){return extraido_buscar(contextoCompartido,...args);}
       $("search").addEventListener("input",buscar);
       $("search").addEventListener("keydown",e=>{
         if(e.key==="Escape") { limpiarResultados(); return; }
@@ -680,119 +485,16 @@ const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTE
         p.etiqueta=b;
         $("labels").append(b);
       }
-      function actualizarEtiquetas() {
-        for(const p of partes.values()) p.etiqueta.hidden=true;
-        geometriaGuias.setDrawRange(0,0);
-        if(!estado.etiquetas || estado.quiz.activo) return;
-        const rect=$("stage").getBoundingClientRect();
-        const ocupados=[];
-        const candidatas=[...partes.values()].filter(p=>p.grupo.visible)
-          .sort((a,b)=>(a.id===estado.seleccionado?-1:b.id===estado.seleccionado?1:0));
-        let cuenta=0;
-        for(const p of candidatas) {
-          if(cuenta>=18) break;
-          const centro=new T.Box3().setFromObject(p.grupo).getCenter(new T.Vector3());
-          if(estado.corte && planoCorte.distanceToPoint(centro)<0) continue;
-          const ndc=centro.clone().project(camara);
-          if(ndc.z<-1 || ndc.z>1 || Math.abs(ndc.x)>.94 || Math.abs(ndc.y)>.91) continue;
-          const origen=camara.position.clone();
-          const direccion=centro.clone().sub(origen).normalize();
-          rayo.set(origen,direccion);
-          const hits=rayo.intersectObjects(mallas.filter(m=>partes.get(m.userData.parte)?.grupo.visible),false)
-            .filter(h=>!estado.corte || planoCorte.distanceToPoint(h.point)>=0);
-          if(hits[0] && hits[0].object.userData.parte!==p.id) continue;
-          const lado=ndc.x<0?-1:1;
-          const x=(ndc.x*.5+.5)*rect.width+lado*70;
-          const y=(-ndc.y*.5+.5)*rect.height;
-          if(x<65 || x>rect.width-65 || y<55 || y>rect.height-80) continue;
-          if(ocupados.some(o=>Math.abs(o.x-x)<145 && Math.abs(o.y-y)<27)) continue;
-          ocupados.push({x,y});
-          p.etiqueta.hidden=false;
-          p.etiqueta.style.left=x+"px";
-          p.etiqueta.style.top=y+"px";
-          const fin=new T.Vector3(x/rect.width*2-1,-y/rect.height*2+1,ndc.z).unproject(camara);
-          bufferGuias.set([...centro.toArray(),...fin.toArray()],cuenta*6);
-          cuenta++;
-        }
-        geometriaGuias.attributes.position.needsUpdate=true;
-        geometriaGuias.setDrawRange(0,cuenta*2);
-      }
+      function actualizarEtiquetas(...args){return extraido_actualizarEtiquetas(contextoCompartido,...args);}
 
       // Cuestionario: evita mostrar la respuesta en fichas, etiquetas o tooltip.
-      function mezclar(lista) {
-        const copia=[...lista];
-        for(let i=copia.length-1;i>0;i--) {
-          const j=Math.floor(Math.random()*(i+1));
-          [copia[i],copia[j]]=[copia[j],copia[i]];
-        }
-        return copia;
-      }
-      function iniciarQuiz() {
-        if(partes.size<4) { avisar("El quiz requiere al menos cuatro estructuras cargadas."); return; }
-        estado.quiz={activo:true,id:null,aciertos:0,total:0,respondido:false};
-        $("quiz-card").hidden=false;
-        $("quiz-toggle").setAttribute("aria-pressed","true");
-        $("quiz-toggle").textContent="Terminar quiz";
-        $("tooltip").hidden=true;
-        estado.hover=null;
-        siguientePregunta();
-      }
-      function siguientePregunta() {
-        const opcionesBase=[...partes.values()].filter(p=>!p.id.startsWith("externa_") && p.id!=="piel");
-        if(opcionesBase.length<4) { terminarQuiz(); avisar("Faltan cuatro estructuras identificadas para generar preguntas."); return; }
-        const candidatos=opcionesBase.filter(p=>p.id!==estado.quiz.id);
-        const elegido=candidatos[Math.floor(Math.random()*candidatos.length)];
-        estado.quiz.id=elegido.id;
-        estado.quiz.respondido=false;
-        estado.corte=false;
-        $("clip-enabled").checked=false;
-        $("quiz-feedback").textContent="";
-        $("quiz-next").hidden=true;
-        $("quiz-options").replaceChildren();
-        $("quiz-score").textContent=estado.quiz.aciertos+" / "+estado.quiz.total;
-        const distractores=mezclar(opcionesBase.filter(p=>p.id!==elegido.id)).slice(0,3);
-        mezclar([elegido,...distractores]).forEach(p=>{
-          const b=document.createElement("button");
-          b.textContent=p.meta.nombre;
-          b.onclick=()=>responderQuiz(p.id);
-          $("quiz-options").append(b);
-        });
-        seleccionar(elegido.id,{estudio:true});
-      }
-      function responderQuiz(id) {
-        if(estado.quiz.respondido) return;
-        estado.quiz.respondido=true;
-        estado.quiz.total++;
-        const correcta=id===estado.quiz.id;
-        if(correcta) estado.quiz.aciertos++;
-        const meta=catalogo.get(estado.quiz.id);
-        $("quiz-feedback").textContent=(correcta?"Correcto. ":"La respuesta es "+meta.nombre+". ")+meta.funcion;
-        $("quiz-feedback").style.color=correcta?"var(--accent)":"var(--danger)";
-        $("quiz-score").textContent=estado.quiz.aciertos+" / "+estado.quiz.total;
-        [...$("quiz-options").children].forEach(b=>b.disabled=true);
-        $("quiz-next").hidden=false;
-      }
-      function terminarQuiz() {
-        const {aciertos,total}=estado.quiz;
-        estado.quiz.activo=false;
-        $("quiz-card").hidden=true;
-        $("quiz-toggle").setAttribute("aria-pressed","false");
-        $("quiz-toggle").textContent="Iniciar quiz anatómico";
-        if(estado.seleccionado) mostrarInformacion(estado.seleccionado);
-        solicitarRender();
-        if(total) avisar("Quiz finalizado: "+aciertos+" respuestas correctas de "+total+".");
-      }
+      function mezclar(...args){return extraido_mezclar(contextoCompartido,...args);}
+      function iniciarQuiz(...args){return extraido_iniciarQuiz(contextoCompartido,...args);}
+      function siguientePregunta(...args){return extraido_siguientePregunta(contextoCompartido,...args);}
+      function responderQuiz(...args){return extraido_responderQuiz(contextoCompartido,...args);}
+      function terminarQuiz(...args){return extraido_terminarQuiz(contextoCompartido,...args);}
 
-      function actualizarCorte() {
-        const eje=$("clip-axis").value;
-        const fraccion=Number($("clip-position").value)/100;
-        const caja=cajaCuerpo;
-        const minimo=caja.min[eje]-.1,maximo=caja.max[eje]+.1;
-        planoCorte.normal.set(eje==="x"?-1:0,eje==="y"?-1:0,eje==="z"?-1:0);
-        planoCorte.constant=T.MathUtils.lerp(minimo,maximo,fraccion);
-        estado.corte=$("clip-enabled").checked;
-        aplicarEstado();
-      }
+      function actualizarCorte(...args){return extraido_actualizarCorte(contextoCompartido,...args);}
       $("clip-enabled").onchange=actualizarCorte;
       $("clip-axis").onchange=actualizarCorte;
       $("clip-position").oninput=actualizarCorte;
@@ -839,45 +541,16 @@ const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTE
         contorno.edgeGlow=estado.baja?0:.65;
         redimensionar();
       };
-      function establecerTema(claro) {
-        document.documentElement.dataset.theme=claro?"light":"dark";
-        $("theme").setAttribute("aria-pressed",String(claro));
-        $("theme").setAttribute("aria-label",claro?"Cambiar a tema oscuro":"Cambiar a tema claro");
-        rejilla.material.color.set(claro?0x8ca7b8:0x294354);
-        contorno.visibleEdgeColor.set(claro?"#087c65":"#8bffe3");
-        try { localStorage.setItem("atlas-theme",claro?"light":"dark"); } catch {}
-        solicitarRender();
-      }
+      function establecerTema(...args){return extraido_establecerTema(contextoCompartido,...args);}
       $("theme").onclick=()=>establecerTema(document.documentElement.dataset.theme!=="light");
       try { establecerTema(localStorage.getItem("atlas-theme")==="light"); } catch {}
 
-      function estadoPanel(lado,visible) {
-        const nodo=$(lado+"-panel");
-        nodo.classList.toggle("collapsed",!visible);
-        nodo.inert=!visible;
-        nodo.setAttribute("aria-hidden",String(!visible));
-        $("toggle-"+lado).setAttribute("aria-expanded",String(visible));
-      }
-      function panel(lado,abrir,{enfocar=true}={}) {
-        const nodo=$(lado+"-panel");
-        const visible=abrir ?? nodo.classList.contains("collapsed");
-        if(visible && vistaMovil.matches) {
-          estadoPanel(lado==="left"?"right":"left",false);
-          estudioUI?.cerrar({devolverFoco:false});
-        }
-        estadoPanel(lado,visible);
-        if(enfocar) {
-          if(visible)requestAnimationFrame(()=>{if(!nodo.inert)nodo.querySelector("button,select,input")?.focus({preventScroll:true});});
-          else $("toggle-"+lado).focus({preventScroll:true});
-        }
-      }
+      function estadoPanel(...args){return extraido_estadoPanel(contextoCompartido,...args);}
+      function panel(...args){return extraido_panel(contextoCompartido,...args);}
       $("toggle-left").onclick=()=>panel("left");
       $("toggle-right").onclick=()=>panel("right");
       document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>panel(b.dataset.close,false));
-      function adaptarPaneles(){
-        for(const lado of ["left","right"])estadoPanel(lado,!vistaMovil.matches);
-        solicitarRender();
-      }
+      function adaptarPaneles(...args){return extraido_adaptarPaneles(contextoCompartido,...args);}
       vistaMovil.addEventListener("change",adaptarPaneles);
       adaptarPaneles();
       document.addEventListener("keydown",e=>{
