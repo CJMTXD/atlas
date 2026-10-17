@@ -46,3 +46,7 @@ Consulta `pruebas/no-regresion.md`. La referencia y banco original permiten comp
 Geometría: BodyParts3D, © The Database Center for Life Science. Adaptaciones bajo CC BY-SA 2.1 Japan: https://creativecommons.org/licenses/by-sa/2.1/jp/deed.es. Las atribuciones originales permanecen en la interfaz y referencia. Three.js conserva su licencia MIT en vendor.
 
 **Contenido educativo. No sustituye el consejo médico profesional.**
+
+## Pistas y mnemotecnias
+
+Desde una ficha pulsa **Notas y repasar luego**, o abre el modo Notas. Cada estructura conserva notas, mnemotecnia, pista opcional y marcador. El examen práctico ofrece la pista escrita para la estructura señalada, únicamente cuando existe; no genera datos médicos. Estos campos están incluidos en la exportación de progreso.
