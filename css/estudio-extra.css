@@ -1,0 +1,9 @@
+/* Controles adicionales, con las variables del tema original. */
+.study-body textarea {width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--panel-alt);color:var(--text);font:inherit;resize:vertical;min-height:65px;}
+.study-body input[type=number],.study-body input[type=text],.study-body input[type=file] {max-width:100%;color:var(--text);}
+.study-body textarea:focus-visible,.study-body svg [tabindex]:focus-visible {outline:3px solid var(--accent);outline-offset:2px;}
+.occlusion-frame {position:relative;width:100%;margin:14px 0;overflow:hidden;}
+.occlusion-frame img {display:block;width:100%;height:100%;object-fit:contain;}
+.occlusion-frame svg {position:absolute;inset:0;width:100%;height:100%;touch-action:none;}
+.study-body label {display:block;margin-top:8px;}
+@media(max-width:850px){.study-body textarea,.study-body input {font-size:16px;}.study-body button{min-height:40px;}}

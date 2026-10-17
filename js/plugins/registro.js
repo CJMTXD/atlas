@@ -18,3 +18,5 @@ export {default as transferencias} from "../estudio/transferencias.js";
 export {default as importador} from "../estudio/importador.js";
 
 export {default as notas} from "../estudio/notas.js";
+
+export {default as oclusion} from "../estudio/oclusion.js";

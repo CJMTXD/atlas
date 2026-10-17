@@ -1,0 +1,7 @@
+// Las imágenes nunca salen del navegador. Memoria de respaldo si IndexedDB falla.
+const memoria=new Map();let db=null;export let persistente=true;
+async function abrir(){if(db)return db;try{db=await new Promise((resolve,reject)=>{const r=indexedDB.open('atlas-histologia-v1',1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains('laminas'))r.result.createObjectStore('laminas',{keyPath:'id'});};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);r.onblocked=()=>reject(new Error('Base bloqueada por otra pestaña.'));});return db;}catch{persistente=false;return null;}}
+async function operacion(tipo,fn){try{const d=await abrir();if(!d)return null;return await new Promise((resolve,reject)=>{const tx=d.transaction('laminas',tipo);const r=fn(tx.objectStore('laminas'));let result;r.onsuccess=()=>{result=r.result;};tx.oncomplete=()=>resolve(result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error);});}catch{persistente=false;return null;}}
+export async function listar(){const rows=await operacion('readonly',s=>s.getAll());if(Array.isArray(rows))for(const x of rows)if(!memoria.has(x.id))memoria.set(x.id,x);return [...memoria.values()];}
+export async function guardarImagen(imagen){memoria.set(imagen.id,imagen);await operacion('readwrite',s=>s.put(imagen));return persistente;}
+export async function borrarImagen(id){memoria.delete(id);await operacion('readwrite',s=>s.delete(id));}
