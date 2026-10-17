@@ -1,3 +1,24 @@
+import {texturaSuperficie as extraido_texturaSuperficie} from '../modelo/materiales.js';
+import {material as extraido_material} from '../modelo/materiales.js';
+import {crearParte as extraido_crearParte} from '../modelo/partes.js';
+import {agregarMalla as extraido_agregarMalla} from '../modelo/partes.js';
+import {ovalo as extraido_ovalo} from '../modelo/primitivas.js';
+import {segmento as extraido_segmento} from '../modelo/primitivas.js';
+import {tubo as extraido_tubo} from '../modelo/primitivas.js';
+import {miembros as extraido_miembros} from '../modelo/primitivas.js';
+import {aplicarAnatomiaIntegrada as extraido_aplicarAnatomiaIntegrada} from '../modelo/integradas.js';
+import {crearProcedural as extraido_crearProcedural} from '../modelo/procedural.js';
+import {idDeMalla as extraido_idDeMalla} from '../modelo/loader-gltf.js';
+import {clonarMateriales as extraido_clonarMateriales} from '../modelo/loader-gltf.js';
+import {cargarExternos as extraido_cargarExternos} from '../modelo/loader-gltf.js';
+import {fichaUrinaria as extraido_fichaUrinaria} from '../modelo/sistemas/urinario.js';
+import {puntoParte as extraido_puntoParte} from '../modelo/sistemas/urinario.js';
+import {tuboUrinario as extraido_tuboUrinario} from '../modelo/sistemas/urinario.js';
+import {agregarAnatomiaUrinaria as extraido_agregarAnatomiaUrinaria} from '../modelo/sistemas/urinario.js';
+import {prepararRutaOrina as extraido_prepararRutaOrina} from '../modelo/recorrido.js';
+import {actualizarOrina as extraido_actualizarOrina} from '../modelo/recorrido.js';
+import {estudiarUrinario as extraido_estudiarUrinario} from '../modelo/sistemas/urinario.js';
+import {cambiarSexoUrinario as extraido_cambiarSexoUrinario} from '../modelo/sistemas/urinario.js';
 import {materiales as extraido_materiales} from './estado.js';
 import {estaVisible as extraido_estaVisible} from './estado.js';
 import {aplicarEstado as extraido_aplicarEstado} from './estado.js';
@@ -62,7 +83,9 @@ import {cargarMallas} from "../modelo/loader-mallas.js";
     }
 
     async function iniciar(T, OrbitControls, GLTFLoader, EffectComposer, RenderPass, OutlinePass, OutputPass) {
-const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTEMAS=v;},get urinario(){return urinario;},set urinario(v){urinario=v;},get estado(){return estado;},set estado(v){estado=v;},get actualizarContorno(){return actualizarContorno;},set actualizarContorno(v){actualizarContorno=v;},get solicitarRender(){return solicitarRender;},set solicitarRender(v){solicitarRender=v;},get partes(){return partes;},set partes(v){partes=v;},get estaVisible(){return estaVisible;},set estaVisible(v){estaVisible=v;},get materiales(){return materiales;},set materiales(v){materiales=v;},get planoCorte(){return planoCorte;},set planoCorte(v){planoCorte=v;},get contorno(){return contorno;},set contorno(v){contorno=v;},get frame(){return frame;},set frame(v){frame=v;},get dibujando(){return dibujando;},set dibujando(v){dibujando=v;},get renderizar(){return renderizar;},set renderizar(v){renderizar=v;},get ultimoTiempo(){return ultimoTiempo;},set ultimoTiempo(v){ultimoTiempo=v;},get actualizarOrina(){return actualizarOrina;},set actualizarOrina(v){actualizarOrina=v;},get transicion(){return transicion;},set transicion(v){transicion=v;},get controles(){return controles;},set controles(v){controles=v;},get actualizarEtiquetas(){return actualizarEtiquetas;},set actualizarEtiquetas(v){actualizarEtiquetas=v;},get compositor(){return compositor;},set compositor(v){compositor=v;},get camara(){return camara;},set camara(v){camara=v;},get T(){return T;},set T(v){T=v;},get $(){return $;},set $(v){$=v;},get renderer(){return renderer;},set renderer(v){renderer=v;},get moverCamara(){return moverCamara;},set moverCamara(v){moverCamara=v;},get VISTAS(){return VISTAS;},set VISTAS(v){VISTAS=v;},get estudioUI(){return estudioUI;},set estudioUI(v){estudioUI=v;},get vistaMovil(){return vistaMovil;},set vistaMovil(v){vistaMovil=v;},get adaptarPaneles(){return adaptarPaneles;},set adaptarPaneles(v){adaptarPaneles=v;},get escena(){return escena;},set escena(v){escena=v;}};
+const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTEMAS=v;},get urinario(){return urinario;},set urinario(v){urinario=v;},get estado(){return estado;},set estado(v){estado=v;},get actualizarContorno(){return actualizarContorno;},set actualizarContorno(v){actualizarContorno=v;},get solicitarRender(){return solicitarRender;},set solicitarRender(v){solicitarRender=v;},get partes(){return partes;},set partes(v){partes=v;},get estaVisible(){return estaVisible;},set estaVisible(v){estaVisible=v;},get materiales(){return materiales;},set materiales(v){materiales=v;},get planoCorte(){return planoCorte;},set planoCorte(v){planoCorte=v;},get contorno(){return contorno;},set contorno(v){contorno=v;},get frame(){return frame;},set frame(v){frame=v;},get dibujando(){return dibujando;},set dibujando(v){dibujando=v;},get renderizar(){return renderizar;},set renderizar(v){renderizar=v;},get ultimoTiempo(){return ultimoTiempo;},set ultimoTiempo(v){ultimoTiempo=v;},get actualizarOrina(){return actualizarOrina;},set actualizarOrina(v){actualizarOrina=v;},get transicion(){return transicion;},set transicion(v){transicion=v;},get controles(){return controles;},set controles(v){controles=v;},get actualizarEtiquetas(){return actualizarEtiquetas;},set actualizarEtiquetas(v){actualizarEtiquetas=v;},get compositor(){return compositor;},set compositor(v){compositor=v;},get camara(){return camara;},set camara(v){camara=v;},get T(){return T;},set T(v){T=v;},get $(){return $;},set $(v){$=v;},get renderer(){return renderer;},set renderer(v){renderer=v;},get moverCamara(){return moverCamara;},set moverCamara(v){moverCamara=v;},get VISTAS(){return VISTAS;},set VISTAS(v){VISTAS=v;},get estudioUI(){return estudioUI;},set estudioUI(v){estudioUI=v;},get vistaMovil(){return vistaMovil;},set vistaMovil(v){vistaMovil=v;},get adaptarPaneles(){return adaptarPaneles;},set adaptarPaneles(v){adaptarPaneles=v;},get escena(){return escena;},set escena(v){escena=v;},get texturasDetalle(){return texturasDetalle;},set texturasDetalle(v){texturasDetalle=v;},get texturaSuperficie(){return texturaSuperficie;},set texturaSuperficie(v){texturaSuperficie=v;},get catalogo(){return catalogo;},set catalogo(v){catalogo=v;},get cuerpo(){return cuerpo;},set cuerpo(v){cuerpo=v;},get material(){return material;},set material(v){material=v;},get mallas(){return mallas;},set mallas(v){mallas=v;},get agregarMalla(){return agregarMalla;},set agregarMalla(v){agregarMalla=v;},get geometriaEsfera(){return geometriaEsfera;},set geometriaEsfera(v){geometriaEsfera=v;},get geometriaCilindro(){return geometriaCilindro;},set geometriaCilindro(v){geometriaCilindro=v;},get segmento(){return segmento;},set segmento(v){segmento=v;},get cargarMallas(){return cargarMallas;},set cargarMallas(v){cargarMallas=v;},get setProgress(){return setProgress;},set setProgress(v){setProgress=v;},get crearParte(){return crearParte;},set crearParte(v){crearParte=v;},get miembros(){return miembros;},set miembros(v){miembros=v;},get ovalo(){return ovalo;},set ovalo(v){ovalo=v;},get tubo(){return tubo;},set tubo(v){tubo=v;},get nombres(){return nombres;},set nombres(v){nombres=v;},get normalizar(){return normalizar;},set normalizar(v){normalizar=v;},get MODO_MODELO(){return MODO_MODELO;},set MODO_MODELO(v){MODO_MODELO=v;},get MODELO_UNICO(){return MODELO_UNICO;},set MODELO_UNICO(v){MODELO_UNICO=v;},get MODELOS(){return MODELOS;},set MODELOS(v){MODELOS=v;},get GLTFLoader(){return GLTFLoader;},set GLTFLoader(v){GLTFLoader=v;},get avisar(){return avisar;},set avisar(v){avisar=v;},get idDeMalla(){return idDeMalla;},set idDeMalla(v){idDeMalla=v;},get clonarMateriales(){return clonarMateriales;},set clonarMateriales(v){clonarMateriales=v;},get puntoParte(){return puntoParte;},set puntoParte(v){puntoParte=v;},get particulasOrina(){return particulasOrina;},set particulasOrina(v){particulasOrina=v;},get prepararRutaOrina(){return prepararRutaOrina;},set prepararRutaOrina(v){prepararRutaOrina=v;},get tuboUrinario(){return tuboUrinario;},set tuboUrinario(v){tuboUrinario=v;},get fichaUrinaria(){return fichaUrinaria;},set fichaUrinaria(v){fichaUrinaria=v;},get estacionesOrina(){return estacionesOrina;},set estacionesOrina(v){estacionesOrina=v;},get rutaOrina(){return rutaOrina;},set rutaOrina(v){rutaOrina=v;},get terminarQuiz(){return terminarQuiz;},set terminarQuiz(v){terminarQuiz=v;},get sincronizarCapas(){return sincronizarCapas;},set sincronizarCapas(v){sincronizarCapas=v;},get aplicarEstado(){return aplicarEstado;},set aplicarEstado(v){aplicarEstado=v;}};
+
+
 
       const SISTEMAS=structuredClone(datos.sistemas);
       const REGIONES=structuredClone(datos.regiones);
@@ -178,78 +201,14 @@ const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTE
         toastTimer = setTimeout(() => $("toast").hidden = true,4200);
       }
       const texturasDetalle = new Map();
-      function texturaSuperficie(tipo) {
-        if(texturasDetalle.has(tipo)) return texturasDetalle.get(tipo);
-        const c=document.createElement("canvas"); c.width=c.height=128;
-        const ctx=c.getContext("2d"), image=ctx.createImageData(128,128);
-        let semilla=817;
-        for(let y=0;y<128;y++) for(let x=0;x<128;x++) {
-          semilla=(Math.imul(1664525,semilla)+1013904223)>>>0;
-          const ruido=(semilla/4294967296-.5)*24;
-          const fibra=tipo==="muscular" ? Math.sin(x*.7+Math.sin(y*.06)*1.6)*23 : 0;
-          const n=Math.max(0,Math.min(255,140+ruido+fibra));
-          const i=(y*128+x)*4;
-          image.data.set([n,n,n,255],i);
-        }
-        ctx.putImageData(image,0,0);
-        const tex=new T.CanvasTexture(c);
-        tex.wrapS=tex.wrapT=T.RepeatWrapping;
-        tex.repeat.set(tipo==="muscular"?3:4,4);
-        texturasDetalle.set(tipo,tex);
-        return tex;
-      }
-      function material(color,sistema="esqueletico") {
-        const hueso=sistema==="esqueletico";
-        const musculo=sistema==="muscular";
-        return new T.MeshPhysicalMaterial({
-          color, roughness:hueso?.7:musculo?.48:.43, metalness:0,
-          clearcoat:hueso?.04:.18, clearcoatRoughness:.5,
-          sheen:hueso?0:.15, sheenColor:new T.Color(color),
-          bumpMap:texturaSuperficie(sistema), bumpScale:hueso?.008:.005,
-          transparent:false, side:T.DoubleSide, clippingPlanes:[]
-        });
-      }
-      function crearParte(id, posicion=[0,0,0]) {
-        const meta = catalogo.get(id);
-        const grupo = new T.Group();
-        grupo.name = id;
-        grupo.position.fromArray(posicion);
-        cuerpo.add(grupo);
-        const parte = { id, meta, grupo, base: grupo.position.clone(), direccion: new T.Vector3(), etiqueta: null };
-        partes.set(id,parte);
-        return parte;
-      }
-      function agregarMalla(parte, geometria, escala, posicion=[0,0,0], color) {
-        const mesh = new T.Mesh(geometria,material(color || SISTEMAS[parte.meta.sistema].color, parte.meta.sistema));
-        mesh.scale.fromArray(escala);
-        mesh.position.fromArray(posicion);
-        mesh.castShadow = true;
-        mesh.receiveShadow = true;
-        mesh.userData.parte = parte.id;
-        parte.grupo.add(mesh);
-        mallas.push(mesh);
-        return mesh;
-      }
-      function ovalo(parte, posicion, escala, color) {
-        return agregarMalla(parte,geometriaEsfera,escala,posicion,color);
-      }
-      function segmento(parte,a,b,radio=.08,color) {
-        const va = new T.Vector3(...a), vb = new T.Vector3(...b);
-        const mesh = agregarMalla(parte,geometriaCilindro,
-          [radio,va.distanceTo(vb),radio],
-          va.clone().add(vb).multiplyScalar(.5).toArray(),color);
-        mesh.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),vb.sub(va).normalize());
-        return mesh;
-      }
-      function tubo(parte,puntos,radio=.06,color,cerrado=false) {
-        const curva = new T.CatmullRomCurve3(puntos.map(p => new T.Vector3(...p)),cerrado);
-        return agregarMalla(parte,new T.TubeGeometry(curva,Math.max(20,puntos.length*5),radio,8,cerrado),[1,1,1],[0,0,0],color);
-      }
-      function miembros(parte,pares,radio,color) {
-        for (const lado of [-1,1]) {
-          pares.forEach(([a,b]) => segmento(parte,[a[0]*lado,a[1],a[2]],[b[0]*lado,b[1],b[2]],radio,color));
-        }
-      }
+      function texturaSuperficie(...args){return extraido_texturaSuperficie(contextoCompartido,...args);}
+      function material(...args){return extraido_material(contextoCompartido,...args);}
+      function crearParte(...args){return extraido_crearParte(contextoCompartido,...args);}
+      function agregarMalla(...args){return extraido_agregarMalla(contextoCompartido,...args);}
+      function ovalo(...args){return extraido_ovalo(contextoCompartido,...args);}
+      function segmento(...args){return extraido_segmento(contextoCompartido,...args);}
+      function tubo(...args){return extraido_tubo(contextoCompartido,...args);}
+      function miembros(...args){return extraido_miembros(contextoCompartido,...args);}
 
       /*
        * Mallas BodyParts3D integradas en el propio HTML.
@@ -257,613 +216,32 @@ const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTE
        * binario y se construye una BufferGeometry indexada por estructura.
        * Conservamos el respaldo para los elementos ausentes en esta edición.
        */
-      async function aplicarAnatomiaIntegrada() {
-        const {manifest,buffer}=await cargarMallas(setProgress);
-        const preparadas=[];
-        const colores={
-          piel:"#cfaa91", muscular:"#a74650", esqueletico:"#e3d4b5",
-          circulatorio:"#b8374c", nervioso:"#e4c47b", respiratorio:"#c68fa1",
-          digestivo:"#c78e74", urinario:"#9e555f", linfatico:"#81a68a", endocrino:"#c19baa"
-        };
-        const tonos={
-          higado:"#864d46", vesicula:"#8c9c59", estomago:"#c99691",
-          pancreas:"#d0b583", intestino_delgado:"#ca9a83", colon:"#ba8c7b",
-          cerebro:"#d6b7a4", cerebelo:"#c7aa91", tronco:"#d8bd9c",
-          aorta:"#bc3e49", vena_cava:"#547ca5", corazon:"#a44151",
-          bazo:"#785772", vejiga:"#c2a38d", traquea:"#c1bfa5"
-        };
-        try {
-          for(let i=0;i<manifest.length;i++) {
-            const registro=manifest[i];
-            if(!catalogo.has(registro.id)) continue;
-            const fuente=new Int16Array(buffer,registro.offset,registro.vertices*3);
-            const posiciones=new Float32Array(fuente.length);
-            for(let j=0;j<fuente.length;j++) posiciones[j]=fuente[j]/2500;
-            const inicio=registro.offset+registro.vertices*6;
-            const indices=new Uint32Array(buffer.slice(inicio,inicio+registro.indices*4));
-            const geometria=new T.BufferGeometry();
-            geometria.setAttribute("position",new T.BufferAttribute(posiciones,3));
-            geometria.setIndex(new T.BufferAttribute(indices,1));
-            geometria.computeBoundingBox();
-            const centro=geometria.boundingBox.getCenter(new T.Vector3());
-            geometria.translate(-centro.x,-centro.y,-centro.z);
-            geometria.computeVertexNormals();
-            geometria.computeBoundingSphere();
-            const uv=new Float32Array(registro.vertices*2);
-            const tintes=new Float32Array(registro.vertices*3);
-            const sistema=catalogo.get(registro.id).sistema;
-            for(let j=0;j<registro.vertices;j++) {
-              const x=posiciones[j*3],y=posiciones[j*3+1],z=posiciones[j*3+2];
-              uv[j*2]=Math.atan2(z,x)/(2*Math.PI)+.5;
-              uv[j*2+1]=y*.8;
-              const ruido=(Math.sin(x*47+y*23+z*31)*Math.sin(y*59-z*17))*.025;
-              const tono=.96+ruido;
-              tintes[j*3]=tono;
-              tintes[j*3+1]=tono;
-              tintes[j*3+2]=tono;
-            }
-            geometria.setAttribute("uv",new T.BufferAttribute(uv,2));
-            geometria.setAttribute("color",new T.BufferAttribute(tintes,3));
-            const mat=material(tonos[registro.id] || colores[sistema],sistema);
-            mat.vertexColors=true;
-            // La capa de piel es un contexto translúcido; no oculta los órganos por defecto.
-            if(sistema==="piel") { mat.roughness=.67; mat.sheen=.3; }
-            const mesh=new T.Mesh(geometria,mat);
-            mesh.name="BodyParts3D_"+registro.id;
-            mesh.userData.parte=registro.id;
-            mesh.castShadow=true;
-            mesh.receiveShadow=true;
-            preparadas.push({registro,centro,mesh});
-            setProgress(25+60*(i+1)/manifest.length,"Preparando anatomía: "+catalogo.get(registro.id).nombre);
-            // Permitir que el navegador actualice el progreso en equipos modestos.
-            if(i%7===0) await new Promise(resolve=>setTimeout(resolve,0));
-          }
-        } catch(error) {
-          for(const p of preparadas) { p.mesh.geometry.dispose(); p.mesh.material.dispose(); }
-          throw error;
-        }
-        // Reemplazo después de construir y validar todas las geometrías.
-        for(const {registro,centro,mesh} of preparadas) {
-          const parte=partes.get(registro.id) || crearParte(registro.id);
-          const anteriores=new Set();
-          parte.grupo.traverse(obj=>{ if(obj.isMesh) anteriores.add(obj); });
-          for(let j=mallas.length-1;j>=0;j--) if(anteriores.has(mallas[j])) mallas.splice(j,1);
-          const geometrias=new Set();
-          for(const anterior of anteriores) {
-            if(anterior.geometry!==geometriaEsfera && anterior.geometry!==geometriaCilindro)
-              geometrias.add(anterior.geometry);
-            (Array.isArray(anterior.material)?anterior.material:[anterior.material]).forEach(m=>m.dispose());
-          }
-          geometrias.forEach(g=>g.dispose());
-          parte.grupo.clear();
-          parte.grupo.position.copy(centro);
-          parte.grupo.add(mesh);
-          parte.meta.modelo="Superficie anatómica BodyParts3D adaptada para visualización.";
-          parte.meta.fuentesFMA=registro.fuentes;
-          mallas.push(mesh);
-        }
-        // Estructuras complementarias: conservan una representación esquemática,
-        // adaptada a las proporciones y a la postura del modelo integrado.
-        const ajustes={
-          recto_abdominal:{escala:[.8,1,1],desplazamiento:[0,.9,-.01]},
-          lengua:{escala:[1,1,1],desplazamiento:[0,.37,-.03]},
-          tiroides:{escala:[.8,.8,.8],posicion:[0,8.48,.28]},
-          suprarrenales:{escala:[.65,1,.8],desplazamiento:[0,1.18,.1]},
-          ganglios:{escala:[.78,1,1],desplazamiento:[0,.48,-.03]}
-        };
-        for(const [id,ajuste] of Object.entries(ajustes)) {
-          const p=partes.get(id);
-          if(!p || p.meta.fuentesFMA) continue;
-          p.grupo.scale.fromArray(ajuste.escala);
-          if(ajuste.posicion) p.grupo.position.fromArray(ajuste.posicion);
-          else p.grupo.position.add(new T.Vector3(...ajuste.desplazamiento));
-        }
-        // Red periférica de referencia, más delgada y alineada con las extremidades.
-        const nervios=partes.get("nervios");
-        if(nervios && !nervios.meta.fuentesFMA) {
-          const previos=new Set();
-          nervios.grupo.traverse(o=>{if(o.isMesh) previos.add(o);});
-          for(let i=mallas.length-1;i>=0;i--) if(previos.has(mallas[i])) mallas.splice(i,1);
-          previos.forEach(o=>{o.material.dispose();});
-          nervios.grupo.clear();
-          miembros(nervios,[
-            [[.05,8.15,-.25],[.9,7.75,-.14]],
-            [[.9,7.75,-.14],[1.32,6.25,-.04]],
-            [[1.32,6.25,-.04],[1.76,4.95,.05]],
-            [[.04,5.8,-.23],[.57,4.9,-.15]],
-            [[.57,4.9,-.15],[.62,2.5,-.12]],
-            [[.62,2.5,-.12],[.62,.55,-.06]]
-          ],.014,"#d9b866");
-        }
-        for(const p of partes.values()) if(!p.meta.fuentesFMA)
-          p.meta.modelo="Representación esquemática complementaria; esta estructura no dispone de una malla BodyParts3D integrada.";
-        setProgress(90,"Aplicando materiales y preparando el visor…");
-      }
+      function aplicarAnatomiaIntegrada(...args){return extraido_aplicarAnatomiaIntegrada(contextoCompartido,...args);}
 
       // Generación del respaldo: anatomía volumétrica simplificada, no clínica.
-      function crearProcedural() {
-        let p;
-        p=crearParte("piel");
-        ovalo(p,[0,9,0],[.65,.85,.6]);
-        ovalo(p,[0,6.55,0],[1.2,1.55,.65]);
-        ovalo(p,[0,4.75,0],[.95,.85,.58]);
-        segmento(p,[0,8.3,0],[0,7.7,0],.34);
-        miembros(p,[
-          [[1,7.45,0],[1.75,5.75,0]],
-          [[1.75,5.75,0],[2.03,4.08,.1]],
-          [[.55,4.3,0],[.6,2.45,0]],
-          [[.6,2.45,0],[.6,.45,0]]
-        ],.3);
-        for(const s of [-1,1]) {
-          ovalo(p,[s*2.05,3.8,.12],[.18,.35,.12]);
-          ovalo(p,[s*.6,.25,.2],[.27,.2,.5]);
-        }
-
-        p=crearParte("deltoides");
-        for(const s of [-1,1]) ovalo(p,[s*1.15,7.28,0],[.38,.5,.38]);
-        p=crearParte("biceps");
-        for(const s of [-1,1]) {
-          const m=ovalo(p,[s*1.48,6.5,.16],[.24,.65,.22]);
-          m.rotation.z=s*.32;
-        }
-        p=crearParte("triceps");
-        for(const s of [-1,1]) ovalo(p,[s*1.47,6.5,-.22],[.24,.62,.23]);
-        p=crearParte("pectoral");
-        for(const s of [-1,1]) ovalo(p,[s*.51,7.03,.54],[.58,.45,.16]);
-        p=crearParte("recto_abdominal");
-        for(const s of [-1,1]) for(let i=0;i<4;i++)
-          ovalo(p,[s*.24,5.98-i*.33,.56],[.21,.16,.1]);
-        p=crearParte("gluteo");
-        for(const s of [-1,1]) ovalo(p,[s*.47,4.35,-.48],[.5,.55,.25]);
-        p=crearParte("cuadriceps");
-        for(const s of [-1,1]) ovalo(p,[s*.6,3.35,.16],[.35,.9,.3]);
-        p=crearParte("gastrocnemio");
-        for(const s of [-1,1]) ovalo(p,[s*.6,1.65,-.18],[.26,.66,.27]);
-
-        p=crearParte("craneo",[0,9,0]);
-        ovalo(p,[0,.1,-.03],[.61,.72,.55]);
-        ovalo(p,[0,-.38,.17],[.43,.3,.33]);
-        // Órbitas oscuras como referencias de orientación, no mallas seleccionables separadas.
-        for(const s of [-1,1]) ovalo(p,[s*.23,-.12,.5],[.15,.14,.055],"#514b47");
-        p=crearParte("mandibula",[0,8.48,.1]);
-        tubo(p,[[-.39,.25,0],[-.4,-.02,.19],[0,-.14,.35],[.4,-.02,.19],[.39,.25,0]],.065);
-        p=crearParte("claviculas");
-        miembros(p,[[[.08,7.65,.5],[1.13,7.5,.12]]],.065);
-        p=crearParte("esternon",[0,6.8,.62]);
-        ovalo(p,[0,0,0],[.13,.68,.065]);
-        p=crearParte("costillas",[0,6.8,0]);
-        for(let i=0;i<9;i++) {
-          const ancho=.65+Math.sin((i/10)*Math.PI)*.45;
-          const y=.72-i*.21;
-          const puntos=[];
-          for(let k=0;k<24;k++) {
-            const a=k/24*Math.PI*2;
-            puntos.push([Math.cos(a)*ancho,y+.13*Math.sin(a),Math.sin(a)*.6]);
-          }
-          tubo(p,puntos,.035,undefined,true);
-        }
-        p=crearParte("columna",[0,6,-.5]);
-        for(let i=0;i<22;i++) {
-          ovalo(p,[0,2.05-i*.175,0],[.15,.085,.13]);
-          segmento(p,[0,2.05-i*.175,0],[0,2.05-i*.175,-.17],.035);
-        }
-        p=crearParte("humeros");
-        miembros(p,[[[1.1,7.38,0],[1.73,5.8,0]]],.105);
-        p=crearParte("radios");
-        miembros(p,[[[1.82,5.78,.02],[2.13,4.12,.08]]],.065);
-        p=crearParte("cubitos");
-        miembros(p,[[[1.66,5.8,-.04],[1.98,4.12,.02]]],.06);
-        p=crearParte("pelvis_osea",[0,4.55,0]);
-        for(const s of [-1,1]) {
-          const m=ovalo(p,[s*.64,0,-.1],[.4,.57,.21]);
-          m.rotation.z=-s*.25;
-          tubo(p,[[s*.78,-.2,0],[s*.58,-.53,.27],[s*.17,-.45,.36],[s*.1,-.08,.25]],.095);
-        }
-        p=crearParte("femures");
-        miembros(p,[[[.57,4.18,0],[.6,2.48,0]]],.125);
-        p=crearParte("rotulas");
-        for(const s of [-1,1]) ovalo(p,[s*.6,2.43,.17],[.15,.19,.09]);
-        p=crearParte("tibias");
-        miembros(p,[[[.55,2.3,0],[.55,.48,0]]],.095);
-        p=crearParte("perones");
-        miembros(p,[[[.76,2.28,-.02],[.76,.43,-.02]]],.045);
-
-        p=crearParte("corazon",[.18,6.38,.3]);
-        const h=ovalo(p,[0,0,0],[.35,.46,.29],"#c54860");
-        h.rotation.z=-.35;
-        ovalo(p,[-.17,.22,0],[.22,.23,.21],"#d2697b");
-        tubo(p,[[0,.3,0],[.02,.65,0],[-.22,.72,-.03]],.08,"#e66569");
-        tubo(p,[[.2,.25,.22],[.18,-.08,.27],[0,-.32,.18]],.022,"#efb18d");
-
-        p=crearParte("aorta");
-        tubo(p,[[.15,6.62,.2],[.1,7,.14],[-.23,7.05,-.02],[-.3,6.6,-.15],[-.24,5.5,-.2],[-.2,4.6,-.23]],.085,"#dd4c53");
-        miembros(p,[[[.2,4.6,-.23],[.53,3.6,-.15]]],.045,"#dd4c53");
-        p=crearParte("vena_cava");
-        tubo(p,[[-.16,7.6,-.1],[-.2,6.7,-.08],[-.13,6.4,-.05]],.09,"#5b8cc5");
-        tubo(p,[[-.13,6.25,-.08],[-.08,5.5,-.15],[-.06,4.5,-.14]],.095,"#5b8cc5");
-
-        p=crearParte("cerebro",[0,9.17,.02]);
-        for(const s of [-1,1]) {
-          ovalo(p,[s*.235,0,0],[.28,.47,.43],"#edbc9e");
-          for(let i=0;i<7;i++) {
-            const y=-.28+i*.085;
-            tubo(p,[[s*.07,y,.35],[s*.24,y+.04,.4],[s*.43,y,.24]],.024,"#c98d83");
-          }
-        }
-        p=crearParte("cerebelo",[0,8.76,-.27]);
-        for(const s of [-1,1]) ovalo(p,[s*.19,0,0],[.22,.21,.21],"#d6ad86");
-        p=crearParte("tronco",[0,8.55,-.13]);
-        ovalo(p,[0,0,0],[.12,.33,.13]);
-        p=crearParte("medula",[0,6.85,-.37]);
-        segmento(p,[0,1.45,0],[0,-1.65,0],.045);
-        p=crearParte("nervios");
-        miembros(p,[
-          [[.08,7.5,-.25],[1.1,7.32,-.18]],
-          [[1.1,7.32,-.18],[1.8,5.72,-.12]],
-          [[1.8,5.72,-.12],[2.05,4.2,.1]],
-          [[.08,5.05,-.35],[.52,4.05,-.2]],
-          [[.52,4.05,-.2],[.65,2.4,-.14]],
-          [[.65,2.4,-.14],[.64,.5,-.1]]
-        ],.027);
-
-        p=crearParte("pulmon_derecho",[-.63,6.8,.08]);
-        ovalo(p,[0,0,0],[.44,.84,.39]);
-        for(let i=0;i<2;i++) tubo(p,[[-.35,.18-i*.43,.27],[0,.02-i*.43,.39],[.32,-.04-i*.43,.23]],.015,"#a36d88");
-        p=crearParte("pulmon_izquierdo",[.65,6.82,.06]);
-        ovalo(p,[0,0,0],[.39,.79,.36]);
-        tubo(p,[[-.28,.17,.27],[0,.02,.36],[.28,-.1,.24]],.015,"#a36d88");
-        p=crearParte("traquea",[0,7.7,.12]);
-        segmento(p,[0,.55,0],[0,-.55,0],.105,"#b9c5bd");
-        for(let i=0;i<9;i++) {
-          const aro=new T.TorusGeometry(.108,.018,6,16);
-          const mesh=agregarMalla(p,aro,[1,1,1],[0,.48-i*.11,0],"#e6d5bc");
-          mesh.rotation.x=Math.PI/2;
-        }
-        segmento(p,[0,-.5,0],[-.5,-.88,0],.07);
-        segmento(p,[0,-.5,0],[.5,-.88,0],.07);
-        p=crearParte("diafragma",[0,5.95,0]);
-        ovalo(p,[0,0,0],[1,.15,.58],"#b96e79");
-
-        p=crearParte("lengua",[0,8.5,.43]);
-        ovalo(p,[0,0,0],[.19,.06,.18],"#cd6b7a");
-        p=crearParte("esofago");
-        tubo(p,[[0,8.1,-.12],[0,7.1,-.17],[.04,6.1,-.12],[.37,5.65,.02]],.06,"#cda292");
-        p=crearParte("higado",[-.4,5.62,.25]);
-        const hig=ovalo(p,[0,0,0],[.69,.33,.4],"#91504d");
-        hig.rotation.z=.12;
-        p=crearParte("vesicula",[-.43,5.35,.47]);
-        ovalo(p,[0,0,0],[.12,.2,.1],"#7eaa58");
-        p=crearParte("estomago",[.5,5.33,.25]);
-        const est=ovalo(p,[0,0,0],[.35,.43,.25],"#dda5a0");
-        est.rotation.z=-.45;
-        tubo(p,[[-.12,.3,0],[-.15,.53,-.05]],.075,"#dda5a0");
-        p=crearParte("pancreas",[.08,5.12,-.11]);
-        const pan=ovalo(p,[0,0,0],[.55,.12,.15],"#dbbb78");
-        pan.rotation.z=.12;
-
-        p=crearParte("intestino_delgado",[0,4.55,.29]);
-        const asas=[];
-        for(let fila=0;fila<5;fila++) {
-          const direccion=fila%2 ? -1:1;
-          for(let i=0;i<7;i++) asas.push([
-            direccion*(-.5+i/6), .47-fila*.22,
-            .03*Math.sin(i*1.5+fila)
-          ]);
-        }
-        tubo(p,asas,.078,"#dba78f");
-
-        p=crearParte("colon",[0,4.66,.24]);
-        const marco=[
-          [-.78,-.55,0],[-.82,.1,0],[-.78,.7,0],
-          [-.3,.8,0],[.3,.77,0],[.76,.63,0],
-          [.8,.1,0],[.73,-.45,0],[.3,-.65,.02],[.03,-.86,0]
-        ];
-        tubo(p,marco,.12,"#bb8a79");
-        p=crearParte("recto",[0,3.82,-.08]);
-        tubo(p,[[.08,.26,0],[.03,0,0],[0,-.36,.04]],.11,"#ba8d83");
-
-        p=crearParte("rinon_derecho",[-.65,5.26,-.34]);
-        const rd=ovalo(p,[0,0,0],[.22,.34,.18]); rd.rotation.z=-.22;
-        p=crearParte("rinon_izquierdo",[.65,5.39,-.34]);
-        const ri=ovalo(p,[0,0,0],[.22,.34,.18]); ri.rotation.z=.22;
-        p=crearParte("ureter_derecho");
-        tubo(p,[[-.52,5.1,-.25],[-.45,4.6,-.2],[-.28,3.91,.08]],.028,"#dbbf8b");
-        p=crearParte("ureter_izquierdo");
-        tubo(p,[[.52,5.23,-.25],[.45,4.6,-.2],[.28,3.91,.08]],.028,"#dbbf8b");
-        p=crearParte("vejiga",[0,3.85,.28]);
-        ovalo(p,[0,0,0],[.3,.28,.22],"#c7a28d");
-
-        p=crearParte("bazo",[.87,5.56,-.11]);
-        const bz=ovalo(p,[0,0,0],[.17,.33,.18],"#8c5e89"); bz.rotation.z=-.2;
-        p=crearParte("timo",[0,7.13,.43]);
-        for(const s of [-1,1]) ovalo(p,[s*.095,0,0],[.115,.24,.075]);
-        p=crearParte("ganglios");
-        for(const s of [-1,1]) {
-          for(let i=0;i<4;i++) {
-            ovalo(p,[s*(.28+i*.06),8.07-i*.11,.04],[.045,.06,.04]);
-            ovalo(p,[s*(1.01+i*.025),7.1-i*.09,.02],[.05,.065,.05]);
-            ovalo(p,[s*(.3+i*.12),4.2-i*.05,.22],[.05,.06,.05]);
-          }
-        }
-        p=crearParte("hipofisis",[0,8.87,.08]);
-        ovalo(p,[0,0,0],[.085,.065,.07]);
-        segmento(p,[0,.03,0],[0,.15,0],.023);
-        p=crearParte("tiroides",[0,7.92,.29]);
-        for(const s of [-1,1]) ovalo(p,[s*.14,0,0],[.095,.18,.07]);
-        segmento(p,[-.1,-.01,0],[.1,-.01,0],.035);
-        p=crearParte("suprarrenales");
-        for(const s of [-1,1]) ovalo(p,[s*.64,s<0?5.66:5.79,-.33],[.16,.09,.12]);
-      }
+      function crearProcedural(...args){return extraido_crearProcedural(contextoCompartido,...args);}
 
       /*
        * Carga y normalización de GLB.
        * Un archivo múltiple puede contener varias mallas por órgano.
        * En modo único, se busca el nombre de cada malla y sus ancestros.
        */
-      function idDeMalla(mesh) {
-        let objeto=mesh;
-        while(objeto && objeto!==cuerpo) {
-          const id=nombres.get(normalizar(objeto.name || ""));
-          if(id) return id;
-          objeto=objeto.parent;
-        }
-        return null;
-      }
-      function clonarMateriales(mesh) {
-        const convertir = origen => {
-          const m=origen ? origen.clone() : material("#bec8cc");
-          m.clippingPlanes=[];
-          m.side=T.DoubleSide;
-          return m;
-        };
-        mesh.material=Array.isArray(mesh.material)
-          ? mesh.material.map(convertir) : convertir(mesh.material);
-      }
-      async function cargarExternos() {
-        const configuraciones=MODO_MODELO==="unico"
-          ? [{...MODELO_UNICO,id:null}]
-          : MODELOS.filter(x=>x.habilitado!==false);
-        const loader=new GLTFLoader();
-        let completados=0, errores=0;
-        for(const cfg of configuraciones) {
-          try {
-            const gltf=await loader.loadAsync(cfg.archivo,event=>{
-              if(event.total>0) setProgress(
-                12+75*(completados+event.loaded/event.total)/Math.max(1,configuraciones.length),
-                "Cargando "+cfg.archivo
-              );
-            });
-            const root=gltf.scene;
-            root.scale.setScalar(cfg.escala ?? 1);
-            root.position.fromArray(cfg.posicion ?? [0,0,0]);
-            root.rotation.fromArray(cfg.rotacion ?? [0,0,0]);
-            cuerpo.add(root);
-            root.updateWorldMatrix(true,true);
-            const encontradas=[];
-            root.traverse(obj=>{
-              if(obj.isMesh) encontradas.push(obj);
-            });
-            let desconocidas=0;
-            for(const mesh of encontradas) {
-              let id=cfg.id || idDeMalla(mesh);
-              if(!id || !catalogo.has(id)) {
-                id="externa_"+normalizar(mesh.name || "malla")+"_"+partes.size;
-                const sistema=SISTEMAS[cfg.sistema] ? cfg.sistema : "esqueletico";
-                catalogo.set(id,{
-                  id,nombre:mesh.name || "Estructura sin identificar",
-                  latin:"Sin correspondencia terminológica",
-                  sistema,region:"torax",
-                  descripcion:"Malla externa sin asociación en el catálogo. Su identificación anatómica no ha sido verificada.",
-                  funcion:"Añade su función al diccionario de metadatos.",
-                  ubicacion:"Definida por el archivo externo.",
-                  datosCuriosos:"Asocia el nombre de esta malla mediante ALIAS_MALLAS."
-                });
-                desconocidas++;
-              }
-              if(!partes.has(id)) crearParte(id);
-              const parte=partes.get(id);
-              if(cfg.id===id) {
-                if(cfg.descripcion) parte.meta.descripcion=cfg.descripcion;
-                if(cfg.funcion) parte.meta.funcion=cfg.funcion;
-                if(cfg.datosCuriosos) parte.meta.datosCuriosos=cfg.datosCuriosos;
-              }
-              // attach conserva la transformación mundial, incluidos huesos de modelos estáticos.
-              parte.grupo.attach(mesh);
-              clonarMateriales(mesh);
-              mesh.castShadow=true;
-              mesh.receiveShadow=true;
-              mesh.userData.parte=id;
-              mallas.push(mesh);
-            }
-            root.removeFromParent();
-            if(desconocidas) avisar(desconocidas+" mallas sin correspondencia anatómica; revisa ALIAS_MALLAS.");
-          } catch(error) {
-            errores++;
-            console.warn("Fallo al cargar",cfg.archivo,error);
-          }
-          completados++;
-          setProgress(12+75*completados/Math.max(1,configuraciones.length),"Preparando las estructuras…");
-        }
-        return { errores,total:configuraciones.length };
-      }
+      function idDeMalla(...args){return extraido_idDeMalla(contextoCompartido,...args);}
+      function clonarMateriales(...args){return extraido_clonarMateriales(contextoCompartido,...args);}
+      function cargarExternos(...args){return extraido_cargarExternos(contextoCompartido,...args);}
 
       // Anatomía urinaria complementaria: volúmenes didácticos procedurales.
       // Se registra cada estructura en el catálogo, las mallas y los controles existentes.
       const urinario={sexo:"masculino",solo:false,comparar:false,flujo:false,pausa:false,velocidad:1,t:0,estacion:-1,callback:null};
       let estudioUI=null,particulasOrina=null,rutaOrina=null,estacionesOrina=[];
-      function fichaUrinaria(id,nombre,latin,descripcion,funcion,ubicacion,relaciones=[],opciones={}) {
-        const meta={id,nombre,latin,sistema:"urinario",region:"abdomen",descripcion,funcion,ubicacion,
-          datosCuriosos:"Esquema didáctico: las proporciones de las estructuras internas se amplían para facilitar su estudio.",
-          relaciones,urinaria:true,modelo:"Geometría procedural de estudio; no representa una imagen clínica.",...opciones};
-        catalogo.set(id,meta);
-        [id,nombre,latin].forEach(n=>nombres.set(normalizar(n),id));
-        return crearParte(id);
-      }
-      function puntoParte(id) {
-        const p=partes.get(id);
-        return p ? new T.Box3().setFromObject(p.grupo).getCenter(new T.Vector3()) : new T.Vector3();
-      }
-      function tuboUrinario(p,puntos,radio,color) {return tubo(p,puntos,radio,color);}
-      function agregarAnatomiaUrinaria() {
-        for(const p of partes.values()) if(p.meta.sistema==="urinario") p.meta.urinaria=true;
-        for(const [lado,suf,signo] of [["derecho","derecha",-1],["izquierdo","izquierda",1]]) {
-          const idR="rinon_"+lado;
-          const ri=partes.get(idR),c=puntoParte(idR);
-          const dim=new T.Box3().setFromObject(ri.grupo).getSize(new T.Vector3());
-          const sx=dim.x*.48,sy=dim.y*.48,sz=dim.z*.37;
-          const ix=id=>id+"_"+suf;
-          const interno=(id,nombre,latin,desc,func,rel=[])=>{
-            const p=fichaUrinaria(ix(id),nombre+" · riñón "+lado,latin,desc,func,"Interior del riñón "+lado,rel,
-              {padre:idR,interno:true});
-            p.grupo.position.copy(c);return p;
-          };
-          // Corteza: anillo tridimensional con un espacio central para el seno renal.
-          const forma=new T.Shape();
-          for(let i=0;i<=64;i++) {
-            const a=i/64*Math.PI*2;
-            const x=Math.cos(a),y=Math.sin(a);
-            const hendidura=1-.28*Math.exp(-Math.pow((x+signo)/.5,2))*Math.exp(-y*y*8);
-            const px=x*sx*hendidura,py=y*sy;
-            if(i===0)forma.moveTo(px,py);else forma.lineTo(px,py);
-          }
-          const hueco=new T.Path();hueco.absellipse(0,0,sx*.68,sy*.74,0,Math.PI*2,true,0);forma.holes.push(hueco);
-          let p=interno("corteza","Corteza renal","Cortex renalis","Región periférica del parénquima renal.",
-            "Contiene corpúsculos renales y segmentos tubulares que participan en filtración y transporte.",[idR,ix("medula")]);
-          const geo=new T.ExtrudeGeometry(forma,{depth:sz*1.4,bevelEnabled:false,curveSegments:36});
-          agregarMalla(p,geo,[1,1,1],[0,0,-sz*.7],"#bd7760");
-          p=interno("medula","Médula renal","Medulla renalis","Región interna organizada en pirámides renales.",
-            "Aloja asas y conductos que participan en la concentración y conducción de la orina.",[ix("piramides"),ix("corteza")]);
-          ovalo(p,[0,0,-sz*.5],[sx*.65,sy*.75,sz*.35],"#a05d77");
-          const pir=interno("piramides","Pirámides renales","Pyramides renales","Unidades cónicas de la médula, con bases hacia la corteza y vértices hacia el seno.",
-            "Conducir el líquido tubular hacia los conductos papilares.",[ix("papila"),ix("columnas")]);
-          const col=interno("columnas","Columnas renales","Columnae renales","Prolongaciones corticales entre las pirámides.",
-            "Separar las pirámides y alojar vasos interlobares.",[ix("corteza"),ix("piramides")]);
-          const pap=interno("papila","Papilas renales","Papillae renales","Vértices de las pirámides que protruyen en los cálices menores.",
-            "Entregar la orina de los conductos papilares a los cálices menores.",[ix("calices_menores")]);
-          const menores=interno("calices_menores","Cálices menores","Calices renales minores","Pequeñas cavidades colectoras alrededor de las papilas.",
-            "Recoger orina de las papilas y conducirla a los cálices mayores.",[ix("papila"),ix("calices_mayores")]);
-          const mayores=interno("calices_mayores","Cálices mayores","Calices renales majores","Ramas colectoras formadas por la confluencia de cálices menores.",
-            "Conducir la orina hacia la pelvis renal.",[ix("pelvis_renal"),ix("calices_menores")]);
-          for(let i=0;i<5;i++) {
-            const a=-1.15+i*.575;
-            const base=new T.Vector3(signo*Math.cos(a)*sx*.7,Math.sin(a)*sy*.82,-sz*.05);
-            const vertice=new T.Vector3(-signo*sx*.12,Math.sin(a)*sy*.38,-sz*.2);
-            const altura=base.distanceTo(vertice);
-            const cono=new T.ConeGeometry(sx*.31,altura,20);
-            const m=agregarMalla(pir,cono,[1,1,1],base.clone().add(vertice).multiplyScalar(.5).toArray(),"#ae5e63");
-            m.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),vertice.clone().sub(base).normalize());
-            ovalo(pap,vertice.toArray(),[sx*.1,sy*.065,sz*.22],"#f2b588");
-            const fin=new T.Vector3(-signo*sx*.4,Math.sin(a)*sy*.25,-sz*.2);
-            tuboUrinario(menores,[vertice.toArray(),fin.toArray()],sx*.07,"#e4c99b");
-            tuboUrinario(mayores,[fin.toArray(),[-signo*sx*.4,0,-sz*.2]],sx*.095,"#d9bd83");
-            if(i<4) {
-              const aa=a+.28;
-              tuboUrinario(col,[[signo*Math.cos(aa)*sx*.85,Math.sin(aa)*sy*.9,sz*.18],[-signo*sx*.05,Math.sin(aa)*sy*.42,sz*.18]],sx*.07,"#d28d73");
-            }
-          }
-          p=interno("pelvis_renal","Pelvis renal","Pelvis renalis","Cavidad en forma de embudo que continúa con el uréter.",
-            "Reunir la orina de los cálices mayores y entregarla al uréter.",[ix("calices_mayores"),"ureter_"+lado]);
-          ovalo(p,[-signo*sx*.4,0,-sz*.2],[sx*.22,sy*.28,sz*.4],"#dec087");
-          tuboUrinario(p,[[-signo*sx*.4,0,-sz*.2],[-signo*sx*.7,-sy*.35,-sz*.2]],sx*.09,"#dec087");
-          p=interno("hilio","Hilio renal","Hilum renale","Depresión del borde medial por donde pasan vasos y pelvis renal.",
-            "Permitir el paso de las estructuras del pedículo renal.",[ix("arteria_renal"),ix("vena_renal"),ix("pelvis_renal")]);
-          const aro=agregarMalla(p,new T.TorusGeometry(1,.12,8,32),[sy*.32,sz*.7,sx*.2],[-signo*sx*.8,0,0],"#d0b69b");aro.rotation.y=Math.PI/2;
-          for(const [tipo,color,z] of [["arteria","#c64b56",-.06],["vena","#5d8dc0",.07]]) {
-            p=fichaUrinaria(ix(tipo+"_renal"),(tipo==="arteria"?"Arteria":"Vena")+" renal "+suf,
-              tipo==="arteria"?"Arteria renalis":"Vena renalis",tipo==="arteria"?"Rama de la aorta abdominal que lleva sangre al riñón.":"Vaso que drena sangre renal hacia la vena cava inferior.",
-              tipo==="arteria"?"Aportar sangre al lecho vascular renal.":"Retornar la sangre del riñón a la circulación venosa.","Pedículo renal "+lado,[idR,ix("hilio")],{sistema:"circulatorio",padre:idR});
-            tuboUrinario(p,[[0,c.y+.04,c.z+z],[c.x-signo*sx,c.y,c.z+z],[c.x-signo*sx*.55,c.y,c.z+z]],.028,color);
-          }
-          ri.meta.relaciones=[ix("corteza"),ix("medula"),ix("pelvis_renal"),ix("hilio"),"ureter_"+lado];
-          const vej=puntoParte("vejiga");
-          const inicio=c.clone().add(new T.Vector3(-signo*sx*.65,-sy*.35,0));
-          const cambio=new T.Vector3(c.x*.75,vej.y+.45,c.z-.05),fin=vej.clone().add(new T.Vector3(signo*.14,.1,-.03));
-          for(const [por,n,desde,hasta] of [["abdominal","abdominal",inicio,cambio],["pelvica","pélvica",cambio,fin]]) {
-            p=fichaUrinaria("ureter_"+lado+"_"+por,"Uréter "+lado+" · porción "+n,"Pars "+(por==="abdominal"?"abdominalis":"pelvica")+" ureteris",
-              "Segmento "+n+" del uréter "+lado+".","Conducir orina por peristaltismo hacia la vejiga.",por==="abdominal"?"Retroperitoneo, por delante del psoas mayor.":"Pared lateral de la pelvis hacia la vejiga.",
-              ["ureter_"+lado,"psoas_"+lado,"vejiga"],{padre:"ureter_"+lado,region:por==="abdominal"?"abdomen":"pelvis"});
-            tuboUrinario(p,[desde.toArray(),desde.clone().lerp(hasta,.5).toArray(),hasta.toArray()],.018,"#dcb783");
-          }
-          p=fichaUrinaria("psoas_"+lado,"Psoas mayor "+lado,"Musculus psoas major","Músculo de la pared abdominal posterior relacionado con el uréter abdominal.",
-            "Flexionar la cadera y contribuir a estabilizar la columna lumbar.","A los lados de la columna lumbar; el uréter desciende por delante.",["ureter_"+lado+"_abdominal"],{sistema:"muscular",contextoUrinario:true});
-          const m=ovalo(p,[signo*.26,(inicio.y+fin.y)/2,c.z-.16],[.13,(inicio.y-fin.y)*.56,.11],"#a85466");m.rotation.z=signo*.12;
-        }
-        const vb=puntoParte("vejiga"),tam=new T.Box3().setFromObject(partes.get("vejiga").grupo).getSize(new T.Vector3());
-        const interior=(id,nombre,latin,desc,func,rel=[])=>{
-          const p=fichaUrinaria(id,nombre,latin,desc,func,"Vejiga urinaria",rel,{padre:"vejiga",region:"pelvis",interno:true});p.grupo.position.copy(vb);return p;
-        };
-        let p=interior("detrusor","Músculo detrusor","Musculus detrusor vesicae","Músculo liso de la pared de la vejiga.","Contraerse durante la micción para expulsar la orina.",["vejiga","trigono"]);
-        for(let i=0;i<7;i++) {
-          const a=i/7*Math.PI;
-          const pts=Array.from({length:33},(_,j)=>{const t=j/32*Math.PI*2;return [Math.sin(t)*tam.x*.43*Math.cos(a),Math.cos(t)*tam.y*.43,Math.sin(t)*tam.z*.43*Math.sin(a)];});
-          tuboUrinario(p,pts,.008,"#b87879");
-        }
-        p=interior("trigono","Trígono vesical","Trigonum vesicae","Área triangular delimitada por los dos orificios ureterales y el orificio uretral interno.","Delimitar la zona de entrada ureteral y salida uretral.",["orificio_ureteral_derecho","orificio_ureteral_izquierdo","orificio_uretral_interno"]);
-        const tri=new T.Shape();tri.moveTo(-.14,.07);tri.lineTo(.14,.07);tri.lineTo(0,-.11);tri.closePath();
-        agregarMalla(p,new T.ExtrudeGeometry(tri,{depth:.018,bevelEnabled:false}),[1,1,1],[0,0,-.035],"#e4aaa2");
-        for(const [id,nombre,x,y] of [["orificio_ureteral_derecho","Orificio ureteral derecho",-.14,.07],["orificio_ureteral_izquierdo","Orificio ureteral izquierdo",.14,.07],["orificio_uretral_interno","Orificio uretral interno",0,-.11]]) {
-          p=interior(id,nombre,id==="orificio_uretral_interno"?"Ostium urethrae internum":"Ostium ureteris",id==="orificio_uretral_interno"?"Abertura de la vejiga hacia la uretra.":"Abertura de un uréter en la vejiga.","Permitir el paso de la orina.",["trigono","vejiga"]);
-          agregarMalla(p,new T.TorusGeometry(.025,.008,8,24),[1,1,1],[x,y,-.01],"#f1d39a");
-        }
-        const salida=vb.clone().add(new T.Vector3(0,-tam.y*.4,.02));
-        const rutas={
-          masculino:[salida.toArray(),[0,salida.y-.18,.03],[0,salida.y-.32,.02],[0,salida.y-.52,.12],[0,salida.y-.61,.44],[0,salida.y-.63,.79]],
-          femenino:[salida.toArray(),[0,salida.y-.13,.09],[0,salida.y-.26,.16]]
-        };
-        for(const sexo of ["masculino","femenino"]) {
-          p=fichaUrinaria("uretra_"+sexo,"Uretra "+(sexo==="masculino"?"masculina":"femenina"),sexo==="masculino"?"Urethra masculina":"Urethra feminina",
-            "Conducto de salida de la orina. Longitud aproximada según la guía del laboratorio 11: "+(sexo==="masculino"?"15–20 cm.":"3–6 cm."),
-            "Conducir la orina desde la vejiga hasta el exterior.","Desde el cuello vesical hasta el orificio uretral externo.",
-            sexo==="masculino"?["uretra_prostatica","uretra_membranosa","uretra_esponjosa"]:["vejiga","vagina_contexto"],{region:"pelvis",sexo});
-          tuboUrinario(p,rutas[sexo],.023,"#d6b784");
-        }
-        for(const [id,nombre,latin,desc,pts] of [
-          ["uretra_prostatica","Uretra prostática","Pars prostatica urethrae","Porción que atraviesa la próstata.",rutas.masculino.slice(0,2)],
-          ["uretra_membranosa","Uretra membranosa","Pars membranacea urethrae","Porción corta que atraviesa la región del esfínter uretral externo.",rutas.masculino.slice(1,3)],
-          ["uretra_esponjosa","Uretra esponjosa o peneana","Pars spongiosa urethrae","Porción que recorre el cuerpo esponjoso del pene.",rutas.masculino.slice(2)]
-        ]) {
-          p=fichaUrinaria(id,nombre,latin,desc,"Conducir la orina hacia el exterior.","Uretra masculina",["uretra_masculino","vejiga"],{region:"pelvis",sexo:"masculino",padre:"uretra_masculino"});
-          tuboUrinario(p,pts,.027,id==="uretra_prostatica"?"#d0a76f":id==="uretra_membranosa"?"#a5c2cb":"#d99f91");
-        }
-        // Relaciones pélvicas: sólo se muestran al abrir el comparador.
-        for(const [id,nombre,latin,sexo,pos,escala,desc] of [
-          ["recto_contexto","Recto: relación con la vejiga masculina","Rectum","masculino",[0,vb.y,-.31],[.12,.35,.1],"En el varón, el recto se encuentra posterior a la vejiga, con estructuras interpuestas."],
-          ["utero_contexto","Útero: relación con la vejiga","Uterus","femenino",[0,vb.y+.15,-.26],[.17,.21,.1],"En la mujer, el útero se sitúa posterior y superior a la vejiga."],
-          ["vagina_contexto","Vagina: relación con la vejiga","Vagina","femenino",[0,vb.y-.13,-.19],[.1,.24,.07],"La vejiga y la uretra se sitúan por delante de la vagina."]
-        ]) {p=fichaUrinaria(id,nombre,latin,desc,"Servir como referencia de relación topográfica en este esquema.","Pelvis",["vejiga"],{sexo,region:"pelvis",contexto:true});ovalo(p,pos,escala,"#a97fa6");}
-        partes.get("vejiga").meta.relaciones=["trigono","detrusor","orificio_uretral_interno","uretra_masculino","uretra_femenino"];
-        const g=new T.SphereGeometry(.018,8,6),m=new T.MeshBasicMaterial({color:0x8ffff0,transparent:true,opacity:.95,depthTest:false,depthWrite:false});
-        particulasOrina=new T.InstancedMesh(g,m,28);particulasOrina.visible=false;particulasOrina.frustumCulled=false;particulasOrina.renderOrder=30;escena.add(particulasOrina);
-        prepararRutaOrina();
-      }
-      function prepararRutaOrina() {
-        const ids=["papila_derecha","calices_menores_derecha","calices_mayores_derecha","pelvis_renal_derecha","ureter_derecho_abdominal","ureter_derecho_pelvica","vejiga",...(urinario.sexo==="masculino"?["uretra_prostatica","uretra_membranosa","uretra_esponjosa"]:["uretra_femenino"])];
-        estacionesOrina=ids.map(id=>({id,nombre:catalogo.get(id).nombre,p:puntoParte(id)}));
-        const salida=estacionesOrina.at(-1).p.clone().add(new T.Vector3(0,-.12,.15));
-        estacionesOrina.push({id:null,nombre:"Exterior · excreción",p:salida});
-        rutaOrina=new T.CatmullRomCurve3(estacionesOrina.map(x=>x.p),false,"centripetal");
-        urinario.t=0;urinario.estacion=-1;
-      }
-      function actualizarOrina(dt) {
-        if(!particulasOrina || !urinario.flujo)return false;
-        if(!urinario.pausa)urinario.t=(urinario.t+dt*.045*urinario.velocidad)%1;
-        const matriz=new T.Matrix4();
-        for(let i=0;i<28;i++){const t=Math.max(0,Math.min(1,urinario.t-i*.008));matriz.makeTranslation(...rutaOrina.getPoint(t).toArray());particulasOrina.setMatrixAt(i,matriz);}
-        particulasOrina.instanceMatrix.needsUpdate=true;
-        const estacion=Math.min(estacionesOrina.length-1,Math.floor(urinario.t*(estacionesOrina.length-1)+1e-6));
-        if(estacion!==urinario.estacion){urinario.estacion=estacion;urinario.callback?.(estacionesOrina[estacion].nombre);}
-        return !urinario.pausa;
-      }
-      function estudiarUrinario(sexo=urinario.sexo) {
-        if(estado.quiz.activo)terminarQuiz();
-        urinario.solo=true;urinario.sexo=sexo;
-        estado.aislado=null;estado.region="todas";estado.ocultos.clear();$("region").value="todas";
-        for(const id of ["urinario","circulatorio","muscular"])SISTEMAS[id].visible=true;
-        sincronizarCapas();aplicarEstado();
-        const box=new T.Box3();for(const p of partes.values())if(p.grupo.visible)box.expandByObject(p.grupo);
-        const c=box.getCenter(new T.Vector3());moverCamara(c.clone().add(new T.Vector3(0,.15,6)),c);
-      }
-      function cambiarSexoUrinario(sexo){urinario.sexo=sexo;prepararRutaOrina();aplicarEstado();estudioUI?.sincronizarSexo?.();}
+      function fichaUrinaria(...args){return extraido_fichaUrinaria(contextoCompartido,...args);}
+      function puntoParte(...args){return extraido_puntoParte(contextoCompartido,...args);}
+      function tuboUrinario(...args){return extraido_tuboUrinario(contextoCompartido,...args);}
+      function agregarAnatomiaUrinaria(...args){return extraido_agregarAnatomiaUrinaria(contextoCompartido,...args);}
+      function prepararRutaOrina(...args){return extraido_prepararRutaOrina(contextoCompartido,...args);}
+      function actualizarOrina(...args){return extraido_actualizarOrina(contextoCompartido,...args);}
+      function estudiarUrinario(...args){return extraido_estudiarUrinario(contextoCompartido,...args);}
+      function cambiarSexoUrinario(...args){return extraido_cambiarSexoUrinario(contextoCompartido,...args);}
 
       setProgress(10,"Preparando catálogo anatómico…");
       let respaldo=MODO_MODELO==="procedural";
