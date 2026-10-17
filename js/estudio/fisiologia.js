@@ -1,0 +1,9 @@
+import {fisiologia,restaurarFisiologia} from '../modelo/fisiologia.js';
+let salir=()=>{},pausar=()=>{};
+export default {id:'fisiologia',titulo:'Fisiología 3D',montar(ctx){
+ const atlas=ctx.contextoModulo;ctx.titulo('Peristaltismo y llenado vesical');ctx.contenido.append(ctx.mensaje('Contenido adicional, verificar con tu material. Esquema cualitativo: la velocidad, amplitud y volumen no representan medidas clínicas. Los pliegues de la mucosa se atenúan al aumentar el llenado.'));
+ const estado=ctx.mensaje('Animación detenida.'),llenado=ctx.nodo('input',null,{type:'range',min:'0',max:'100',value:String(fisiologia.llenado*100),'aria-label':'Llenado vesical'}),velocidad=ctx.nodo('input',null,{type:'range',min:'.2',max:'2',step:'.1',value:'1','aria-label':'Velocidad fisiológica'});
+ llenado.oninput=()=>{fisiologia.automatico=false;fisiologia.llenado=Number(llenado.value)/100;fisiologia.activa=true;atlas.solicitarRender();estado.textContent='Llenado esquemático: '+llenado.value+'%';};velocidad.oninput=()=>{fisiologia.velocidad=Number(velocidad.value);};
+ ctx.contenido.append(ctx.boton('Ver aparato urinario',()=>atlas.estudiarUrinario()),ctx.boton('Animar peristaltismo',()=>{fisiologia.activa=true;fisiologia.automatico=false;atlas.estudiarUrinario();atlas.solicitarRender();estado.textContent='Peristaltismo activo.';}),ctx.boton('Ciclo de llenado y vaciado',()=>{fisiologia.activa=true;fisiologia.automatico=true;atlas.estudiarUrinario();atlas.solicitarRender();estado.textContent='Ciclo esquemático activo.';}),ctx.boton('Pausar',()=>{fisiologia.activa=false;estado.textContent='En pausa.';}),ctx.nodo('label','Llenado'),llenado,ctx.nodo('label','Velocidad'),velocidad,ctx.boton('Ver mucosa y pliegues',()=>{atlas.seleccionar('mucosa_vesical');atlas.aislar();}),estado);
+ pausar=()=>{fisiologia.activa=false;};salir=()=>restaurarFisiologia(atlas);
+},pausar(){pausar();},desmontar(){salir();}};

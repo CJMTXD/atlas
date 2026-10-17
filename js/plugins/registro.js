@@ -24,3 +24,5 @@ export {default as oclusion} from "../estudio/oclusion.js";
 export {default as practico} from "../estudio/practico.js";
 
 export {default as herramientas} from "../estudio/herramientas.js";
+
+export {default as fisiologia} from "../estudio/fisiologia.js";

@@ -10,7 +10,9 @@ export function mejorarSuperficies(ctx){
  const caja=new T.Box3().setFromObject(vej.grupo),centro=caja.getCenter(new T.Vector3()),tam=caja.getSize(new T.Vector3());
  const g=new T.SphereGeometry(1,64,40),pos=g.attributes.position;
  for(let i=0;i<pos.count;i++){const y=pos.getY(i),ancho=.76+.24*(y+1)/2;pos.setXYZ(i,pos.getX(i)*tam.x*.5*ancho,y*tam.y*.5,pos.getZ(i)*tam.z*.5*ancho);}
- g.translate(...vej.grupo.worldToLocal(centro.clone()).toArray());g.computeVertexNormals();const mesh=sustituir(vej,g,'#bb7b7c');mesh.userData.vejigaAnimable=true;mesh.userData.posicionesBase=g.attributes.position.array.slice();
+ g.translate(...vej.grupo.worldToLocal(centro.clone()).toArray());g.computeVertexNormals();const mesh=sustituir(vej,g,'#bb7b7c');mesh.userData.centroBase=vej.grupo.worldToLocal(centro.clone()).toArray();mesh.userData.vejigaAnimable=true;mesh.userData.posicionesBase=g.attributes.position.array.slice();
+ const id='mucosa_vesical';ctx.catalogo.set(id,{id,nombre:'Mucosa vesical y pliegues',latin:'Tunica mucosa vesicae',sistema:'urinario',region:'pelvis',padre:'vejiga',urinaria:true,interno:true,descripcion:'Contenido adicional, verificar con tu material. Representación didáctica de los pliegues de la mucosa.',funcion:'Esquema de adaptación de la superficie durante el llenado.',ubicacion:'Superficie interna de la vejiga.',datosCuriosos:'La animación no es una medición clínica.',relaciones:['vejiga','trigono'],modelo:'Contenido adicional, verificar con tu material'});
+ const mucosa=ctx.crearParte(id,centro.toArray());const gm=new T.SphereGeometry(1,64,40),pm=gm.attributes.position;for(let i=0;i<pm.count;i++)pm.setXYZ(i,pm.getX(i)*tam.x*.43,pm.getY(i)*tam.y*.43,pm.getZ(i)*tam.z*.43);gm.computeVertexNormals();const mm=ctx.agregarMalla(mucosa,gm,[1,1,1],[0,0,0],'#d8a69b');mm.userData.mucosaAnimable=true;mm.userData.posicionesBase=pm.array.slice();mm.userData.centroBase=[0,0,0];
  for(const [lado,signo]of [['derecho',-1],['izquierdo',1]]){
   const ri=partes.get('rinon_'+lado),ur=partes.get('ureter_'+lado);if(!ri||!ur)continue;
   const cr=new T.Box3().setFromObject(ri.grupo).getCenter(new T.Vector3());

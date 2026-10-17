@@ -56,7 +56,7 @@ const contextoCompartido={get titulo(){return titulo;},set titulo(v){titulo=v;},
         document.querySelector(".header-actions").prepend(abrir);
         const tabs=Object.values(registro).map(p=>[p.id,p.titulo]);
         tabs.forEach(([id,label])=>navegacion.append(boton(label,()=>cambiarModo(id),{"data-mode":id,"aria-pressed":"false"})));
-        function cerrar({devolverFoco=true}={}){panelEst.hidden=true;abrir.setAttribute("aria-expanded","false");svgActivo?.pauseAnimations?.();if(contextoModulo.urinario.flujo){contextoModulo.urinario.pausa=true;if(contextoModulo.$("urine-play"))contextoModulo.$("urine-play").textContent="Continuar";}contextoModulo.solicitarRender();if(devolverFoco)abrir.focus({preventScroll:true});}
+        function cerrar({devolverFoco=true}={}){registro[modo]?.pausar?.();panelEst.hidden=true;abrir.setAttribute("aria-expanded","false");svgActivo?.pauseAnimations?.();if(contextoModulo.urinario.flujo){contextoModulo.urinario.pausa=true;if(contextoModulo.$("urine-play"))contextoModulo.$("urine-play").textContent="Continuar";}contextoModulo.solicitarRender();if(devolverFoco)abrir.focus({preventScroll:true});}
         function cambiarModo(nuevo){
           if(sesion&&!sesion.terminada){finalizarSesion("Sesión interrumpida al cambiar de modo");return;}
           if(modo==="flash"&&flash?.vistas){resumenFlash();return;}

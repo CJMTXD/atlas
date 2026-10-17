@@ -1,3 +1,4 @@
+import {actualizarFisiologia} from "../modelo/fisiologia.js";
 // Funciones extraídas con referencias explícitas al contexto compartido.
 export function solicitarRender(contextoModulo) {
         if(!contextoModulo.frame && !contextoModulo.dibujando) contextoModulo.frame=requestAnimationFrame(contextoModulo.renderizar);
@@ -8,6 +9,7 @@ export function renderizar(contextoModulo,tiempo) {
         const dt=Math.min((tiempo-(contextoModulo.ultimoTiempo||tiempo))/1000,.05);
         contextoModulo.ultimoTiempo=tiempo;
         let animando=contextoModulo.actualizarOrina(dt);
+        animando=actualizarFisiologia(contextoModulo,dt)||animando;
         if(contextoModulo.transicion) {
           const avance=Math.min((tiempo-contextoModulo.transicion.inicio)/contextoModulo.transicion.duracion,1);
           const suave=avance<.5?4*avance**3:1-((-2*avance+2)**3)/2;
