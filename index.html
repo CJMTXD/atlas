@@ -323,7 +323,46 @@
     @media(max-width:850px){.study-panel{top:auto;height:84%;width:100%;border:1px solid var(--line);border-radius:18px 18px 0 0;}.study-header{padding:12px 16px;}.study-body{padding:15px;}.study-diagram{max-height:none;}.study-nav{padding:9px 12px;}.header-actions #study-open{font-size:11px;padding:7px;}}
     @media(max-width:850px){.brand{min-width:0;}.brand small{font-size:7px;letter-spacing:.6px;}.header-actions{gap:5px;}.header-actions button{padding:7px 8px;}}
 
-  </style>
+
+    /* Cajones móviles coordinados: desplazamiento contenido y cierres siempre accesibles. */
+    .app { height:100vh; height:100dvh; }
+    /* Impide que el foco desplace el escenario al cerrar un cajón transformado. */
+    main { overflow:clip; }
+    .study-body { min-height:0; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
+    .study-header { flex-shrink:0; }
+    aside { overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
+    aside.collapsed { pointer-events:none; }
+    @media(max-width:850px) {
+      .app { grid-template-rows:auto minmax(0,1fr) auto; }
+      header { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px;
+        padding:8px 12px; padding-top:max(8px,env(safe-area-inset-top)); }
+      .brand { min-width:0; gap:7px; }
+      .header-actions { min-width:0; gap:4px; }
+      .header-actions button,.header-actions #study-open { min-height:44px; padding:8px; }
+      .header-actions .icon { width:17px; height:17px; }
+      .search-wrap { grid-column:1/-1; width:100%; min-width:0; }
+      #search,.study-body input[type=text],.study-body input[type=number],select { font-size:16px; }
+      #search-results { max-height:min(330px,45dvh); }
+      aside,aside.right { height:min(74%,590px); max-height:100%; min-height:0; }
+      aside.collapsed { visibility:hidden; }
+      .panel-inner { padding:0 16px 24px; padding-bottom:max(24px,env(safe-area-inset-bottom)); }
+      .panel-heading { position:sticky; top:0; z-index:2; background:var(--panel);
+        padding:14px 0 10px; margin-bottom:12px; }
+      .mobile-close { min-width:44px; min-height:44px; flex-shrink:0; }
+      .related button,.tree-part { min-height:40px; }
+      .study-panel { max-height:100%; height:84%; }
+      .study-nav { touch-action:pan-x; overscroll-behavior-x:contain; }
+      .study-nav button { min-height:40px; }
+      .study-body { touch-action:pan-y; }
+      footer { min-height:34px; padding-bottom:max(5px,env(safe-area-inset-bottom)); }
+    }
+    @media(max-width:360px) { .brand small { display:none; } .brand-mark { display:none; } }
+    @media(max-width:850px) and (max-height:500px) {
+      aside,aside.right,.study-panel { height:100%; }
+      header { padding-top:4px; padding-bottom:4px; gap:3px; }
+    }
+
+</style>
   <script type="importmap">
     {
       "imports": {
@@ -48197,12 +48236,14 @@ suprarrenales|Glándulas suprarrenales|Glandulae suprarenales|endocrino|abdomen|
       }
       Object.entries(ALIAS_MALLAS).forEach(([alias,id]) => nombres.set(normalizar(alias),id));
 
+      const vistaMovil=matchMedia("(max-width:850px)");
+      const calidadMovilInicial=matchMedia("(max-width:850px) and (pointer:coarse)").matches;
       const escena = new T.Scene();
       const cuerpo = new T.Group();
       escena.add(cuerpo);
-      const renderer = new T.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
-      renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));
-      renderer.shadowMap.enabled = true;
+      const renderer = new T.WebGLRenderer({ antialias: !calidadMovilInicial, alpha: true, powerPreference: "high-performance" });
+      renderer.setPixelRatio(calidadMovilInicial?1:Math.min(devicePixelRatio,1.75));
+      renderer.shadowMap.enabled = !calidadMovilInicial;
       renderer.shadowMap.type = T.PCFSoftShadowMap;
       renderer.toneMapping = T.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.02;
@@ -48260,7 +48301,7 @@ suprarrenales|Glándulas suprarrenales|Glandulae suprarenales|endocrino|abdomen|
       contorno.visibleEdgeColor.set("#8bffe3");
       contorno.hiddenEdgeColor.set("#286b60");
       contorno.edgeStrength = 4;
-      contorno.edgeGlow = .65;
+      contorno.edgeGlow = calidadMovilInicial?0:.65;
       contorno.edgeThickness = 1.6;
       contorno.pulsePeriod = 0;
       compositor.addPass(contorno);
@@ -48278,7 +48319,7 @@ suprarrenales|Glándulas suprarrenales|Glandulae suprarenales|endocrino|abdomen|
         seleccionado: null, hover: null, aislado: null,
         ocultos: new Set(), region: "todas",
         explosion: 0, explosionObjetivo: 0,
-        corte: false, etiquetas: false, baja: false,
+        corte: false, etiquetas: false, baja: calidadMovilInicial,
         quiz: { activo: false, id: null, aciertos: 0, total: 0, respondido: false }
       };
       let transicion = null, frame = 0, ultimoTiempo = 0, toastTimer, dibujando = false;
@@ -49232,6 +49273,11 @@ suprarrenales|Glándulas suprarrenales|Glandulae suprarenales|endocrino|abdomen|
         });
         if(!estudio) {
           mostrarInformacion(id);
+          $("right-panel").scrollTop=0;
+          if(vistaMovil.matches && $("study-panel")?.hidden!==false) {
+            $("search").blur();
+            panel("right",true,{enfocar:false});
+          }
           $("search").value="";
           limpiarResultados();
         } else {
@@ -49301,10 +49347,19 @@ suprarrenales|Glándulas suprarrenales|Glandulae suprarenales|endocrino|abdomen|
         const hits=rayo.intersectObjects(candidatas,false);
         return hits.find(h=>!estado.corte || planoCorte.distanceToPoint(h.point)>=0);
       }
+      // Un pellizco o arrastre nunca debe interpretarse como selección de órgano.
+      const punterosActivos=new Set();
       renderer.domElement.addEventListener("pointerdown",event=>{
-        pointerDown={x:event.clientX,y:event.clientY,tiempo:performance.now()};
+        punterosActivos.add(event.pointerId);
+        pointerDown=punterosActivos.size===1 && event.button===0
+          ? {id:event.pointerId,x:event.clientX,y:event.clientY,tiempo:performance.now()} : null;
       });
+      const cancelarPuntero=event=>{punterosActivos.delete(event.pointerId);pointerDown=null;};
+      renderer.domElement.addEventListener("pointercancel",cancelarPuntero);
+      renderer.domElement.addEventListener("lostpointercapture",cancelarPuntero);
+      window.addEventListener("blur",()=>{punterosActivos.clear();pointerDown=null;});
       renderer.domElement.addEventListener("pointermove",event=>{
+        if(pointerDown && Math.hypot(event.clientX-pointerDown.x,event.clientY-pointerDown.y)>8)pointerDown=null;
         if(event.pointerType==="touch" || event.buttons || estado.quiz.activo) {
           $("tooltip").hidden=true;
           return;
@@ -49335,13 +49390,13 @@ suprarrenales|Glándulas suprarrenales|Glandulae suprarenales|endocrino|abdomen|
         solicitarRender();
       });
       renderer.domElement.addEventListener("pointerup",event=>{
-        if(!pointerDown || estado.quiz.activo) return;
-        const distancia=Math.hypot(event.clientX-pointerDown.x,event.clientY-pointerDown.y);
-        if(distancia<6 && performance.now()-pointerDown.tiempo<700) {
+        punterosActivos.delete(event.pointerId);
+        const toque=pointerDown;pointerDown=null;
+        if(!toque || toque.id!==event.pointerId || punterosActivos.size || estado.quiz.activo)return;
+        if(Math.hypot(event.clientX-toque.x,event.clientY-toque.y)<8 && performance.now()-toque.tiempo<700) {
           const hit=intersectar(event);
           if(hit) seleccionar(hit.object.userData.parte,{revelar:false});
         }
-        pointerDown=null;
       });
 
       // Capas y árbol: controles reales, accesibles por teclado.
@@ -49664,6 +49719,7 @@ suprarrenales|Glándulas suprarrenales|Glandulae suprarenales|endocrino|abdomen|
         $("auto-rotate").setAttribute("aria-pressed",String(controles.autoRotate));
         solicitarRender();
       };
+      $("low-quality").checked=estado.baja;
       $("low-quality").onchange=e=>{
         estado.baja=e.target.checked;
         const ratio=estado.baja?1:Math.min(devicePixelRatio,1.75);
@@ -49687,29 +49743,35 @@ suprarrenales|Glándulas suprarrenales|Glandulae suprarenales|endocrino|abdomen|
       $("theme").onclick=()=>establecerTema(document.documentElement.dataset.theme!=="light");
       try { establecerTema(localStorage.getItem("atlas-theme")==="light"); } catch {}
 
-      function panel(lado,abrir) {
-        const id=lado==="left"?"left-panel":"right-panel";
-        const nodo=$(id);
-        const visible=abrir ?? nodo.classList.contains("collapsed");
-        if(visible && matchMedia("(max-width:850px)").matches) {
-          const otro=lado==="left"?"right":"left";
-          $(otro+"-panel").classList.add("collapsed");
-          $("toggle-"+otro).setAttribute("aria-expanded","false");
-        }
+      function estadoPanel(lado,visible) {
+        const nodo=$(lado+"-panel");
         nodo.classList.toggle("collapsed",!visible);
+        nodo.inert=!visible;
+        nodo.setAttribute("aria-hidden",String(!visible));
         $("toggle-"+lado).setAttribute("aria-expanded",String(visible));
-        if(visible) requestAnimationFrame(()=>nodo.querySelector("button,select,input")?.focus());
-        else $("toggle-"+lado).focus();
+      }
+      function panel(lado,abrir,{enfocar=true}={}) {
+        const nodo=$(lado+"-panel");
+        const visible=abrir ?? nodo.classList.contains("collapsed");
+        if(visible && vistaMovil.matches) {
+          estadoPanel(lado==="left"?"right":"left",false);
+          estudioUI?.cerrar({devolverFoco:false});
+        }
+        estadoPanel(lado,visible);
+        if(enfocar) {
+          if(visible)requestAnimationFrame(()=>{if(!nodo.inert)nodo.querySelector("button,select,input")?.focus({preventScroll:true});});
+          else $("toggle-"+lado).focus({preventScroll:true});
+        }
       }
       $("toggle-left").onclick=()=>panel("left");
       $("toggle-right").onclick=()=>panel("right");
       document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>panel(b.dataset.close,false));
-      if(matchMedia("(max-width:850px)").matches) {
-        ["left","right"].forEach(lado=>{
-          $(lado+"-panel").classList.add("collapsed");
-          $("toggle-"+lado).setAttribute("aria-expanded","false");
-        });
+      function adaptarPaneles(){
+        for(const lado of ["left","right"])estadoPanel(lado,!vistaMovil.matches);
+        solicitarRender();
       }
+      vistaMovil.addEventListener("change",adaptarPaneles);
+      adaptarPaneles();
       document.addEventListener("keydown",e=>{
         if(estudioUI?.atajo(e))return;
         if(e.target.closest("input,textarea,select") || e.ctrlKey || e.metaKey || e.altKey) return;
@@ -49727,6 +49789,7 @@ suprarrenales|Glándulas suprarrenales|Glandulae suprarenales|endocrino|abdomen|
       // Se liberan al abandonar la página; no se destruyen buffers reutilizables.
       function liberarRecursos() {
         estudioUI?.detener();
+        vistaMovil.removeEventListener("change",adaptarPaneles);
         cancelAnimationFrame(frame);
         controles.dispose();
         const geometrias=new Set(), mats=new Set(), texturas=new Set();
@@ -49773,11 +49836,11 @@ suprarrenales|Glándulas suprarrenales|Glandulae suprarenales|endocrino|abdomen|
         const cab=nodo("div",null,{class:"study-header"});cab.append(nodo("h2","Estudiar"),boton("Cerrar",cerrar,{"aria-label":"Cerrar panel Estudiar"}));
         const navegacion=nodo("nav",null,{class:"study-nav","aria-label":"Modos de estudio"}),contenido=nodo("div",null,{class:"study-body",id:"study-content",tabindex:"-1"});
         panelEst.append(cab,navegacion,contenido);document.querySelector("main").append(panelEst);
-        const abrir=boton("Estudiar",()=>{panelEst.hidden=false;abrir.setAttribute("aria-expanded","true");if(estado.quiz.activo)terminarQuiz();if(svgActivo)svgActivo.unpauseAnimations?.();contenido.focus();},{id:"study-open","aria-expanded":"false","aria-controls":"study-panel"});
+        const abrir=boton("Estudiar",()=>{if(vistaMovil.matches){estadoPanel("left",false);estadoPanel("right",false);}panelEst.hidden=false;abrir.setAttribute("aria-expanded","true");if(estado.quiz.activo)terminarQuiz();if(svgActivo)svgActivo.unpauseAnimations?.();contenido.focus({preventScroll:true});},{id:"study-open","aria-expanded":"false","aria-controls":"study-panel"});
         document.querySelector(".header-actions").prepend(abrir);
         const tabs=[["inicio","Inicio"],["quiz","Quiz del banco"],["flash","Flashcards"],["ruta","Recorrido"],["nefrona","Nefrona"],["histologia","Histología"],["epitelios","Epitelios"],["comparar","Hombre / mujer"],["auto","Autoevaluación"],["examen","Simulacro"],["errores","Errores"]];
         tabs.forEach(([id,label])=>navegacion.append(boton(label,()=>cambiarModo(id),{"data-mode":id,"aria-pressed":"false"})));
-        function cerrar(){panelEst.hidden=true;abrir.setAttribute("aria-expanded","false");svgActivo?.pauseAnimations?.();if(urinario.flujo){urinario.pausa=true;if($("urine-play"))$("urine-play").textContent="Continuar";}solicitarRender();abrir.focus();}
+        function cerrar({devolverFoco=true}={}){panelEst.hidden=true;abrir.setAttribute("aria-expanded","false");svgActivo?.pauseAnimations?.();if(urinario.flujo){urinario.pausa=true;if($("urine-play"))$("urine-play").textContent="Continuar";}solicitarRender();if(devolverFoco)abrir.focus({preventScroll:true});}
         function cambiarModo(nuevo){
           if(sesion&&!sesion.terminada){finalizarSesion("Sesión interrumpida al cambiar de modo");return;}
           if(modo==="flash"&&flash?.vistas){resumenFlash();return;}
