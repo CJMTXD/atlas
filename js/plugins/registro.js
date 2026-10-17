@@ -12,3 +12,5 @@ export {default as examen} from "../estudio/examen.js";
 export {default as errores} from "../estudio/errores.js";
 
 export {default as estadisticas} from "../estudio/estadisticas.js";
+
+export {default as transferencias} from "../estudio/transferencias.js";
