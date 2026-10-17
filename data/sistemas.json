@@ -1,0 +1,62 @@
+{
+  "piel": {
+    "nombre": "Piel",
+    "color": "#d4a58c",
+    "visible": false,
+    "opacidad": 0.18
+  },
+  "muscular": {
+    "nombre": "Muscular",
+    "color": "#bb535f",
+    "visible": false,
+    "opacidad": 0.75
+  },
+  "esqueletico": {
+    "nombre": "Esquelético",
+    "color": "#e8dcc1",
+    "visible": true,
+    "opacidad": 0.72
+  },
+  "circulatorio": {
+    "nombre": "Circulatorio",
+    "color": "#d64e65",
+    "visible": true,
+    "opacidad": 1
+  },
+  "nervioso": {
+    "nombre": "Nervioso",
+    "color": "#edc965",
+    "visible": true,
+    "opacidad": 1
+  },
+  "respiratorio": {
+    "nombre": "Respiratorio",
+    "color": "#d997b7",
+    "visible": true,
+    "opacidad": 0.72
+  },
+  "digestivo": {
+    "nombre": "Digestivo",
+    "color": "#c68058",
+    "visible": true,
+    "opacidad": 1
+  },
+  "urinario": {
+    "nombre": "Urinario",
+    "color": "#b66769",
+    "visible": true,
+    "opacidad": 1
+  },
+  "linfatico": {
+    "nombre": "Linfático",
+    "color": "#6bb69b",
+    "visible": true,
+    "opacidad": 1
+  },
+  "endocrino": {
+    "nombre": "Endocrino",
+    "color": "#b392d4",
+    "visible": true,
+    "opacidad": 1
+  }
+}

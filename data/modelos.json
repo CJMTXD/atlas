@@ -1,0 +1,72 @@
+{
+  "modo": "procedural",
+  "unico": {
+    "archivo": "./modelos/cuerpo.glb",
+    "escala": 1,
+    "posicion": [
+      0,
+      0,
+      0
+    ],
+    "rotacion": [
+      0,
+      0,
+      0
+    ]
+  },
+  "multiples": [
+    {
+      "id": "corazon",
+      "nombre": "Corazón",
+      "sistema": "circulatorio",
+      "archivo": "./modelos/corazon.glb",
+      "habilitado": true,
+      "descripcion": "Órgano muscular que impulsa la sangre.",
+      "funcion": "Mantener las circulaciones pulmonar y sistémica.",
+      "datosCuriosos": "Posee cuatro cavidades.",
+      "escala": 1,
+      "posicion": [
+        0,
+        0,
+        0
+      ],
+      "rotacion": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cerebro",
+      "nombre": "Cerebro",
+      "sistema": "nervioso",
+      "archivo": "./modelos/cerebro.glb",
+      "habilitado": true,
+      "escala": 1,
+      "posicion": [
+        0,
+        0,
+        0
+      ],
+      "rotacion": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "alias": {
+    "heart": "corazon",
+    "heart_mesh": "corazon",
+    "brain": "cerebro",
+    "cerebrum": "cerebro",
+    "liver": "higado",
+    "stomach": "estomago",
+    "lung_l": "pulmon_izquierdo",
+    "lung_r": "pulmon_derecho",
+    "kidney_l": "rinon_izquierdo",
+    "kidney_r": "rinon_derecho",
+    "skull": "craneo",
+    "spinal_cord": "medula"
+  }
+}
