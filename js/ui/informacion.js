@@ -4,6 +4,7 @@ export function mostrarInformacion(contextoModulo,id) {
         contextoModulo.$("empty-info").hidden=true;
         contextoModulo.$("part-info").hidden=false;
         contextoModulo.$("info-name").textContent=meta.nombre;
+        let personal=document.getElementById('personal-info');if(!personal){personal=document.createElement('button');personal.id='personal-info';personal.type='button';personal.textContent='Notas y repasar luego';contextoModulo.$('part-info').append(personal);}personal.onclick=()=>contextoModulo.estudioUI?.abrirModo('notas');
         contextoModulo.$("info-name").title=meta.modelo||"";
         contextoModulo.$("info-latin").textContent=meta.latin;
         contextoModulo.$("info-system").textContent=contextoModulo.SISTEMAS[meta.sistema].nombre;

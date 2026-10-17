@@ -1,0 +1,10 @@
+import {extra,salvar} from './extra-store.js';
+export default {id:'notas',titulo:'Notas y marcadores',montar(ctx){
+ ctx.titulo('Notas personales por estructura');ctx.contenido.append(ctx.mensaje('Contenido personal, verificar con tu material. Las notas y pistas no modifican las fichas anatómicas.'));
+ const atlas=ctx.contextoModulo,selector=ctx.nodo('select',null,{'aria-label':'Estructura de las notas',id:'notas-estructura'});for(const p of atlas.partes.values())selector.append(ctx.nodo('option',p.meta.nombre,{value:p.id}));selector.value=atlas.estado.seleccionado||selector.options[0]?.value;
+ const notas=ctx.nodo('textarea',null,{rows:'5','aria-label':'Notas personales',maxlength:'20000'}),mnemotecnia=ctx.nodo('textarea',null,{rows:'2','aria-label':'Mnemotecnia personal',maxlength:'5000'}),pista=ctx.nodo('textarea',null,{rows:'2','aria-label':'Pista personal',maxlength:'5000'}),repasar=ctx.nodo('input',null,{type:'checkbox','aria-label':'Repasar luego'}),estado=ctx.mensaje('');
+ const cargar=()=>{const n=extra.notas[selector.value]||{};notas.value=n.texto||'';mnemotecnia.value=n.mnemotecnia||'';pista.value=n.pista||'';repasar.checked=!!n.repasar;estado.textContent='';};
+ const guardar=()=>{extra.notas[selector.value]={texto:notas.value,mnemotecnia:mnemotecnia.value,pista:pista.value,repasar:repasar.checked,fecha:Date.now()};estado.textContent=salvar()?'Notas guardadas en este navegador.':'No se pudo guardar: conserva una exportación antes de cerrar.';};selector.onchange=cargar;for(const n of [notas,mnemotecnia,pista])n.oninput=guardar;repasar.onchange=guardar;
+ ctx.contenido.append(selector,ctx.nodo('label','Notas'),notas,ctx.nodo('label','Mnemotecnia'),mnemotecnia,ctx.nodo('label','Pista opcional'),pista,ctx.nodo('label','Repasar luego'),repasar,estado,ctx.boton('Ver estructura',()=>atlas.seleccionar(selector.value)),ctx.nodo('h3','Marcadores pendientes'));
+ for(const [id,n]of Object.entries(extra.notas))if(n.repasar&&atlas.partes.has(id))ctx.contenido.append(ctx.boton(atlas.partes.get(id).meta.nombre,()=>{selector.value=id;cargar();atlas.seleccionar(id);}));cargar();
+},desmontar(){}};

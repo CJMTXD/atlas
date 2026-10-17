@@ -115,5 +115,5 @@ const contextoCompartido={get titulo(){return titulo;},set titulo(v){titulo=v;},
           return false;
         }
         registro.inicio.montar(contextoCompartido);
-        return {atajo,sincronizarSexo,cerrar,detener(){clearInterval(cronometro);document.removeEventListener("visibilitychange",actualizarReloj);svgActivo?.pauseAnimations?.();}};
+        return {atajo,sincronizarSexo,cerrar,abrirModo(id){abrir.click();cambiarModo(id);},detener(){clearInterval(cronometro);document.removeEventListener("visibilitychange",actualizarReloj);svgActivo?.pauseAnimations?.();}};
       }
