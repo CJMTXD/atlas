@@ -1,0 +1,8 @@
+// Funciones extraídas con referencias explícitas al contexto compartido.
+export function comparador(contextoModulo){
+          contextoModulo.titulo("Comparador hombre / mujer");contextoModulo.contextoModulo.urinario.comparar=true;contextoModulo.contextoModulo.estudiarUrinario();
+          const fila=contextoModulo.nodo("div",null,{class:"study-flex"});for(const [sexo,label]of [["masculino","Hombre"],["femenino","Mujer"]])fila.append(contextoModulo.boton(label,()=>{contextoModulo.contextoModulo.cambiarSexoUrinario(sexo);contextoModulo.contextoModulo.estudiarUrinario(sexo);contextoModulo.sincronizarSexo();},{"data-sex":sexo,"aria-pressed":String(sexo===contextoModulo.contextoModulo.urinario.sexo)}));contextoModulo.contenido.append(fila);
+          const table=contextoModulo.nodo("table",null,{class:"study-table"});for(const row of [["Característica","Hombre","Mujer"],["Longitud uretral","15–20 cm","3–6 cm"],["Porciones","Prostática, membranosa, esponjosa o peneana","No se divide en esas tres porciones masculinas"],["Relación vesical posterior","Recto, con estructuras interpuestas","Útero y vagina"],["Función urinaria","Conducir orina al exterior","Conducir orina al exterior"]]){const tr=contextoModulo.nodo("tr");row.forEach((x,i)=>tr.append(contextoModulo.nodo(i===0?"th":"td",x)));table.append(tr);}contextoModulo.contenido.append(table,contextoModulo.mensaje("Longitudes aproximadas conservadas de la respuesta 52 del DOCX. Las dos variantes se muestran de forma excluyente; el contexto pélvico femenino es procedural y no una segmentación del cuerpo masculino de BodyParts3D."));
+        }
+
+export default {id:"comparar",titulo:"Hombre / mujer",montar:comparador,desmontar(){}};
