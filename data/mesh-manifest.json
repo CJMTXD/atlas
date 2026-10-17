@@ -1,0 +1,772 @@
+[
+  {
+    "id": "piel",
+    "vertices": 75355,
+    "indices": 463782,
+    "offset": 0,
+    "fuentes": [
+      "FMA7163"
+    ]
+  },
+  {
+    "id": "deltoides",
+    "vertices": 5518,
+    "indices": 32976,
+    "offset": 2307258,
+    "fuentes": [
+      "FMA34680",
+      "FMA34681",
+      "FMA34682",
+      "FMA34683",
+      "FMA34684",
+      "FMA34685"
+    ]
+  },
+  {
+    "id": "biceps",
+    "vertices": 3653,
+    "indices": 21804,
+    "offset": 2472270,
+    "fuentes": [
+      "FMA37684",
+      "FMA37685",
+      "FMA37686",
+      "FMA37687"
+    ]
+  },
+  {
+    "id": "triceps",
+    "vertices": 5843,
+    "indices": 34962,
+    "offset": 2581404,
+    "fuentes": [
+      "FMA37695",
+      "FMA37696",
+      "FMA37697",
+      "FMA37698",
+      "FMA37699",
+      "FMA37700"
+    ]
+  },
+  {
+    "id": "pectoral",
+    "vertices": 6429,
+    "indices": 38340,
+    "offset": 2756310,
+    "fuentes": [
+      "FMA34690",
+      "FMA34691",
+      "FMA45874",
+      "FMA45875",
+      "FMA79979",
+      "FMA79980"
+    ]
+  },
+  {
+    "id": "gluteo",
+    "vertices": 2907,
+    "indices": 17418,
+    "offset": 2948244,
+    "fuentes": [
+      "FMA22328",
+      "FMA22329"
+    ]
+  },
+  {
+    "id": "cuadriceps",
+    "vertices": 17372,
+    "indices": 104034,
+    "offset": 3035358,
+    "fuentes": [
+      "FMA38928",
+      "FMA38929",
+      "FMA38930",
+      "FMA38931",
+      "FMA38932",
+      "FMA38933",
+      "FMA38934",
+      "FMA38935"
+    ]
+  },
+  {
+    "id": "gastrocnemio",
+    "vertices": 5327,
+    "indices": 31818,
+    "offset": 3555726,
+    "fuentes": [
+      "FMA45957",
+      "FMA45958",
+      "FMA45960",
+      "FMA45961"
+    ]
+  },
+  {
+    "id": "mandibula",
+    "vertices": 502,
+    "indices": 3000,
+    "offset": 3714960,
+    "fuentes": [
+      "FMA52748"
+    ]
+  },
+  {
+    "id": "craneo",
+    "vertices": 26242,
+    "indices": 157308,
+    "offset": 3729972,
+    "fuentes": [
+      "FMA52734",
+      "FMA52735",
+      "FMA52736",
+      "FMA52738",
+      "FMA52739",
+      "FMA52740",
+      "FMA52749",
+      "FMA52788",
+      "FMA52789",
+      "FMA52892",
+      "FMA52893",
+      "FMA53645",
+      "FMA53646",
+      "FMA53647",
+      "FMA53648",
+      "FMA53649",
+      "FMA53650",
+      "FMA53655",
+      "FMA53656",
+      "FMA54737",
+      "FMA54738",
+      "FMA59763",
+      "FMA59764",
+      "FMA9710"
+    ]
+  },
+  {
+    "id": "claviculas",
+    "vertices": 1004,
+    "indices": 6000,
+    "offset": 4516656,
+    "fuentes": [
+      "FMA13322",
+      "FMA13323"
+    ]
+  },
+  {
+    "id": "esternon",
+    "vertices": 1506,
+    "indices": 9000,
+    "offset": 4546680,
+    "fuentes": [
+      "FMA7486",
+      "FMA7487",
+      "FMA7488"
+    ]
+  },
+  {
+    "id": "costillas",
+    "vertices": 8663,
+    "indices": 51690,
+    "offset": 4591716,
+    "fuentes": [
+      "FMA7857",
+      "FMA7882",
+      "FMA7909",
+      "FMA7957",
+      "FMA7987",
+      "FMA8012",
+      "FMA8039",
+      "FMA8066",
+      "FMA8093",
+      "FMA8148",
+      "FMA8175",
+      "FMA8202",
+      "FMA8229",
+      "FMA8256",
+      "FMA8283",
+      "FMA8310",
+      "FMA8364",
+      "FMA8391",
+      "FMA8445",
+      "FMA8472",
+      "FMA8531",
+      "FMA8532",
+      "FMA8533",
+      "FMA8534"
+    ]
+  },
+  {
+    "id": "columna",
+    "vertices": 12202,
+    "indices": 72996,
+    "offset": 4850454,
+    "fuentes": [
+      "FMA10458",
+      "FMA13495",
+      "FMA13500",
+      "FMA13501",
+      "FMA13502",
+      "FMA13503",
+      "FMA13504",
+      "FMA13505",
+      "FMA13506",
+      "FMA13507",
+      "FMA13508",
+      "FMA13509",
+      "FMA13896",
+      "FMA13897",
+      "FMA13898",
+      "FMA13899",
+      "FMA13900",
+      "FMA16033",
+      "FMA16034",
+      "FMA16035",
+      "FMA16036",
+      "FMA16037",
+      "FMA16202",
+      "FMA25058",
+      "FMA9165",
+      "FMA9187",
+      "FMA9209",
+      "FMA9248",
+      "FMA9922",
+      "FMA9945",
+      "FMA9968",
+      "FMA9991"
+    ]
+  },
+  {
+    "id": "humeros",
+    "vertices": 1038,
+    "indices": 6204,
+    "offset": 5215650,
+    "fuentes": [
+      "FMA23130",
+      "FMA23131"
+    ]
+  },
+  {
+    "id": "radios",
+    "vertices": 1004,
+    "indices": 6000,
+    "offset": 5246694,
+    "fuentes": [
+      "FMA23464",
+      "FMA23465"
+    ]
+  },
+  {
+    "id": "cubitos",
+    "vertices": 1004,
+    "indices": 6000,
+    "offset": 5276718,
+    "fuentes": [
+      "FMA23467",
+      "FMA23468"
+    ]
+  },
+  {
+    "id": "pelvis_osea",
+    "vertices": 1155,
+    "indices": 6930,
+    "offset": 5306742,
+    "fuentes": [
+      "FMA16586",
+      "FMA16587"
+    ]
+  },
+  {
+    "id": "femures",
+    "vertices": 1287,
+    "indices": 7698,
+    "offset": 5341392,
+    "fuentes": [
+      "FMA24474",
+      "FMA24475"
+    ]
+  },
+  {
+    "id": "rotulas",
+    "vertices": 1004,
+    "indices": 6000,
+    "offset": 5379906,
+    "fuentes": [
+      "FMA24486",
+      "FMA24487"
+    ]
+  },
+  {
+    "id": "tibias",
+    "vertices": 1004,
+    "indices": 6000,
+    "offset": 5409930,
+    "fuentes": [
+      "FMA24477",
+      "FMA24478"
+    ]
+  },
+  {
+    "id": "perones",
+    "vertices": 1004,
+    "indices": 6000,
+    "offset": 5439954,
+    "fuentes": [
+      "FMA24480",
+      "FMA24481"
+    ]
+  },
+  {
+    "id": "corazon",
+    "vertices": 42900,
+    "indices": 255276,
+    "offset": 5469978,
+    "fuentes": [
+      "FMA3802",
+      "FMA3818",
+      "FMA3840nsn",
+      "FMA3862nsn",
+      "FMA3895",
+      "FMA4685",
+      "FMA4706",
+      "FMA4707",
+      "FMA4713",
+      "FMA71567",
+      "FMA71669",
+      "FMA71670",
+      "FMA7234",
+      "FMA7235",
+      "FMA7246",
+      "FMA7260",
+      "FMA7261",
+      "FMA7262",
+      "FMA7266",
+      "FMA7274",
+      "FMA76751",
+      "FMA76994",
+      "FMA9352nsn"
+    ]
+  },
+  {
+    "id": "aorta",
+    "vertices": 3284,
+    "indices": 19668,
+    "offset": 6748482,
+    "fuentes": [
+      "FMA3736",
+      "FMA3768",
+      "FMA3784"
+    ]
+  },
+  {
+    "id": "vena_cava",
+    "vertices": 1870,
+    "indices": 11196,
+    "offset": 6846858,
+    "fuentes": [
+      "FMA10951",
+      "FMA4720"
+    ]
+  },
+  {
+    "id": "cerebro",
+    "vertices": 35526,
+    "indices": 212574,
+    "offset": 6902862,
+    "fuentes": [
+      "BP49",
+      "BP50",
+      "FMA61844",
+      "FMA72653",
+      "FMA72654",
+      "FMA72655",
+      "FMA72656",
+      "FMA72661",
+      "FMA72662",
+      "FMA72665",
+      "FMA72666",
+      "FMA72667",
+      "FMA72668",
+      "FMA72669",
+      "FMA72670",
+      "FMA72685",
+      "FMA72686",
+      "FMA72687",
+      "FMA72688",
+      "FMA72689",
+      "FMA72690",
+      "FMA72701",
+      "FMA72702",
+      "FMA72705",
+      "FMA72706",
+      "FMA72713",
+      "FMA72714",
+      "FMA72717",
+      "FMA72718",
+      "FMA72800",
+      "FMA72801",
+      "FMA72804",
+      "FMA72805",
+      "FMA72826",
+      "FMA72827",
+      "FMA72828",
+      "FMA72829",
+      "FMA72830",
+      "FMA72831",
+      "FMA72832",
+      "FMA72833",
+      "FMA72975",
+      "FMA72976",
+      "FMA72977",
+      "FMA72978",
+      "FMA78449",
+      "FMA78450"
+    ]
+  },
+  {
+    "id": "cerebelo",
+    "vertices": 3504,
+    "indices": 21000,
+    "offset": 7966314,
+    "fuentes": [
+      "FMA67944"
+    ]
+  },
+  {
+    "id": "tronco",
+    "vertices": 4465,
+    "indices": 27066,
+    "offset": 8071338,
+    "fuentes": [
+      "FMA61993nsn",
+      "FMA62004",
+      "FMA62394",
+      "FMA67943",
+      "FMA73422",
+      "FMA73423",
+      "FMA73434",
+      "FMA73435",
+      "FMA73461",
+      "FMA73462",
+      "FMA73463",
+      "FMA73464",
+      "FMA78467"
+    ]
+  },
+  {
+    "id": "medula",
+    "vertices": 502,
+    "indices": 3000,
+    "offset": 8206392,
+    "fuentes": [
+      "FMA78497"
+    ]
+  },
+  {
+    "id": "pulmon_derecho",
+    "vertices": 4374,
+    "indices": 26172,
+    "offset": 8221404,
+    "fuentes": [
+      "FMA7333",
+      "FMA7337",
+      "FMA7383"
+    ]
+  },
+  {
+    "id": "pulmon_izquierdo",
+    "vertices": 3161,
+    "indices": 18942,
+    "offset": 8352336,
+    "fuentes": [
+      "FMA7370",
+      "FMA7371"
+    ]
+  },
+  {
+    "id": "traquea",
+    "vertices": 504,
+    "indices": 3000,
+    "offset": 8447070,
+    "fuentes": [
+      "FMA7394"
+    ]
+  },
+  {
+    "id": "diafragma",
+    "vertices": 5264,
+    "indices": 31596,
+    "offset": 8462094,
+    "fuentes": [
+      "FMA13295"
+    ]
+  },
+  {
+    "id": "esofago",
+    "vertices": 502,
+    "indices": 3000,
+    "offset": 8620062,
+    "fuentes": [
+      "FMA7131"
+    ]
+  },
+  {
+    "id": "higado",
+    "vertices": 2252,
+    "indices": 13500,
+    "offset": 8635074,
+    "fuentes": [
+      "FMA7197"
+    ]
+  },
+  {
+    "id": "vesicula",
+    "vertices": 502,
+    "indices": 3000,
+    "offset": 8702586,
+    "fuentes": [
+      "FMA7202"
+    ]
+  },
+  {
+    "id": "estomago",
+    "vertices": 2252,
+    "indices": 13500,
+    "offset": 8717598,
+    "fuentes": [
+      "FMA7148"
+    ]
+  },
+  {
+    "id": "pancreas",
+    "vertices": 592,
+    "indices": 3540,
+    "offset": 8785110,
+    "fuentes": [
+      "FMA7198nsn"
+    ]
+  },
+  {
+    "id": "intestino_delgado",
+    "vertices": 9862,
+    "indices": 58500,
+    "offset": 8802822,
+    "fuentes": [
+      "FMA7206",
+      "FMA7207",
+      "FMA7208"
+    ]
+  },
+  {
+    "id": "colon",
+    "vertices": 13008,
+    "indices": 78000,
+    "offset": 9095994,
+    "fuentes": [
+      "FMA14543nsn",
+      "FMA76891",
+      "FMA76892",
+      "FMA76893"
+    ]
+  },
+  {
+    "id": "recto",
+    "vertices": 502,
+    "indices": 3000,
+    "offset": 9486042,
+    "fuentes": [
+      "FMA14544"
+    ]
+  },
+  {
+    "id": "rinon_derecho",
+    "vertices": 2252,
+    "indices": 13500,
+    "offset": 9501054,
+    "fuentes": [
+      "FMA7204"
+    ]
+  },
+  {
+    "id": "rinon_izquierdo",
+    "vertices": 2252,
+    "indices": 13500,
+    "offset": 9568566,
+    "fuentes": [
+      "FMA7205"
+    ]
+  },
+  {
+    "id": "ureter_derecho",
+    "vertices": 502,
+    "indices": 3000,
+    "offset": 9636078,
+    "fuentes": [
+      "FMA15571"
+    ]
+  },
+  {
+    "id": "ureter_izquierdo",
+    "vertices": 502,
+    "indices": 3000,
+    "offset": 9651090,
+    "fuentes": [
+      "FMA15572"
+    ]
+  },
+  {
+    "id": "vejiga",
+    "vertices": 502,
+    "indices": 3000,
+    "offset": 9666102,
+    "fuentes": [
+      "FMA15900"
+    ]
+  },
+  {
+    "id": "bazo",
+    "vertices": 502,
+    "indices": 3000,
+    "offset": 9681114,
+    "fuentes": [
+      "FMA7196"
+    ]
+  },
+  {
+    "id": "timo",
+    "vertices": 1250,
+    "indices": 7476,
+    "offset": 9696126,
+    "fuentes": [
+      "FMA71194",
+      "FMA71195"
+    ]
+  },
+  {
+    "id": "hipofisis",
+    "vertices": 502,
+    "indices": 3000,
+    "offset": 9733530,
+    "fuentes": [
+      "FMA13889"
+    ]
+  },
+  {
+    "id": "escapulas",
+    "vertices": 1927,
+    "indices": 11538,
+    "offset": 9748542,
+    "fuentes": [
+      "FMA13395",
+      "FMA13396"
+    ]
+  },
+  {
+    "id": "manos_oseas",
+    "vertices": 18018,
+    "indices": 107454,
+    "offset": 9806256,
+    "fuentes": [
+      "FMA23725",
+      "FMA23938",
+      "FMA23940",
+      "FMA23942",
+      "FMA23944",
+      "FMA23951",
+      "FMA23953",
+      "FMA23955",
+      "FMA23957",
+      "FMA23959",
+      "FMA24435",
+      "FMA24436",
+      "FMA24437",
+      "FMA24438",
+      "FMA24439",
+      "FMA24440",
+      "FMA24441",
+      "FMA24442",
+      "FMA24443",
+      "FMA24444",
+      "FMA24445",
+      "FMA24446",
+      "FMA24447",
+      "FMA24448",
+      "FMA24449",
+      "FMA24450",
+      "FMA24451",
+      "FMA24452",
+      "FMA24453",
+      "FMA24454",
+      "FMA24455",
+      "FMA24456",
+      "FMA24457",
+      "FMA24458",
+      "FMA24459",
+      "FMA24460",
+      "FMA24461",
+      "FMA24462",
+      "FMA24463",
+      "FMA24464",
+      "FMA24465",
+      "FMA24466",
+      "FMA24467",
+      "FMA24468",
+      "FMA24469",
+      "FMA24470",
+      "FMA24471",
+      "FMA24472",
+      "FMA24473",
+      "FMA65470",
+      "FMA66791",
+      "FMA71908",
+      "FMA71915",
+      "FMA71916"
+    ]
+  },
+  {
+    "id": "pies_oseos",
+    "vertices": 11948,
+    "indices": 71172,
+    "offset": 10344180,
+    "fuentes": [
+      "FMA230986",
+      "FMA230988",
+      "FMA24507",
+      "FMA24508",
+      "FMA24509",
+      "FMA24510",
+      "FMA24511",
+      "FMA24512",
+      "FMA24513",
+      "FMA24514",
+      "FMA24515",
+      "FMA24516",
+      "FMA32634",
+      "FMA32635",
+      "FMA32636",
+      "FMA32637",
+      "FMA32638",
+      "FMA32639",
+      "FMA32640",
+      "FMA32641",
+      "FMA32642",
+      "FMA32643",
+      "FMA32644",
+      "FMA32645",
+      "FMA32646",
+      "FMA32647",
+      "FMA32650",
+      "FMA32651",
+      "FMA32652",
+      "FMA32653",
+      "FMA32654",
+      "FMA32655",
+      "FMA32656",
+      "FMA32657",
+      "FMA32658",
+      "FMA32659",
+      "FMA43253",
+      "FMA43254",
+      "FMA45097",
+      "FMA45098"
+    ]
+  }
+]
