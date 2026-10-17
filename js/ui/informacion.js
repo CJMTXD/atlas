@@ -4,6 +4,7 @@ export function mostrarInformacion(contextoModulo,id) {
         contextoModulo.$("empty-info").hidden=true;
         contextoModulo.$("part-info").hidden=false;
         contextoModulo.$("info-name").textContent=meta.nombre;
+        contextoModulo.$("info-name").title=meta.modelo||"";
         contextoModulo.$("info-latin").textContent=meta.latin;
         contextoModulo.$("info-system").textContent=contextoModulo.SISTEMAS[meta.sistema].nombre;
         contextoModulo.$("info-system").style.borderColor=contextoModulo.SISTEMAS[meta.sistema].color;

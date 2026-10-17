@@ -1,0 +1,76 @@
+[
+  {
+    "id": "lab11-19-orden",
+    "seccion": "III Nefrona y corpúsculo renal",
+    "pregunta": "Ordena el recorrido tubular descrito en la guía.",
+    "respuesta": "Corpúsculo renal, túbulo contorneado proximal, asa de Henle y túbulo contorneado distal; este se comunica con el conducto colector mediante un conducto conector.",
+    "tipo": "ordenar",
+    "estructuraRelacionada": "rinon_derecho",
+    "dificultad": "media",
+    "numeroDocumento": 19,
+    "seccionOriginal": "III. Nefrona y corpúsculo renal",
+    "pasos": [
+      "Corpúsculo renal",
+      "Túbulo contorneado proximal",
+      "Asa de Henle",
+      "Túbulo contorneado distal",
+      "Conducto conector",
+      "Conducto colector"
+    ],
+    "fuenteId": "lab11-19",
+    "derivada": true
+  },
+  {
+    "id": "lab11-31-orden",
+    "seccion": "V Histología del uréter y la vejiga",
+    "pregunta": "Ordena las capas del uréter desde la luz hacia el exterior.",
+    "respuesta": "Mucosa, capa muscular y adventicia.",
+    "tipo": "ordenar",
+    "estructuraRelacionada": "ureter_derecho",
+    "dificultad": "media",
+    "numeroDocumento": 31,
+    "seccionOriginal": "V. Histología del uréter y de la vejiga",
+    "pasos": [
+      "Mucosa",
+      "Capa muscular",
+      "Adventicia"
+    ],
+    "fuenteId": "lab11-31",
+    "derivada": true
+  },
+  {
+    "id": "lab11-51-orden",
+    "seccion": "VII Uréteres, vejiga y uretra",
+    "pregunta": "Ordena las porciones de la uretra masculina desde la vejiga.",
+    "respuesta": "Prostática, membranosa y esponjosa o peneana.",
+    "tipo": "ordenar",
+    "estructuraRelacionada": "uretra_prostatica",
+    "dificultad": "media",
+    "numeroDocumento": 51,
+    "seccionOriginal": "VII. Anatomía de uréteres, vejiga y uretra",
+    "pasos": [
+      "Prostática",
+      "Membranosa",
+      "Esponjosa o peneana"
+    ],
+    "fuenteId": "lab11-51",
+    "derivada": true
+  },
+  {
+    "id": "lab11-45-orden",
+    "seccion": "VII Uréteres, vejiga y uretra",
+    "pregunta": "Ordena las porciones del uréter desde el riñón hacia la vejiga.",
+    "respuesta": "Una porción abdominal y una porción pélvica.",
+    "tipo": "ordenar",
+    "estructuraRelacionada": "ureter_derecho_abdominal",
+    "dificultad": "media",
+    "numeroDocumento": 45,
+    "seccionOriginal": "VII. Anatomía de uréteres, vejiga y uretra",
+    "pasos": [
+      "Porción abdominal",
+      "Porción pélvica"
+    ],
+    "fuenteId": "lab11-45",
+    "derivada": true
+  }
+]

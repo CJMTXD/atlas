@@ -1,3 +1,4 @@
+import {mejorarSuperficies} from "../modelo/detalle-urinario.js";
 import {iniciarEstudio as extraido_iniciarEstudio} from '../estudio/panel.js';
 import {avisar as extraido_avisar} from '../ui/avisos.js';
 import {mostrarInformacion as extraido_mostrarInformacion} from '../ui/informacion.js';
@@ -58,7 +59,7 @@ import {datos} from "./datos.js";
 import {cargarMallas} from "../modelo/loader-mallas.js";
 
     // Fuente: DOCX del laboratorio 11. Preguntas y respuestas literales; dificultad didáctica añadida.
-    const BANCO=datos["banco-urinario"];
+    const BANCO=[...datos["banco-urinario"],...datos["orden-urinario"]];
     const FUENTE_DOCX=datos["fuente"];
     const AUTOEVALUACION=datos["autoevaluacion"];
     const SECCIONES=datos["secciones"];
@@ -291,6 +292,7 @@ const contextoCompartido={get SISTEMAS(){return SISTEMAS;},set SISTEMAS(v){SISTE
       }
       if(!mallas.length) throw new Error("El modelo no contiene mallas utilizables.");
 
+      mejorarSuperficies(contextoCompartido);
       agregarAnatomiaUrinaria();
 
       // Centros y direcciones de separación para cada estructura.

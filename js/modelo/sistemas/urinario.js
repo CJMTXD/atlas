@@ -11,7 +11,7 @@ export function puntoParte(contextoModulo,id) {
         const p=contextoModulo.partes.get(id);
         return p ? new contextoModulo.T.Box3().setFromObject(p.grupo).getCenter(new contextoModulo.T.Vector3()) : new contextoModulo.T.Vector3();
       }
-export function tuboUrinario(contextoModulo,p,puntos,radio,color) {return contextoModulo.tubo(p,puntos,radio,color);}
+export function tuboUrinario(contextoModulo,p,puntos,radio,color) {const curva=new contextoModulo.T.CatmullRomCurve3(puntos.map(a=>new contextoModulo.T.Vector3(...a)));return contextoModulo.agregarMalla(p,new contextoModulo.T.TubeGeometry(curva,Math.max(48,puntos.length*12),radio,16,false),[1,1,1],[0,0,0],color);}
 export function agregarAnatomiaUrinaria(contextoModulo) {
         for(const p of contextoModulo.partes.values()) if(p.meta.sistema==="urinario") p.meta.urinaria=true;
         for(const [lado,suf,signo] of [["derecho","derecha",-1],["izquierdo","izquierda",1]]) {
@@ -90,7 +90,7 @@ export function agregarAnatomiaUrinaria(contextoModulo) {
             p=contextoModulo.fichaUrinaria("ureter_"+lado+"_"+por,"Uréter "+lado+" · porción "+n,"Pars "+(por==="abdominal"?"abdominalis":"pelvica")+" ureteris",
               "Segmento "+n+" del uréter "+lado+".","Conducir orina por peristaltismo hacia la vejiga.",por==="abdominal"?"Retroperitoneo, por delante del psoas mayor.":"Pared lateral de la pelvis hacia la vejiga.",
               ["ureter_"+lado,"psoas_"+lado,"vejiga"],{padre:"ureter_"+lado,region:por==="abdominal"?"abdomen":"pelvis"});
-            contextoModulo.tuboUrinario(p,[desde.toArray(),desde.clone().lerp(hasta,.5).toArray(),hasta.toArray()],.018,"#dcb783");
+            contextoModulo.tuboUrinario(p,[desde.toArray(),desde.clone().lerp(hasta,.5).add(new contextoModulo.T.Vector3(signo*.035,0,.035)).toArray(),hasta.toArray()],.018,"#dcb783");
           }
           p=contextoModulo.fichaUrinaria("psoas_"+lado,"Psoas mayor "+lado,"Musculus psoas major","Músculo de la pared abdominal posterior relacionado con el uréter abdominal.",
             "Flexionar la cadera y contribuir a estabilizar la columna lumbar.","A los lados de la columna lumbar; el uréter desciende por delante.",["ureter_"+lado+"_abdominal"],{sistema:"muscular",contextoUrinario:true});
@@ -101,8 +101,8 @@ export function agregarAnatomiaUrinaria(contextoModulo) {
           const p=contextoModulo.fichaUrinaria(id,nombre,latin,desc,func,"Vejiga urinaria",rel,{padre:"vejiga",region:"pelvis",interno:true});p.grupo.position.copy(vb);return p;
         };
         let p=interior("detrusor","Músculo detrusor","Musculus detrusor vesicae","Músculo liso de la pared de la vejiga.","Contraerse durante la micción para expulsar la orina.",["vejiga","trigono"]);
-        for(let i=0;i<7;i++) {
-          const a=i/7*Math.PI;
+        for(let i=0;i<14;i++) {
+          const a=i/14*Math.PI;
           const pts=Array.from({length:33},(_,j)=>{const t=j/32*Math.PI*2;return [Math.sin(t)*tam.x*.43*Math.cos(a),Math.cos(t)*tam.y*.43,Math.sin(t)*tam.z*.43*Math.sin(a)];});
           contextoModulo.tuboUrinario(p,pts,.008,"#b87879");
         }
