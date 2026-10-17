@@ -8,3 +8,6 @@
 .study-body label {display:block;margin-top:8px;}
 @media(max-width:850px){.study-body textarea,.study-body input {font-size:16px;}.study-body button{min-height:40px;}}
 @media(max-width:850px){.study-panel.study-practico{height:43%;}.study-panel.study-practico .study-nav{display:none;}}
+.modo-enfoque aside,.modo-enfoque .stage-top,.modo-enfoque .orientation,.modo-enfoque .stage-bottom {display:none!important;}
+#salir-enfoque {position:fixed;right:12px;top:125px;z-index:80;box-shadow:var(--shadow);min-height:44px;}
+.pwa-status {font-size:10px;margin-left:auto;}

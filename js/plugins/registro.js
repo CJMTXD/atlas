@@ -22,3 +22,5 @@ export {default as notas} from "../estudio/notas.js";
 export {default as oclusion} from "../estudio/oclusion.js";
 
 export {default as practico} from "../estudio/practico.js";
+
+export {default as herramientas} from "../estudio/herramientas.js";
