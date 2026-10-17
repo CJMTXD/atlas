@@ -10,3 +10,5 @@ export {default as comparar} from "../estudio/comparar.js";
 export {default as auto} from "../estudio/auto.js";
 export {default as examen} from "../estudio/examen.js";
 export {default as errores} from "../estudio/errores.js";
+
+export {default as estadisticas} from "../estudio/estadisticas.js";
