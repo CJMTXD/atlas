@@ -1,0 +1,32 @@
+[
+  {
+    "tema": "oscuro",
+    "par": "text/panel",
+    "contraste": 15.54
+  },
+  {
+    "tema": "oscuro",
+    "par": "muted/panel",
+    "contraste": 7.71
+  },
+  {
+    "tema": "oscuro",
+    "par": "ink/accent",
+    "contraste": 11.14
+  },
+  {
+    "tema": "claro",
+    "par": "text/panel",
+    "contraste": 14.32
+  },
+  {
+    "tema": "claro",
+    "par": "muted/panel",
+    "contraste": 5.88
+  },
+  {
+    "tema": "claro",
+    "par": "ink/accent",
+    "contraste": 5.15
+  }
+]

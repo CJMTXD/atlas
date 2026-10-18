@@ -11,3 +11,4 @@
 .modo-enfoque aside,.modo-enfoque .stage-top,.modo-enfoque .orientation,.modo-enfoque .stage-bottom {display:none!important;}
 #salir-enfoque {position:fixed;right:12px;top:125px;z-index:80;box-shadow:var(--shadow);min-height:44px;}
 .pwa-status {font-size:10px;margin-left:auto;}
+@media(max-width:850px){footer{flex-wrap:wrap;gap:2px;}footer>span:nth-child(2){display:none;}footer .pwa-status{flex-basis:100%;margin-left:0;font-size:9px;}}

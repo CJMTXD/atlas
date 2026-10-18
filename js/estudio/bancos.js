@@ -4,10 +4,10 @@ export function validarBanco(lista){
  return lista.map((q,i)=>{if(!q||typeof q!=='object')throw new Error('Fila '+(i+1)+': registro inválido.');for(const k of ['pregunta','respuesta','seccion'])if(typeof q[k]!=='string'||!q[k].trim()||q[k].length>10000)throw new Error('Fila '+(i+1)+': '+k+' vacío o demasiado largo.');
  const texto=q.pregunta.trim()+'|'+q.respuesta.trim()+'|'+q.seccion.trim();let h=2166136261;for(const c of texto)h=Math.imul(h^c.charCodeAt(0),16777619);const id='propia-'+(h>>>0).toString(16);if(ids.has(id))throw new Error('Pregunta duplicada en fila '+(i+1)+'.');ids.add(id);
  const tipo=q.tipo||'mixto';if(!['mixto','ordenar','multiple','completar','vf'].includes(tipo))throw new Error('Tipo de pregunta no permitido en fila '+(i+1));
- const dificultad=q.dificultad||'media';if(!['baja','media','alta'].includes(dificultad))throw new Error('Dificultad no permitida en fila '+(i+1)+': usa baja, media o alta.');
+ const dificultad=q.dificultad||'media';if(!['baja','básica','media','alta'].includes(dificultad))throw new Error('Dificultad no permitida en fila '+(i+1)+': usa baja, media o alta.');
  const estructura=typeof q.estructuraRelacionada==='string'?q.estructuraRelacionada:'';let pasos=q.pasos;if(typeof pasos==='string'&&pasos)try{pasos=JSON.parse(pasos);}catch{throw new Error('Pasos JSON inválidos en fila '+(i+1));}
  if(tipo==='ordenar'&&(!Array.isArray(pasos)||pasos.length<2||pasos.length>12||pasos.some(x=>typeof x!=='string'||!x.trim()||x.length>500)||new Set(pasos).size!==pasos.length))throw new Error('La pregunta de ordenar requiere 2–12 pasos distintos.');
- return {id,pregunta:q.pregunta.trim(),respuesta:q.respuesta.trim(),seccion:q.seccion.trim(),tipo,dificultad,estructuraRelacionada:estructura,...(tipo==='ordenar'?{pasos}:{}),origen:'usuario',aviso:'Contenido adicional, verificar con tu material'};});
+ return {id,pregunta:q.pregunta.trim(),respuesta:q.respuesta.trim(),seccion:q.seccion.trim(),tipo,dificultad:dificultad==='baja'?'básica':dificultad,estructuraRelacionada:estructura,...(tipo==='ordenar'?{pasos}:{}),origen:'usuario',aviso:'Contenido adicional, verificar con tu material'};});
 }
 export function leerBanco(texto){
  if(texto.length>3*1024*1024)throw new Error('El banco supera 3 MB.');const t=texto.replace(/^\ufeff/,'').trim();

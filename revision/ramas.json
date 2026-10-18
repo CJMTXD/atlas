@@ -1,0 +1,134 @@
+[
+  {
+    "head": "refactor/fase-2-paso-1",
+    "base": "main",
+    "titulo": "Fase 2 · Paso 1: extraer CSS y JS",
+    "descripcion": "revision/01-PR.md"
+  },
+  {
+    "head": "refactor/fase-2-paso-2",
+    "base": "refactor/fase-2-paso-1",
+    "titulo": "Fase 2 · Paso 2: extraer mallas binarias",
+    "descripcion": "revision/02-PR.md"
+  },
+  {
+    "head": "refactor/fase-2-paso-3",
+    "base": "refactor/fase-2-paso-2",
+    "titulo": "Fase 2 · Paso 3: extraer datos JSON",
+    "descripcion": "revision/03-PR.md"
+  },
+  {
+    "head": "refactor/fase-2-paso-4",
+    "base": "refactor/fase-2-paso-3",
+    "titulo": "Fase 2 · Paso 4: separar núcleo 3D",
+    "descripcion": "revision/04-PR.md"
+  },
+  {
+    "head": "refactor/fase-2-paso-5",
+    "base": "refactor/fase-2-paso-4",
+    "titulo": "Fase 2 · Paso 5: separar modelo",
+    "descripcion": "revision/05-PR.md"
+  },
+  {
+    "head": "refactor/fase-2-paso-6",
+    "base": "refactor/fase-2-paso-5",
+    "titulo": "Fase 2 · Paso 6: separar interfaz",
+    "descripcion": "revision/06-PR.md"
+  },
+  {
+    "head": "refactor/fase-2-paso-7",
+    "base": "refactor/fase-2-paso-6",
+    "titulo": "Fase 2 · Paso 7: separar estudio",
+    "descripcion": "revision/07-PR.md"
+  },
+  {
+    "head": "refactor/fase-2-paso-8",
+    "base": "refactor/fase-2-paso-7",
+    "titulo": "Fase 2 · Paso 8: registrar plugins",
+    "descripcion": "revision/08-PR.md"
+  },
+  {
+    "head": "refactor/fase-2-paso-9",
+    "base": "refactor/fase-2-paso-8",
+    "titulo": "Fase 2 · Paso 9: arranque y documentación",
+    "descripcion": "revision/09-PR.md"
+  },
+  {
+    "head": "mejoras/fase-3",
+    "base": "refactor/fase-2-paso-9",
+    "titulo": "Fase 3: detalle urinario y preguntas derivadas",
+    "descripcion": "revision/10-PR.md"
+  },
+  {
+    "head": "funciones/fase-4-01-sm2",
+    "base": "mejoras/fase-3",
+    "titulo": "Fase 4 · 1: repetición SM-2",
+    "descripcion": "revision/11-PR.md"
+  },
+  {
+    "head": "funciones/fase-4-02-estadisticas",
+    "base": "funciones/fase-4-01-sm2",
+    "titulo": "Fase 4 · 2: estadísticas y metas",
+    "descripcion": "revision/12-PR.md"
+  },
+  {
+    "head": "funciones/fase-4-03-intercambio",
+    "base": "funciones/fase-4-02-estadisticas",
+    "titulo": "Fase 4 · 3: intercambio y Anki",
+    "descripcion": "revision/13-PR.md"
+  },
+  {
+    "head": "funciones/fase-4-04-bancos",
+    "base": "funciones/fase-4-03-intercambio",
+    "titulo": "Fase 4 · 4: bancos propios",
+    "descripcion": "revision/14-PR.md"
+  },
+  {
+    "head": "funciones/fase-4-05-notas",
+    "base": "funciones/fase-4-04-bancos",
+    "titulo": "Fase 4 · 5: notas y marcadores",
+    "descripcion": "revision/15-PR.md"
+  },
+  {
+    "head": "funciones/fase-4-06-oclusion",
+    "base": "funciones/fase-4-05-notas",
+    "titulo": "Fase 4 · 6: oclusión local",
+    "descripcion": "revision/16-PR.md"
+  },
+  {
+    "head": "funciones/fase-4-07-practico",
+    "base": "funciones/fase-4-06-oclusion",
+    "titulo": "Fase 4 · 7: examen práctico",
+    "descripcion": "revision/17-PR.md"
+  },
+  {
+    "head": "funciones/fase-4-08-pistas",
+    "base": "funciones/fase-4-07-practico",
+    "titulo": "Fase 4 · 8: pistas y mnemotecnias",
+    "descripcion": "revision/18-PR.md"
+  },
+  {
+    "head": "funciones/fase-4-09-pwa",
+    "base": "funciones/fase-4-08-pistas",
+    "titulo": "Fase 4 · 9: PWA sin conexión",
+    "descripcion": "revision/19-PR.md"
+  },
+  {
+    "head": "funciones/fase-4-10-enfoque-voz",
+    "base": "funciones/fase-4-09-pwa",
+    "titulo": "Fase 4 · 10: enfoque y voz",
+    "descripcion": "revision/20-PR.md"
+  },
+  {
+    "head": "funciones/fase-4-11-fisiologia",
+    "base": "funciones/fase-4-10-enfoque-voz",
+    "titulo": "Fase 4 · 11: fisiología 3D",
+    "descripcion": "revision/21-PR.md"
+  },
+  {
+    "head": "verificacion/integral",
+    "base": "funciones/fase-4-11-fisiologia",
+    "titulo": "Verificación integral y entrega de fases 2–4",
+    "descripcion": "revision/22-PR.md"
+  }
+]

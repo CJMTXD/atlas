@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "escritorio: carga, ficha desde búsqueda y clic 3D en riñón aislado, corte Y, quizzes, flashcards, temas y layout OK",
+    "móvil: carga, ficha desde búsqueda y clic 3D en riñón aislado, corte Y, quizzes, flashcards, temas y layout OK"
+  ],
+  "errores_js": [],
+  "errores_consola": []
+}

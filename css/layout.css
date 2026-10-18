@@ -1,0 +1,34 @@
+    .app {
+      height: 100dvh;
+      display: grid;
+      grid-template-rows: 76px minmax(0,1fr) 36px;
+    }
+    header {
+      display: flex; align-items: center; gap: 20px;
+      padding: 12px 22px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+      z-index: 20;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; min-width: 190px; }
+    .brand-mark {
+      width: 37px; height: 43px;
+      display: grid; place-items: center;
+      border: 1px solid var(--accent);
+      color: var(--accent); border-radius: 11px;
+    }
+    .brand h1 { font-size: 22px; letter-spacing: -.8px; margin: 0; }
+    .brand small { display: block; font-size: 10px; letter-spacing: 2px; margin-top: 3px; }
+    .search-wrap { position: relative; flex: 1; max-width: 560px; }
+    .search-wrap > .icon { position: absolute; top: 12px; left: 12px; color: var(--muted); }
+    #search { width: 100%; padding-left: 38px; }
+    #search-results {
+      position: absolute; top: 46px; width: 100%; max-height: 330px;
+      overflow: auto; border: 1px solid var(--line);
+      background: var(--panel); border-radius: 10px; box-shadow: var(--shadow);
+    }
+    #search-results:empty { display: none; }
+    .result { width: 100%; text-align: left; border: 0; border-radius: 0; }
+    .result small { display: block; margin-top: 3px; }
+    .header-actions { display: flex; gap: 7px; margin-left: auto; }
+    main { display: flex; min-height: 0; position: relative; overflow: hidden; }

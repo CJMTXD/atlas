@@ -1,0 +1,56 @@
+[
+  {
+    "id": "corteza",
+    "existe": true,
+    "visible": true,
+    "conCorte": true
+  },
+  {
+    "id": "medula",
+    "existe": true,
+    "visible": true,
+    "conCorte": true
+  },
+  {
+    "id": "piramides",
+    "existe": true,
+    "visible": true,
+    "conCorte": true
+  },
+  {
+    "id": "columnas",
+    "existe": true,
+    "visible": true,
+    "conCorte": true
+  },
+  {
+    "id": "papila",
+    "existe": true,
+    "visible": true,
+    "conCorte": true
+  },
+  {
+    "id": "calices_menores",
+    "existe": true,
+    "visible": true,
+    "conCorte": true
+  },
+  {
+    "id": "calices_mayores",
+    "existe": true,
+    "visible": true,
+    "conCorte": true
+  },
+  {
+    "id": "pelvis_renal",
+    "existe": true,
+    "visible": true,
+    "conCorte": true
+  },
+  {
+    "id": "hilio",
+    "existe": true,
+    "visible": true,
+    "conCorte": true
+  }
+]

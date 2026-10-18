@@ -30,7 +30,53 @@ import {resumenFlash as extraido_resumenFlash} from './leitner.js';
 import {dibujoEpitelio as extraido_dibujoEpitelio} from './esquemas-svg.js';
 // Funciones extraídas con referencias explícitas al contexto compartido.
 export function iniciarEstudio(contextoModulo) {
-const contextoCompartido={get titulo(){return titulo;},set titulo(v){titulo=v;},get contenido(){return contenido;},set contenido(v){contenido=v;},get mensaje(){return mensaje;},set mensaje(v){mensaje=v;},get contextoModulo(){return contextoModulo;},set contextoModulo(v){contextoModulo=v;},get nodo(){return nodo;},set nodo(v){nodo=v;},get boton(){return boton;},set boton(v){boton=v;},get persistente(){return persistente;},set persistente(v){persistente=v;},get progreso(){return progreso;},set progreso(v){progreso=v;},get formatoTiempo(){return formatoTiempo;},set formatoTiempo(v){formatoTiempo=v;},get soloErrores(){return soloErrores;},set soloErrores(v){soloErrores=v;},get faltaBanco(){return faltaBanco;},set faltaBanco(v){faltaBanco=v;},get filtros(){return filtros;},set filtros(v){filtros=v;},get comenzarSesion(){return comenzarSesion;},set comenzarSesion(v){comenzarSesion=v;},get barajar(){return barajar;},set barajar(v){barajar=v;},get bancoFiltrado(){return bancoFiltrado;},set bancoFiltrado(v){bancoFiltrado=v;},get flash(){return flash;},set flash(v){flash=v;},get mostrarFlash(){return mostrarFlash;},set mostrarFlash(v){mostrarFlash=v;},get resaltarEstructura(){return resaltarEstructura;},set resaltarEstructura(v){resaltarEstructura=v;},get limpiar(){return limpiar;},set limpiar(v){limpiar=v;},get svgNodo(){return svgNodo;},set svgNodo(v){svgNodo=v;},get svgActivo(){return svgActivo;},set svgActivo(v){svgActivo=v;},get animacionSVG(){return animacionSVG;},set animacionSVG(v){animacionSVG=v;},get dibujoEpitelio(){return dibujoEpitelio;},set dibujoEpitelio(v){dibujoEpitelio=v;},get sincronizarSexo(){return sincronizarSexo;},set sincronizarSexo(v){sincronizarSexo=v;},get guardar(){return guardar;},set guardar(v){guardar=v;},get modo(){return modo;},set modo(v){modo=v;},get clave(){return clave;},set clave(v){clave=v;},get filtroSeccion(){return filtroSeccion;},set filtroSeccion(v){filtroSeccion=v;},get filtroDificultad(){return filtroDificultad;},set filtroDificultad(v){filtroDificultad=v;},get claveRespuesta(){return claveRespuesta;},set claveRespuesta(v){claveRespuesta=v;},get candidatosDistractores(){return candidatosDistractores;},set candidatosDistractores(v){candidatosDistractores=v;},get sesion(){return sesion;},set sesion(v){sesion=v;},get prepararPregunta(){return prepararPregunta;},set prepararPregunta(v){prepararPregunta=v;},get mostrarPregunta(){return mostrarPregunta;},set mostrarPregunta(v){mostrarPregunta=v;},get cronometro(){return cronometro;},set cronometro(v){cronometro=v;},get actualizarReloj(){return actualizarReloj;},set actualizarReloj(v){actualizarReloj=v;},get finalizarSesion(){return finalizarSesion;},set finalizarSesion(v){finalizarSesion=v;},get dibujarOrden(){return dibujarOrden;},set dibujarOrden(v){dibujarOrden=v;},get siguiente(){return siguiente;},set siguiente(v){siguiente=v;},get responder(){return responder;},set responder(v){responder=v;},get canon(){return canon;},set canon(v){canon=v;},get cambiarModo(){return cambiarModo;},set cambiarModo(v){cambiarModo=v;},get voltear(){return voltear;},set voltear(v){voltear=v;},get resumenFlash(){return resumenFlash;},set resumenFlash(v){resumenFlash=v;},get calificarFlash(){return calificarFlash;},set calificarFlash(v){calificarFlash=v;}};
+const contextoCompartido={
+  get titulo(){return titulo;},set titulo(v){titulo=v;},
+  get contenido(){return contenido;},set contenido(v){contenido=v;},
+  get mensaje(){return mensaje;},set mensaje(v){mensaje=v;},
+  get contextoModulo(){return contextoModulo;},set contextoModulo(v){contextoModulo=v;},
+  get nodo(){return nodo;},set nodo(v){nodo=v;},
+  get boton(){return boton;},set boton(v){boton=v;},
+  get persistente(){return persistente;},set persistente(v){persistente=v;},
+  get progreso(){return progreso;},set progreso(v){progreso=v;},
+  get formatoTiempo(){return formatoTiempo;},set formatoTiempo(v){formatoTiempo=v;},
+  get soloErrores(){return soloErrores;},set soloErrores(v){soloErrores=v;},
+  get faltaBanco(){return faltaBanco;},set faltaBanco(v){faltaBanco=v;},
+  get filtros(){return filtros;},set filtros(v){filtros=v;},
+  get comenzarSesion(){return comenzarSesion;},set comenzarSesion(v){comenzarSesion=v;},
+  get barajar(){return barajar;},set barajar(v){barajar=v;},
+  get bancoFiltrado(){return bancoFiltrado;},set bancoFiltrado(v){bancoFiltrado=v;},
+  get flash(){return flash;},set flash(v){flash=v;},
+  get mostrarFlash(){return mostrarFlash;},set mostrarFlash(v){mostrarFlash=v;},
+  get resaltarEstructura(){return resaltarEstructura;},set resaltarEstructura(v){resaltarEstructura=v;},
+  get limpiar(){return limpiar;},set limpiar(v){limpiar=v;},
+  get svgNodo(){return svgNodo;},set svgNodo(v){svgNodo=v;},
+  get svgActivo(){return svgActivo;},set svgActivo(v){svgActivo=v;},
+  get animacionSVG(){return animacionSVG;},set animacionSVG(v){animacionSVG=v;},
+  get dibujoEpitelio(){return dibujoEpitelio;},set dibujoEpitelio(v){dibujoEpitelio=v;},
+  get sincronizarSexo(){return sincronizarSexo;},set sincronizarSexo(v){sincronizarSexo=v;},
+  get guardar(){return guardar;},set guardar(v){guardar=v;},
+  get modo(){return modo;},set modo(v){modo=v;},
+  get clave(){return clave;},set clave(v){clave=v;},
+  get filtroSeccion(){return filtroSeccion;},set filtroSeccion(v){filtroSeccion=v;},
+  get filtroDificultad(){return filtroDificultad;},set filtroDificultad(v){filtroDificultad=v;},
+  get claveRespuesta(){return claveRespuesta;},set claveRespuesta(v){claveRespuesta=v;},
+  get candidatosDistractores(){return candidatosDistractores;},set candidatosDistractores(v){candidatosDistractores=v;},
+  get sesion(){return sesion;},set sesion(v){sesion=v;},
+  get prepararPregunta(){return prepararPregunta;},set prepararPregunta(v){prepararPregunta=v;},
+  get mostrarPregunta(){return mostrarPregunta;},set mostrarPregunta(v){mostrarPregunta=v;},
+  get cronometro(){return cronometro;},set cronometro(v){cronometro=v;},
+  get actualizarReloj(){return actualizarReloj;},set actualizarReloj(v){actualizarReloj=v;},
+  get finalizarSesion(){return finalizarSesion;},set finalizarSesion(v){finalizarSesion=v;},
+  get dibujarOrden(){return dibujarOrden;},set dibujarOrden(v){dibujarOrden=v;},
+  get siguiente(){return siguiente;},set siguiente(v){siguiente=v;},
+  get responder(){return responder;},set responder(v){responder=v;},
+  get canon(){return canon;},set canon(v){canon=v;},
+  get cambiarModo(){return cambiarModo;},set cambiarModo(v){cambiarModo=v;},
+  get voltear(){return voltear;},set voltear(v){voltear=v;},
+  get resumenFlash(){return resumenFlash;},set resumenFlash(v){resumenFlash=v;},
+  get calificarFlash(){return calificarFlash;},set calificarFlash(v){calificarFlash=v;}
+};
 
         // Toda inserción de texto se realiza mediante textContent. No se evalúan datos.
         const nodo=(tag,texto,attrs={})=>{const n=document.createElement(tag);if(texto!==null&&texto!==undefined)n.textContent=texto;for(const [k,v]of Object.entries(attrs))n.setAttribute(k,String(v));return n;};
@@ -52,9 +98,11 @@ const contextoCompartido={get titulo(){return titulo;},set titulo(v){titulo=v;},
         const cab=nodo("div",null,{class:"study-header"});cab.append(nodo("h2","Estudiar"),boton("Cerrar",cerrar,{"aria-label":"Cerrar panel Estudiar"}));
         const navegacion=nodo("nav",null,{class:"study-nav","aria-label":"Modos de estudio"}),contenido=nodo("div",null,{class:"study-body",id:"study-content",tabindex:"-1"});
         panelEst.append(cab,navegacion,contenido);document.querySelector("main").append(panelEst);
-        const abrir=boton("Estudiar",()=>{if(contextoModulo.vistaMovil.matches){contextoModulo.estadoPanel("left",false);contextoModulo.estadoPanel("right",false);}panelEst.hidden=false;abrir.setAttribute("aria-expanded","true");if(contextoModulo.estado.quiz.activo)contextoModulo.terminarQuiz();if(svgActivo)svgActivo.unpauseAnimations?.();contenido.focus({preventScroll:true});},{id:"study-open","aria-expanded":"false","aria-controls":"study-panel"});
+        const abrir=boton("Estudiar",()=>{if(contextoModulo.vistaMovil.matches){contextoModulo.estadoPanel("left",false);contextoModulo.estadoPanel("right",false);}panelEst.hidden=false;abrir.setAttribute("aria-expanded","true");if(contextoModulo.estado.quiz.activo)contextoModulo.terminarQuiz();if(svgActivo)svgActivo.unpauseAnimations?.();registro[modo]?.reanudar?.();contenido.focus({preventScroll:true});},{id:"study-open","aria-expanded":"false","aria-controls":"study-panel"});
         document.querySelector(".header-actions").prepend(abrir);
-        const tabs=Object.values(registro).map(p=>[p.id,p.titulo]);
+        const orden=["inicio","quiz","flash","ruta","nefrona","histologia","epitelios","comparar","auto","examen","errores","estadisticas","transferencias","importador","notas","oclusion","practico","herramientas","fisiologia"];
+        const prioridad=id=>orden.includes(id)?orden.indexOf(id):orden.length;
+        const tabs=Object.values(registro).sort((a,b)=>prioridad(a.id)-prioridad(b.id)).map(p=>[p.id,p.titulo]);
         tabs.forEach(([id,label])=>navegacion.append(boton(label,()=>cambiarModo(id),{"data-mode":id,"aria-pressed":"false"})));
         function cerrar({devolverFoco=true}={}){registro[modo]?.pausar?.();panelEst.hidden=true;abrir.setAttribute("aria-expanded","false");svgActivo?.pauseAnimations?.();if(contextoModulo.urinario.flujo){contextoModulo.urinario.pausa=true;if(contextoModulo.$("urine-play"))contextoModulo.$("urine-play").textContent="Continuar";}contextoModulo.solicitarRender();if(devolverFoco)abrir.focus({preventScroll:true});}
         function cambiarModo(nuevo){
@@ -115,5 +163,5 @@ const contextoCompartido={get titulo(){return titulo;},set titulo(v){titulo=v;},
           return false;
         }
         registro.inicio.montar(contextoCompartido);
-        return {atajo,sincronizarSexo,cerrar,abrirModo(id){abrir.click();cambiarModo(id);},detener(){clearInterval(cronometro);document.removeEventListener("visibilitychange",actualizarReloj);svgActivo?.pauseAnimations?.();}};
+        return {atajo,sincronizarSexo,cerrar,abrirModo(id){abrir.click();cambiarModo(id);},detener(){registro[modo]?.desmontar();clearInterval(cronometro);document.removeEventListener("visibilitychange",actualizarReloj);svgActivo?.pauseAnimations?.();}};
       }

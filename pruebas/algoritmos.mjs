@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {programarSM2} from '../js/estudio/sm2.js';
+import {leerBanco} from '../js/estudio/bancos.js';
+import {leerCSV,bancoCSV,progresoCSV,importarProgreso} from '../js/estudio/intercambio.js';
+import {coincideNombre} from '../js/estudio/practico.js';
+import {resumenEstadistico} from '../js/estudio/estadisticas.js';
+import fs from 'node:fs';
+let s=programarSM2({},4,0);assert.equal(s.intervalo,1);s=programarSM2(s,4,0);assert.equal(s.intervalo,6);s=programarSM2(s,4,0);assert.equal(s.intervalo,15);s=programarSM2(s,0,0);assert.equal(s.repeticiones,0);assert.equal(s.intervalo,1);assert(s.factor>=1.3);
+let b=leerBanco('Pregunta | Respuesta | Tema');assert.equal(b.length,1);b=leerBanco(bancoCSV(b));assert.equal(b[0].respuesta,'Respuesta');assert.throws(()=>leerBanco('Solo pregunta'));assert.throws(()=>leerBanco('"pregunta","respuesta","seccion"\n"sin cierre'));
+assert.equal(leerCSV('"a","línea\ncon ""comillas"""')[0][1],'línea\ncon "comillas"');
+const progreso={version:1,progreso:{tarjetas:{a:{caja:2,vence:123}},errores:{a:{intentos:2,fallos:1,pendiente:true}},autoevaluacion:{a:true},sesiones:[]},extra:{version:1,bancos:[],historial:[],notas:{}}};assert.deepEqual(importarProgreso(progresoCSV(progreso)),progreso);assert.throws(()=>importarProgreso('{"version":1,"__proto__":{}}'));
+assert(coincideNombre('RINON DERECHO',['Riñón derecho']));assert(coincideNombre('riñon derehco',['Riñón derecho']));assert(!coincideNombre('uretra',['Uréter']));
+const ahora=new Date(2026,9,17,12).getTime(),ayer=new Date(2026,9,16,12).getTime();const st=resumenEstadistico([{fecha:ahora,total:2,aciertos:1,temas:{A:{total:2,aciertos:1}}},{fecha:ayer,total:3,aciertos:2,temas:{A:{total:3,aciertos:2}}}],ahora);assert.equal(st.racha,2);assert.equal(st.secciones.A.total,5);assert.equal(st.secciones.A.aciertos,3);
+const banco=JSON.parse(fs.readFileSync(new URL('../data/banco-urinario.json',import.meta.url)));assert.equal(leerBanco(bancoCSV(banco)).length,53);
+console.log('SM-2, intercambio CSV/JSON, validaciones, banco completo, racha y nombres: OK');

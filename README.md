@@ -50,3 +50,38 @@ Geometría: BodyParts3D, © The Database Center for Life Science. Adaptaciones b
 ## Pistas y mnemotecnias
 
 Desde una ficha pulsa **Notas y repasar luego**, o abre el modo Notas. Cada estructura conserva notas, mnemotecnia, pista opcional y marcador. El examen práctico ofrece la pista escrita para la estructura señalada, únicamente cuando existe; no genera datos médicos. Estos campos están incluidos en la exportación de progreso.
+
+## Funciones de estudio añadidas
+
+- **Flashcards:** elige Leitner o SM-2. Los intervalos se guardan por separado; SM-2 ofrece Difícil, Bien y Fácil, y Repasar reinicia la secuencia.
+- **Estadísticas:** aciertos por sección, gráfico de los últimos siete días, últimas sesiones, racha según la fecha local y meta diaria.
+- **Importar / exportar:** progreso y banco en JSON o CSV; TSV para Anki. Primero exporta tu progreso antes de reemplazarlo. Las imágenes de oclusión están en IndexedDB y no se incluyen en ese JSON.
+- **Mis bancos:** JSON, CSV con cabeceras `pregunta,respuesta,seccion`, o líneas `pregunta | respuesta | sección`. Valida y previsualiza antes de importar. Las preguntas propias tienen IDs separados y nunca reemplazan las 53 originales.
+- **Notas y marcadores:** notas, mnemotecnias, pistas y Repasar luego por estructura.
+- **Oclusión:** PNG/JPEG/WebP hasta 8 MB y 24 megapíxeles, almacenados únicamente en el navegador. Dibuja máscaras o introdúcelas con teclado; en estudio, pulsa cada máscara para revelar. Si IndexedDB falla se usa memoria temporal y se avisa. Borrar los datos del navegador elimina estas imágenes.
+- **Examen práctico:** identifica la estructura marcada. Acepta tildes, mayúsculas y erratas limitadas, y presenta un resumen. Las pistas solo son las escritas por el usuario.
+- **Enfoque y voz:** pantalla completa cuando el navegador la admite, modo enfoque reversible y lectura mediante las voces disponibles del dispositivo/navegador.
+- **Fisiología 3D:** peristaltismo y ciclo de llenado/vaciado con pliegues de mucosa. Son esquemas cualitativos identificados como contenido adicional, sin medidas clínicas.
+
+Las superficies de uréteres y vejiga y los conductos uretrales tienen mayor detalle procedural. Los interiores renales mantienen selección, corte y relaciones. Hay cuatro preguntas de orden derivadas de respuestas originales, con `fuenteId`; el banco literal no se modifica.
+
+## Instalar y usar sin conexión
+
+La distribución final utiliza Three.js local. Abre el atlas en HTTPS o localhost y espera a **Disponible sin conexión**. El service worker prepara toda la aplicación y las mallas; la primera descarga puede tardar. Después puedes recargar sin red. Instala desde la opción del navegador **Añadir a pantalla de inicio**; en iPhone puede hacerse desde Compartir en Safari si el navegador actual no ofrece esa opción.
+
+Las actualizaciones muestran **Actualizar atlas** y se activan al pulsarlo, no durante una sesión automáticamente. Tras cambiar archivos de ejecución, ejecuta `python scripts/generar-sw.py`. No cambies a CDN si necesitas que la copia completa funcione sin red. Las fuentes de Google tienen respaldo de sistema y no son necesarias para estudiar sin conexión.
+
+La disponibilidad sin conexión depende del almacenamiento del navegador: el sistema puede eliminar cachés por falta de espacio. Exporta periódicamente el progreso importante. No se suben notas, bancos ni láminas a servidores.
+
+## Ejecutar las pruebas
+
+La aplicación no necesita Node ni Playwright. Solo las comprobaciones de desarrollo los utilizan:
+
+1. `node pruebas/algoritmos.mjs` comprueba SM-2, CSV/JSON, validaciones, tolerancia y estadísticas.
+2. Sirve esta carpeta mediante `python iniciar.py`.
+3. Con Playwright Python 1.62.0 y Chromium disponibles, ejecuta los scripts de `pruebas/` definiendo `ATLAS_TEST_URL=http://127.0.0.1:8000/` si sirves desde la raíz del proyecto. Por defecto prueban bajo `/atlas/`.
+4. Los scripts usan `/usr/bin/chromium`; adapta esa ruta si tu instalación de pruebas usa otra. No afecta a la aplicación.
+
+Pruebas automatizadas: `regresion.py`, `modos-nuevos.py`, `movil.py`, `renal.py` y `offline.py`. Los resultados están en `pruebas/resultados/`. La prueba renal añade instrumentación únicamente a la respuesta servida al navegador de prueba; no escribe variables de diagnóstico en el código de producción.
+
+Consulta `revision/INFORME.md` para resultados, límites y ramas. No se garantiza una tasa de 60 FPS en cualquier dispositivo; existe calidad baja y las animaciones se detienen cuando no son necesarias.

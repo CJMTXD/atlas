@@ -1,6 +1,8 @@
 // Funciones extraídas con referencias explícitas al contexto compartido.
 export function liberarRecursos(contextoModulo) {
         contextoModulo.estudioUI?.detener();
+        contextoModulo.observadorTamano.disconnect();
+        clearTimeout(contextoModulo.toastTimer);
         contextoModulo.vistaMovil.removeEventListener("change",contextoModulo.adaptarPaneles);
         cancelAnimationFrame(contextoModulo.frame);
         contextoModulo.controles.dispose();
