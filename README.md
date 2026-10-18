@@ -85,3 +85,18 @@ La aplicación no necesita Node ni Playwright. Solo las comprobaciones de desarr
 Pruebas automatizadas: `regresion.py`, `modos-nuevos.py`, `movil.py`, `renal.py` y `offline.py`. Los resultados están en `pruebas/resultados/`. La prueba renal añade instrumentación únicamente a la respuesta servida al navegador de prueba; no escribe variables de diagnóstico en el código de producción.
 
 Consulta `revision/INFORME.md` para resultados, límites y ramas. No se garantiza una tasa de 60 FPS en cualquier dispositivo; existe calidad baja y las animaciones se detienen cuando no son necesarias.
+
+## Navegación por apartados
+
+El botón **Estudiar** abre tres destinos: **Explorar 3D** (recorrido, animaciones,
+comparador y herramientas del visor), **Estudiar** (quizzes, flashcards, exámenes
+y esquemas) y **Mi progreso** (estadísticas, errores, notas y bancos).
+Cada actividad se abre desde una tarjeta; **Volver al menú** devuelve a su
+apartado. Al salir de un quiz activo se muestra primero su resumen.
+En móvil, los controles de recorrido, comparación y fisiología ocupan parte
+inferior de la pantalla para dejar visible el modelo.
+
+La distribución y las descripciones de las tarjetas están en
+`js/estudio/menu.js`. Los plugins nuevos sin categoría aparecen automáticamente
+en «Más actividades». Las pruebas de navegación se ejecutan con
+`python pruebas/menu.py` (requiere Playwright y Chromium, como las demás pruebas).

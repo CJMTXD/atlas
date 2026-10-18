@@ -1,3 +1,4 @@
+from navegacion import abrir_modo
 import os
 URL=os.environ.get("ATLAS_TEST_URL","http://127.0.0.1:8000/atlas/")
 from pathlib import Path
@@ -9,7 +10,7 @@ with sync_playwright() as p:
  c=b.new_context(viewport={'width':1440,'height':1000},service_workers='block');c.route('https://fonts.googleapis.com/**',lambda r:r.fulfill(status=200,body='',content_type='text/css'));c.route('**/favicon.ico',lambda r:r.fulfill(status=204,body=''))
  q=c.new_page();q.on('pageerror',lambda e:(errores.append(str(e)),print('ERROR',e,flush=True)));q.on('console',lambda m:print('CONSOLE',m.text,flush=True) if m.type=='error' else None)
  q.goto(URL);q.wait_for_function("document.getElementById('loading').hidden",timeout=70000);q.locator('#study-open').click()
- def modo(id):q.locator('[data-mode="'+id+'"]').click();q.wait_for_timeout(150)
+ def modo(id):abrir_modo(q,id);q.wait_for_timeout(150)
  def ok(t):pasos.append(t);print(t,flush=True)
  modo('flash');q.locator('#algoritmo').select_option('sm2');q.get_by_role('button',name='Estudiar tarjetas pendientes',exact=True).click();q.locator('#study-flash').click();q.locator('#sm2-calidad').select_option('5');q.locator('#flash-yes').click();q.get_by_role('button',name='Terminar',exact=True).click();assert q.evaluate("Object.values(JSON.parse(localStorage.getItem('atlas-urinario-estudio-v1')).tarjetas).some(t=>t.sm2?.intervalo===1)");ok('SM-2 guarda sin perder Leitner')
  modo('estadisticas');assert q.locator('#study-content svg').count()==1;q.locator('#meta-diaria').fill('12');q.locator('#meta-diaria').dispatch_event('change');ok('Estadísticas y meta persistida')

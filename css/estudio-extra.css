@@ -12,3 +12,35 @@
 #salir-enfoque {position:fixed;right:12px;top:125px;z-index:80;box-shadow:var(--shadow);min-height:44px;}
 .pwa-status {font-size:10px;margin-left:auto;}
 @media(max-width:850px){footer{flex-wrap:wrap;gap:2px;}footer>span:nth-child(2){display:none;}footer .pwa-status{flex-basis:100%;margin-left:0;font-size:9px;}}
+
+/* Tres destinos estables sustituyen la fila de modos con desplazamiento lateral. */
+.study-panel{width:min(580px,100%);}
+.study-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;overflow:visible;touch-action:auto;padding:12px 16px;}
+.study-nav button{white-space:normal;min-height:44px;font-size:12px;padding:9px 5px;}
+.study-back{align-self:flex-start;margin:10px 18px 0;min-height:40px;font-size:12px;flex-shrink:0;}
+.study-menu-intro{margin:6px 0 24px;}
+.study-eyebrow{display:block;color:var(--muted);font-size:10px;letter-spacing:1.5px;margin-bottom:8px;}
+.study-menu-intro h3{font-size:25px;line-height:1.2;margin:0 0 10px;}
+.study-menu-intro p{color:var(--muted);margin:0;}
+.study-menu-group{margin:0 0 26px;}
+.study-menu-group h4{font-size:12px;margin:0 0 10px;color:var(--muted);font-weight:600;}
+.study-menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+.study-menu-card{display:flex;flex-direction:column;text-align:left;gap:8px;padding:16px;min-width:0;line-height:1.5;border-radius:12px;}
+.study-menu-card strong{font-size:14px;}
+.study-menu-card>span{font-size:12px;color:var(--muted);}
+.study-menu-card .study-card-link{color:var(--accent);font-weight:600;font-size:11px;margin-top:auto;padding-top:5px;}
+.study-explore-actions{display:grid;gap:8px;margin-bottom:26px;}
+.study-explore-actions button{text-align:left;min-height:44px;}
+@media(max-width:850px){
+ .study-panel{width:100%;}
+ .study-nav{padding:10px 12px;}
+ .study-menu-grid{gap:10px;}
+ .study-menu-card{padding:12px;}
+ .study-back{margin:8px 15px 0;}
+ .study-panel.study-practico .study-back{margin-top:4px;min-height:36px;}
+}
+@media(max-width:360px){.study-menu-grid{grid-template-columns:1fr;}.study-header h2{font-size:15px;}}
+
+@media(max-width:850px) and (min-height:501px){
+ .study-panel[data-active-mode="ruta"],.study-panel[data-active-mode="comparar"],.study-panel[data-active-mode="fisiologia"]{height:52%;}
+}

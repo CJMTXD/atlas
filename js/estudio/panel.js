@@ -1,3 +1,4 @@
+import {areas, areaDeModo, montarMenu} from "./menu.js";
 import * as registro from "../plugins/registro.js";
 import {inicio as extraido_inicio} from './inicio.js';
 import {configurarQuiz as extraido_configurarQuiz} from './quiz.js';
@@ -31,6 +32,9 @@ import {dibujoEpitelio as extraido_dibujoEpitelio} from './esquemas-svg.js';
 // Funciones extraídas con referencias explícitas al contexto compartido.
 export function iniciarEstudio(contextoModulo) {
 const contextoCompartido={
+  get area(){return area;},
+  montarMenu(){montarMenu(contextoCompartido,registro);},
+  cerrarPanel(){cerrar();},
   get titulo(){return titulo;},set titulo(v){titulo=v;},
   get contenido(){return contenido;},set contenido(v){contenido=v;},
   get mensaje(){return mensaje;},set mensaje(v){mensaje=v;},
@@ -92,29 +96,34 @@ const contextoCompartido={
         let progreso={tarjetas:{},errores:{},autoevaluacion:{},sesiones:[]},persistente=true;
         try{const x=JSON.parse(localStorage.getItem(clave)||"null");if(x&&typeof x==="object")for(const k of ["tarjetas","errores","autoevaluacion"])if(x[k]&&typeof x[k]==="object"&&!Array.isArray(x[k]))progreso[k]=x[k];if(Array.isArray(x?.sesiones))progreso.sesiones=x.sesiones.slice(-50);}catch{persistente=false;}
         function guardar(...args){return extraido_guardar(contextoCompartido,...args);}
+        let area="estudio";
         let modo="inicio",sesion=null,cronometro=null,flash=null,svgActivo=null,animacionSVG=null;
         let filtroSeccion="todas",filtroDificultad="todas",soloErrores=false;
         const panelEst=nodo("section",null,{id:"study-panel",class:"study-panel","aria-label":"Estudiar aparato urinario"});panelEst.hidden=true;
-        const cab=nodo("div",null,{class:"study-header"});cab.append(nodo("h2","Estudiar"),boton("Cerrar",cerrar,{"aria-label":"Cerrar panel Estudiar"}));
-        const navegacion=nodo("nav",null,{class:"study-nav","aria-label":"Modos de estudio"}),contenido=nodo("div",null,{class:"study-body",id:"study-content",tabindex:"-1"});
+        const cab=nodo("div",null,{class:"study-header"});cab.append(nodo("h2","Atlas · aprender"),boton("Cerrar",cerrar,{"aria-label":"Cerrar panel Estudiar"}));
+        const navegacion=nodo("nav",null,{class:"study-nav","aria-label":"Apartados del atlas"}),contenido=nodo("div",null,{class:"study-body",id:"study-content",tabindex:"-1"});
         panelEst.append(cab,navegacion,contenido);document.querySelector("main").append(panelEst);
         const abrir=boton("Estudiar",()=>{if(contextoModulo.vistaMovil.matches){contextoModulo.estadoPanel("left",false);contextoModulo.estadoPanel("right",false);}panelEst.hidden=false;abrir.setAttribute("aria-expanded","true");if(contextoModulo.estado.quiz.activo)contextoModulo.terminarQuiz();if(svgActivo)svgActivo.unpauseAnimations?.();registro[modo]?.reanudar?.();contenido.focus({preventScroll:true});},{id:"study-open","aria-expanded":"false","aria-controls":"study-panel"});
         document.querySelector(".header-actions").prepend(abrir);
-        const orden=["inicio","quiz","flash","ruta","nefrona","histologia","epitelios","comparar","auto","examen","errores","estadisticas","transferencias","importador","notas","oclusion","practico","herramientas","fisiologia"];
-        const prioridad=id=>orden.includes(id)?orden.indexOf(id):orden.length;
-        const tabs=Object.values(registro).sort((a,b)=>prioridad(a.id)-prioridad(b.id)).map(p=>[p.id,p.titulo]);
-        tabs.forEach(([id,label])=>navegacion.append(boton(label,()=>cambiarModo(id),{"data-mode":id,"aria-pressed":"false"})));
+        const volver=boton("← Volver al menú",()=>cambiarModo("inicio"),{class:"study-back"});
+        volver.hidden=true;panelEst.insertBefore(volver,contenido);
+        for(const [id,datos] of Object.entries(areas))navegacion.append(boton(datos.titulo,()=>cambiarModo("inicio",id),{"data-area":id,"aria-pressed":String(id===area)}));
+        function sincronizarMenu(){
+          navegacion.querySelectorAll("[data-area]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.area===area)));
+          volver.hidden=modo==="inicio";
+          panelEst.dataset.activeMode=modo;
+        }
         function cerrar({devolverFoco=true}={}){registro[modo]?.pausar?.();panelEst.hidden=true;abrir.setAttribute("aria-expanded","false");svgActivo?.pauseAnimations?.();if(contextoModulo.urinario.flujo){contextoModulo.urinario.pausa=true;if(contextoModulo.$("urine-play"))contextoModulo.$("urine-play").textContent="Continuar";}contextoModulo.solicitarRender();if(devolverFoco)abrir.focus({preventScroll:true});}
-        function cambiarModo(nuevo){
+        function cambiarModo(nuevo,nuevaArea){
           if(sesion&&!sesion.terminada){finalizarSesion("Sesión interrumpida al cambiar de modo");return;}
           if(modo==="flash"&&flash?.vistas){resumenFlash();return;}
           svgActivo?.pauseAnimations?.();svgActivo=null;animacionSVG=null;
           if(modo==="ruta"){contextoModulo.urinario.flujo=false;contextoModulo.particulasOrina.visible=false;contextoModulo.urinario.callback=null;contextoModulo.solicitarRender();}
           if(modo==="comparar"){contextoModulo.urinario.comparar=false;contextoModulo.aplicarEstado();}
           registro[modo]?.desmontar();
-          modo=nuevo;limpiar(contenido);navegacion.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===modo)));
+          modo=nuevo;area=nuevaArea||areaDeModo(nuevo)||area;limpiar(contenido);sincronizarMenu();
           registro[modo].montar(contextoCompartido);
-          contenido.scrollTop=0;
+          contenido.scrollTop=0;contenido.focus({preventScroll:true});
         }
         function faltaBanco(){if(contextoModulo.BANCO.length)return false;contenido.append(mensaje("Pendiente del DOCX: este modo necesita las preguntas y respuestas exactas de Cuestionario_Aparato_Urinario_Laboratorio_11.docx. No se han creado preguntas de sustitución.","study-alert"));return true;}
         function titulo(texto){contenido.append(nodo("h3",texto));}

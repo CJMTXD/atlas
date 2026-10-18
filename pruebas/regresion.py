@@ -1,3 +1,4 @@
+from navegacion import abrir_modo
 import os
 URL=os.environ.get("ATLAS_TEST_URL","http://127.0.0.1:8000/atlas/")
 from pathlib import Path
@@ -36,11 +37,10 @@ with sync_playwright() as p:
   if mobile:q.locator('[data-close="left"]').click()
   q.locator('#restore').click()
   if mobile:q.locator('#toggle-left').click();q.wait_for_timeout(300)
-  q.locator('#quiz-toggle').click()
-  if mobile:q.locator('[data-close="left"]').click()
+  q.locator('#study-open').click();abrir_modo(q,"anatomico")
   assert q.locator('#quiz-options button').count()==4;q.locator('#quiz-options button').first.click();assert q.locator('#quiz-feedback').inner_text();q.locator('#quiz-exit').click()
-  q.locator('#study-open').click();q.locator('[data-mode="quiz"]').click();q.get_by_role('button',name='Comenzar',exact=True).click();q.wait_for_timeout(150);responder_banco(q);assert 'Respuesta del documento' in q.locator('#study-feedback').inner_text();q.get_by_role('button',name='Finalizar sesión',exact=True).click()
-  q.locator('[data-mode="flash"]').click();q.get_by_role('button',name='Estudiar tarjetas pendientes',exact=True).click();q.locator('#study-flash').click();assert q.locator('#flash-yes').is_enabled();q.locator('#flash-yes').click();q.get_by_role('button',name='Terminar',exact=True).click()
+  q.locator('#study-open').click();abrir_modo(q,"quiz");q.get_by_role('button',name='Comenzar',exact=True).click();q.wait_for_timeout(150);responder_banco(q);assert 'Respuesta del documento' in q.locator('#study-feedback').inner_text();q.get_by_role('button',name='Finalizar sesión',exact=True).click()
+  abrir_modo(q,"flash");q.get_by_role('button',name='Estudiar tarjetas pendientes',exact=True).click();q.locator('#study-flash').click();assert q.locator('#flash-yes').is_enabled();q.locator('#flash-yes').click();q.get_by_role('button',name='Terminar',exact=True).click()
   q.get_by_role('button',name='Cerrar panel Estudiar').click()
   q.locator('#theme').click();assert q.evaluate('document.documentElement.dataset.theme')=='light';q.locator('#theme').click();assert q.evaluate('document.documentElement.dataset.theme')=='dark'
   assert q.evaluate('document.documentElement.scrollWidth<=innerWidth')
